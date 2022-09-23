@@ -3,7 +3,7 @@ import { fabric } from 'fabric';
 import { IonButton } from '@ionic/react';
 import toolbarmodule from "./Toolbarmodule.module.css";
 import {Texttoolbar} from "./Texttoolbar";
-import {Imagetoolbar} from "./ Imagetoolbar";
+import {Imagetoolbar} from "./Imagetoolbar";
 import Draggable from 'react-draggable';
 import {CanvasStore} from "../Store/CanvasStore";
 import 'fabric-history';
