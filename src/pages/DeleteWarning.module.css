@@ -1,0 +1,25 @@
+.material_symbols_outlined {
+    margin-top: -7px;
+    margin-right: 5px;
+    font-size: 28px;
+    font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+
+}
+
+.delBtn {
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 0px 5px 12px 15px;
+}

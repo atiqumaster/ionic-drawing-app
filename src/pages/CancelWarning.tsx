@@ -1,13 +1,8 @@
 import React, {useContext } from 'react';
-import {
-    IonButton,
-    IonGrid ,
-    IonRow ,
-    IonInput ,
-    IonCol
-} from '@ionic/react';
+import { IonGrid, IonRow, IonCol, IonContent , IonButton } from '@ionic/react';
 import { useHistory } from "react-router-dom";
 import {CanvasStore} from "../Store/CanvasStore";
+import cancelWarning from "./CancelWarning.module.css"
 
 const CancelWarning  = () => {
 
@@ -18,7 +13,28 @@ const CancelWarning  = () => {
 
     return (
         <>
-        <h1>Cancel Warning button is here</h1>
+            <IonContent>
+                <IonGrid>
+
+                    <IonRow>
+                        <IonCol size="4" ><h1>DO YOU REALLY WANT TO CANCEL AND DISCARD YOUR CHANGES?</h1></IonCol>
+                    </IonRow>
+
+                    <IonRow>
+                        <IonCol size="6">
+                            <IonButton>NO , I WANT TO SAVE FIRST</IonButton>
+                        </IonCol>
+                    </IonRow>
+
+                    <IonRow>
+                        <IonCol size="3">
+                          <IonButton>YES</IonButton>
+                        </IonCol>
+                    </IonRow>
+
+
+                </IonGrid>
+            </IonContent>
 
         </>
     );
