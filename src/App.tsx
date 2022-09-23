@@ -6,7 +6,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './Home';
 import Sizes from './pages/Sizes';
 import Drawing from './pages/Drawing';
-
+import CancelWarning from "./pages/CancelWarning";
+import DeleteWarning from "./pages/DeleteWarning";
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -48,6 +49,8 @@ const App = () => {
                     <Route exact path="/" component={Home}   />
                     <Route  exact path="/sizes" component={Sizes}   />
                     <Route exact path="/drawing" component={Drawing}   />
+                    <Route  exact path="/cancel" component={CancelWarning}   />
+                    <Route exact path="/delete" component={DeleteWarning}   />
                 </Switch>
             </IonReactRouter>
 
