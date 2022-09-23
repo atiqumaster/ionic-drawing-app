@@ -25,13 +25,13 @@ const DeleteWarning  = () => {
                     </IonRow>
 
                     <IonRow>
-                        <IonCol size="3">
+                        <IonCol size="8">
                             Are you sure you want to delete this design?
                         </IonCol>
                     </IonRow>
 
                     <IonRow>
-                        <IonCol size="2">
+                        <IonCol size="6">
                             <div className={deleteWarning.delBtn} >
                               <h3>Yes</h3>
                               Delete design

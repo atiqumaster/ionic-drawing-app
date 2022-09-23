@@ -46,6 +46,11 @@ const Home = () => {
         //canvas.onload(canvasLoad );
         history.push("/drawing");
     }
+    const deleteCards = async (design:any) => {
+        let filteredArray = thumbnail.filter((des:any)=> des.designId !== design.designId);
+        setThumbnail([...filteredArray as []]);
+        await storage.set('myDesign', JSON.stringify(filteredArray));
+    }
 
 
     return (
@@ -67,7 +72,7 @@ const Home = () => {
 console.log("design",design);
     return (
         <>
-            <ThumbnailCards val={val} design={design} loadCanvas={loadCanvas} />
+            <ThumbnailCards val={val} design={design} loadCanvas={loadCanvas} deleteCard={deleteCards} />
 
         </>
     );

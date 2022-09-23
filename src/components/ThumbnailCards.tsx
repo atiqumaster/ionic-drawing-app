@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import {IonButton,IonRow ,IonCol} from '@ionic/react';
 import home from "../Home.module.css";
 
-const ThumbnailCards  = ({val,design,loadCanvas}:any) => {
+const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
     const [isSaveBoxToggle, setSaveBoxToggle] = useState(false);
 
     return (
@@ -20,7 +20,7 @@ const ThumbnailCards  = ({val,design,loadCanvas}:any) => {
                                 </IonButton>
                                 {
                                     isSaveBoxToggle ?
-                                        <button   className={ home.toggleBtn } color="undefined"  >
+                                        <button   className={ home.toggleBtn } color="undefined"  onClick={()=>{deleteCard(design)}}>
                                             <span className={ home.material_symbols_outlined_box} >delete</span>
                                             DELETE DESIGN
                                         </button>
