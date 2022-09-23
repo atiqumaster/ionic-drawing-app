@@ -1,0 +1,208 @@
+/*@font-face {*/
+/*    font-family: "Montserrat";*/
+/*    src: local("Montserrat"),*/
+/*    url("./public/assets/Fonts/montserrat/Montserrat-Black.otf") format("otf");*/
+/*    font-weight: bold;*/
+/*}*/
+
+
+
+.btn {
+    font-size: 18px;
+    font-weight: 900;
+    font-family: "Montserrat";
+    --color:black;
+    --background: white;
+    --border-radius: 12px;
+    --box-shadow: -5px 5px 0 black;
+    height: 60px;
+    width: 149.69px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    appearance: none;
+    cursor: pointer;
+    line-height: 1;
+    position: fixed;
+    right: 15px;
+    letter-spacing: 0px;
+    display: flex;
+    bottom: 15px;
+    width: fit-content;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: -5px 5px 0 #000;
+    text-transform: uppercase;
+    z-index: 1;
+}
+.designGrid {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.text{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 84%;
+    font-size: 18px;
+    font-weight: 900;
+    color: black !important;
+    --color: black ;
+}
+
+.material_symbols_outlined {
+    margin-top: -7px;
+    margin-right: 5px;
+    font-size: 28px;
+    font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+
+}
+.material_symbols_outlineds {
+    color: white;
+
+    margin-top: 16px;
+    margin-right: 5px;
+    font-size: 28px;
+    font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    transform: rotate(90deg);
+
+}
+.logo {
+    width: 78.06px;
+    height: 60px;
+}
+.SaveDesignWrapper {
+    background-color: #2e2e2e;
+    border-radius: 10px;
+}
+.SaveDesignAdjust {
+    margin: 40px;
+
+}
+
+.BlueToothBtn {
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+    font-size: 18px;
+    font-weight: 900;
+    font-family: "Montserrat";
+    --color: white;
+    --background: black;
+    --border-radius: 12px;
+    height: 55px;
+    width: 140px !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    outline: 0;
+    appearance: none;
+    cursor: pointer;
+    line-height: 1;
+    letter-spacing: 0px;
+    display: flex;
+    background-color: #fff;
+    border-radius: 12px;
+    text-transform: uppercase;
+    z-index: 1;
+}
+.designImg {
+    height: 250px;
+    display: flex;
+    margin: 0 auto;
+    width: 200px;
+}
+.btn1 {
+
+    --box-shadow:none;
+    /*border-right: 2px solid;*/
+}
+
+.toggleBtn{
+    left: -107px;
+    top: 56px;
+    position: absolute;
+    z-index: 9999999;
+    justify-content: flex-start;
+    min-width: 170px;
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    height: 42px;
+    width: 50px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: -5px 5px 0 black;
+    align-items: center;
+    margin: 0;
+    outline: 0;
+    appearance: none;
+    cursor: pointer;
+    line-height: 1;
+    color: black;
+    --color: black;
+}
+.material_symbols_outlined_box {
+    margin-right: 10px;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 28px;
+    font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    color:black;
+}
+/*.designGrid {*/
+/*    overflow-y: auto;*/
+/*}*/
+@media (max-width: 768px) {
+    .designGrid {
+        overflow-y: auto;
+    }
+}
+@media (max-width: 300px) {
+    .text {
+       line-height: 18px;
+        padding-left: 4px;
+    }
+}
+

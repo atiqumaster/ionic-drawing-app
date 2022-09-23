@@ -1,0 +1,58 @@
+.open_toggle_box {
+    z-index: 9999;
+     display: flex;
+     flex-direction: column;
+     position: absolute;
+  
+     right: 0;
+     width: fit-content;
+     margin-left: auto;
+     margin-right: 0;
+     padding: 5px 12px;
+     background-color: whitesmoke;
+     border-radius: 10px;
+     box-shadow: -5px 5px 0 black;
+     color: black;
+ }
+ 
+ .toggleBtn{
+     justify-content: flex-start;
+     min-width: 180px;
+     font-family: "Montserrat";
+     font-size: 14px;
+     font-weight: 600;
+     text-transform: uppercase;
+     height: 42px;
+     width: 50px;
+     display: flex;
+     flex-direction: row;
+     Background-color: transparent;
+     border: 0;
+     align-items: center;
+     padding: 0;
+     margin: 0;
+     outline: 0;
+     appearance: none;
+     cursor: pointer;
+     line-height: 1;
+     color: black;
+     --color: black;
+ }
+ .material_symbols_outlined_box {
+     margin-right: 10px;
+     font-family: 'Material Symbols Outlined';
+     font-weight: normal;
+     font-style: normal;
+     font-size: 28px;
+     font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+     line-height: 1;
+     letter-spacing: normal;
+     text-transform: none;
+     display: inline-block;
+     white-space: nowrap;
+     word-wrap: normal;
+     direction: ltr;
+     -webkit-font-feature-settings: 'liga';
+     -webkit-font-smoothing: antialiased;
+     color:black;
+ }

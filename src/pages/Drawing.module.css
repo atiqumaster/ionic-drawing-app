@@ -1,0 +1,13 @@
+
+.canvasUi {
+    border: 1px solid silver;
+    margin-top: 15px;
+}
+.HandleCanvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65%;
+
+}
+

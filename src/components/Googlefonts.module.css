@@ -1,0 +1,28 @@
+
+.text_font_toggle {
+    text-decoration: none;
+    background-color: whitesmoke;
+    border: 0px;
+    width: 80px;
+
+
+}
+.font_option {
+
+}
+
+.font_selected  {
+    width: 80px;
+    font-family: brush script mt;
+    font-size: 18px;
+}
+@media (max-width: 575px) {
+    .text_font_toggle {
+        text-decoration: none;
+        background-color: whitesmoke;
+        border: 0px;
+        width: 60px;
+
+
+    }
+}
