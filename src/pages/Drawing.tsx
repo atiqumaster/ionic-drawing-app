@@ -34,11 +34,9 @@ const Drawing = () => {
 
     const { dimension, setCanvas }:any = useContext(CanvasStore);
     const { canvas }:any = useContext(CanvasStore);
-    const [isPan , setPan ]= useState(true);
-    const [isdraggable , setIsdraggable ]= useState(false);
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
     const [cancelToggle, setCancelToggle]: any = useState(false)
-    const [restoreCanvas, setRestoreCanvas]: any = useState(false)
+
 
     let history = useHistory();
 
