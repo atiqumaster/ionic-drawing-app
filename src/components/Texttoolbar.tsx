@@ -26,12 +26,13 @@ const Texttoolbar = () => {
 
     const showToggleTextBox = () => {
         setTextBoxToggle(!isTextBoxToggle)
+        setAlignBoxToggle(false)
     }
 
 
     const showAlignTextBox = () => {
         setAlignBoxToggle(!isAlignBoxToggle)
-
+        setTextBoxToggle(false);
     }
 
     function showTextFont() {
