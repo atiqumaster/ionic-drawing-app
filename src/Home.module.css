@@ -101,10 +101,13 @@
 .SaveDesignWrapper {
     background-color: #2e2e2e;
     border-radius: 10px;
+    width: 310px;
+
 }
 .SaveDesignAdjust {
-    margin: 40px;
-
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-right: 40px;
 }
 
 .BlueToothBtn {
@@ -188,6 +191,10 @@
     -webkit-font-smoothing: antialiased;
     color:black;
 }
+.saveCardSize {
+    max-width: 330px;
+}
+
 /*.designGrid {*/
 /*    overflow-y: auto;*/
 /*}*/

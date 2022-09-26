@@ -7,11 +7,9 @@ import { Toolbar } from "../components/Toolbar";
 import {Titlebar} from "../components/Titlebar";
 import {Menubutton} from "../components/Menubutton";
 import {CanvasStore} from "../Store/CanvasStore";
-
-
-import 'fabric-history';
-
-
+import {CancelWarning} from '../components/CancelWarning';
+import { useHistory } from "react-router-dom";
+// import 'fabric-history';
 
 declare global {
     interface Window {
@@ -32,8 +30,6 @@ interface AppContextInterface {
 }
 
 
-
-
 const Drawing = () => {
 
     const { dimension, setCanvas }:any = useContext(CanvasStore);
@@ -41,17 +37,16 @@ const Drawing = () => {
     const [isPan , setPan ]= useState(true);
     const [isdraggable , setIsdraggable ]= useState(false);
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
+    const [cancelToggle, setCancelToggle]: any = useState(false)
+    const [restoreCanvas, setRestoreCanvas]: any = useState(false)
 
-
+    let history = useHistory();
 
     // First reload initCanvas function trigger
+
     useEffect(() => {
         initCanvas();
-
-
-    }, []);
-
-//  canvas Pan reset
+    }, [cancelToggle]);
 
     // Connect Fabric Canvas with canvas and set height /width
     const initCanvas = () => {
@@ -63,46 +58,61 @@ const Drawing = () => {
                 height: canvasHeight - 30,
                 backgroundColor : "#fff" ,
                 allowTouchScrolling: true
-        }
+            }
         );
 
         window.canvas =  fabricCanvas;
-
 
         setCanvas(fabricCanvas);
 
         if(isCanvasDesign?.designJson)
         {
             fabricCanvas.loadFromJSON(isCanvasDesign?.designJson, fabricCanvas.renderAll.bind(fabricCanvas), ()=>{
-               // console.log("canvas",fabricCanvas)
+                // console.log("canvas",fabricCanvas)
             });
         }
-
-
     }
 
 
+    const yesCancel = () => {
+        history.push("/");
+    }
+
+    const toggleCancel = () => {
+
+        let designJson: any = JSON.stringify(canvas.toJSON());
+        let thumbnail: any = canvas.toDataURL();
+        let designId: any = Math.random();
+        let canvasDesign = {
+            designJson,
+            thumbnail,
+            designId,
+        }
+        setCanvasDesign(canvasDesign)
+        setCancelToggle(!cancelToggle);
+
+    }
 
 
     return (
 
         <>
-              <IonContent>
-
-                  <Titlebar/>
-
-                  <Toolbar/>
-
-                   <div   className={drawing.HandleCanvas} >
-
-                             <canvas id="canvas"  className={drawing.canvasUi}  />
-
-                       </div>
-                  <Menubutton/>
-              </IonContent>
+            {
+                cancelToggle ?
+                    <CancelWarning toggleCancel={toggleCancel}  yesCancel={yesCancel}  />
+                    :
+                    <IonContent>
+                        <Titlebar/>
+                        <Toolbar/>
+                        <div   className={drawing.HandleCanvas} >
+                            <canvas id="canvas"  className={drawing.canvasUi}  />
+                        </div>
+                        <Menubutton toggleCancel={toggleCancel}  />
+                    </IonContent>
+            }
         </>
-
     );
 }
+
 
 export  default  Drawing;

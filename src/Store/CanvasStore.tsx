@@ -51,6 +51,7 @@ export function StoreContext({ children }:any) {
 
     const [isCanvasDesign , setCanvasDesign ] = useState(null);
     const [isTitleInput , setTitleInput ] = useState(null);
+    const [isDeleteDesign , setDeleteDesign ] = useState(null);
 
 
     const canvasProviderValues:any = useMemo(() => ({
@@ -63,13 +64,17 @@ export function StoreContext({ children }:any) {
         isCanvasDesign ,
         setCanvasDesign ,
         isTitleInput ,
-        setTitleInput
+        setTitleInput,
+        isDeleteDesign,
+        setDeleteDesign
     }), [
         dimension,
         canvas ,
         isToggleAdjust ,
         isCanvasDesign ,
-        isTitleInput
+        isTitleInput ,
+        isDeleteDesign
+
     ]);
 
     return (

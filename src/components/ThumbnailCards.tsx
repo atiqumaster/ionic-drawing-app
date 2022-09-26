@@ -7,8 +7,8 @@ const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
 
     return (
         <>
-            <IonCol key={val}>
-                <div className={home.SaveDesignWrapper} >
+            <IonCol className={home.saveCardSize}  key={val} >
+                <div   className={home.SaveDesignWrapper} >
                     <div className={home.SaveDesignAdjust} >
                         <IonRow>
                             <IonCol size="11" >
