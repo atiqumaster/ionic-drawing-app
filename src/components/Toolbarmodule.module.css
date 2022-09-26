@@ -66,12 +66,12 @@ color:black;
 
 }
 @media (max-width: 360px) {
-    .material_symbols_outlined {
+    /*.material_symbols_outlined {*/
 
-        font-size: 18px;
-    }
+    /*    font-size: 18px;*/
+    /*}*/
     .btnInput  {
-        padding-top: 13px;
+        padding-top: 7px;
     }
 
 }

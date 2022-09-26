@@ -175,7 +175,7 @@
     color: black;
 }
 .aligntoggleBtn {
-
+    --box-shadow:none;
     height: 42px;
     width: 50px;
     display: flex;
@@ -194,14 +194,14 @@
 }
 
 @media (max-width: 575px) {
-    .material_symbols_outlined {
+    /*.material_symbols_outlined {*/
 
-        font-size: 22px;
-    }
+    /*    font-size: 22px;*/
+    /*}*/
 }
 @media (max-width: 320px) {
-    .material_symbols_outlined {
+    /*.material_symbols_outlined {*/
 
-        font-size: 18px;
-    }
+    /*    font-size: 18px;*/
+    /*}*/
 }
