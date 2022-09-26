@@ -1,13 +1,17 @@
 .btn {
+    width:48px;
 color:black;
     --box-shadow:none;
 }
 .btn1 {
+   width:46px;
     color:black;
     --box-shadow:none;
     border-right: 2px solid;
 }
 .btnHold {
+    max-width: 294px;
+    height: 42px;
     display: flex;
     flex-direction: row;
     background-color: whitesmoke;
@@ -47,6 +51,8 @@ color:black;
 
 .btnInput  {
     padding-top: 8px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 .moveRestrict {
     position: relative;

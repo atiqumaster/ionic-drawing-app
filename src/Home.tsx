@@ -45,17 +45,17 @@ const Home = () => {
         history.push("/drawing");
     }
     const deleteCards = async () => {
-        console.log("design",isDeleteDesign);
+       // console.log("design",isDeleteDesign);
         let filteredArray = thumbnail.filter((des:any)=> des.designId !== isDeleteDesign.designId);
         setThumbnail([...filteredArray as []]);
-        console.log("after",filteredArray);
+        //console.log("after",filteredArray);
         await storage.set('myDesign', JSON.stringify(filteredArray));
         setDeleteToggle(false);
         history.push("/");
     }
     const toggleDelete=(design:any)=>{
         setDeleteToggle(!deleteToggle);
-        console.log("Design selected to be deleted",design)
+      //  console.log("Design selected to be deleted",design)
         !deleteToggle ? setDeleteDesign(design) :setDeleteDesign(null) ;
     }
 

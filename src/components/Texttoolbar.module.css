@@ -1,14 +1,17 @@
 .btn {
     color:black;
     --box-shadow:none;
-
+    width:46px;
 }
 .btn1 {
+    width:44px;
     color:black;
     --box-shadow:none;
     border-right: 2px solid;
 }
 .btnHold {
+    height: 42px;
+    width: 324px;
     display: flex;
     flex-direction: row;
     background-color: whitesmoke;

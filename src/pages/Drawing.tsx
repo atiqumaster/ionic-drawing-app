@@ -44,6 +44,7 @@ const Drawing = () => {
 
     useEffect(() => {
         initCanvas();
+        setCanvasDesign(null);
     }, [cancelToggle]);
 
     // Connect Fabric Canvas with canvas and set height /width
@@ -86,6 +87,7 @@ const Drawing = () => {
             thumbnail,
             designId,
         }
+        //console.log(canvasDesign);
         setCanvasDesign(canvasDesign)
         setCancelToggle(!cancelToggle);
 

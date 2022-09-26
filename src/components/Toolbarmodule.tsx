@@ -25,6 +25,8 @@ const Toolbarmodule = () => {
     });
 
     const [isBound , setBound] = useState(window.innerHeight - 220);
+    const [isBoundleft , setBoundleft] = useState(window.innerWidth/2 -175 );
+    const [isBoundRight , setBoundRight] = useState(window.innerWidth/2 -175 );
 
     const { setToggleAdjust }:any = useContext(CanvasStore);
 
@@ -322,7 +324,7 @@ const Toolbarmodule = () => {
 
     return (
 
-        <Draggable  handle="strong"  onDrag={handleStop}   bounds={{ top:0 , bottom:isBound }}  >
+        <Draggable  handle="strong"  onDrag={handleStop}   bounds={{ top:0 , bottom:isBound , left:-isBoundleft , right:isBoundRight }}  >
             <div  className={toolbarmodule.draggableText} >
 
             { isTextToolbar
@@ -340,13 +342,11 @@ const Toolbarmodule = () => {
                                 <span className={toolbarmodule.material_symbols_outlined} >format_shapes</span>
                             </IonButton>
 
-
                             <label htmlFor="file-input" className={toolbarmodule.btnInput }>
                                  <span className={toolbarmodule.material_symbols_outlined} >add_photo_alternate</span>
                             </label>
                             <input accept="image/*"  id="file-input"  type="file" onChange={  uploadImg }
                                     style={{display:"none"}} />
-
 
                             <IonButton  onClick={undo} className={toolbarmodule.btn } color="undefined" >
                                 <span style= {isUndo} className={toolbarmodule.material_symbols_outlined} >undo</span>
