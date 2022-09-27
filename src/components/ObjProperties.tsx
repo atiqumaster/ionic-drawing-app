@@ -78,17 +78,17 @@ const ObjProperties = () => {
         canvas.renderAll();
     }
 
-    const bringForwards = () => {
-        let activeObj = canvas.getActiveObject();
-        canvas.bringForward(activeObj);
-        canvas.renderAll();
-    }
-
-    const sendBackward = () => {
-        let activeObj = canvas.getActiveObject();
-        canvas.sendBackwards(activeObj);
-        canvas.renderAll();
-    }
+    // const bringForwards = () => {
+    //     let activeObj = canvas.getActiveObject();
+    //     canvas.bringForward(activeObj);
+    //     canvas.renderAll();
+    // }
+    //
+    // const sendBackward = () => {
+    //     let activeObj = canvas.getActiveObject();
+    //     canvas.sendBackwards(activeObj);
+    //     canvas.renderAll();
+    // }
 
     const sendToBacks = () => {
         let activeObj = canvas.getActiveObject();
@@ -114,14 +114,14 @@ const ObjProperties = () => {
                     <span className={ Objproperties.material_symbols_outlined_box} >move_up</span>
                     BRING TO FRONT
                 </button>
-                        <button onClick={bringForwards}  className={ Objproperties.toggleBtn } color="undefined"  >
-                            <span className={ Objproperties.material_symbols_outlined_box} >arrow_forward</span>
-                            BRING FORWARD
-                        </button>
-                        <button  onClick={sendBackward}  className={ Objproperties.toggleBtn } color="undefined"  >
-                            <span className={ Objproperties.material_symbols_outlined_box} >arrow_back</span>
-                            SEND BACKWARD
-                        </button>
+                        {/*<button onClick={bringForwards}  className={ Objproperties.toggleBtn } color="undefined"  >*/}
+                        {/*    <span className={ Objproperties.material_symbols_outlined_box} >arrow_forward</span>*/}
+                        {/*    BRING FORWARD*/}
+                        {/*</button>*/}
+                        {/*<button  onClick={sendBackward}  className={ Objproperties.toggleBtn } color="undefined"  >*/}
+                        {/*    <span className={ Objproperties.material_symbols_outlined_box} >arrow_back</span>*/}
+                        {/*    SEND BACKWARD*/}
+                        {/*</button>*/}
                         <button onClick={sendToBacks}    className={ Objproperties.toggleBtn } color="undefined"  >
                             <span className={ Objproperties.material_symbols_outlined_box} >move_down</span>
                             SEND TO BACK
