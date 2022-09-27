@@ -11,7 +11,7 @@ const ObjProperties = () => {
     const { canvas }:any = useContext(CanvasStore);
    
     const { isToggleAdjust, setToggleAdjust }:any = useContext(CanvasStore);
-
+    const { isObjLock, setObjLock }:any = useContext(CanvasStore);
  
   // console.log(isToggleAdjust);
 
@@ -58,7 +58,14 @@ const ObjProperties = () => {
   const objectLock = () => {
 
       let activeObject = canvas.getActiveObject();
-      activeObject.lockMovementX && activeObject.lockMovementY ? activeObject.set({lockMovementX: false, lockMovementY: false})  : activeObject.set({lockMovementX: true, lockMovementY: true});
+      if(activeObject.lockMovementX && activeObject.lockMovementY ) {
+          activeObject.set({lockMovementX: false, lockMovementY: false})
+          setObjLock("UnLock");
+      }else{
+          activeObject.set({lockMovementX: true, lockMovementY: true})
+          setObjLock("Lock");
+      }
+     // activeObject.lockMovementX && activeObject.lockMovementY ? activeObject.set({lockMovementX: false, lockMovementY: false})  : activeObject.set({lockMovementX: true, lockMovementY: true});
 
       canvas.renderAll();
   }
@@ -101,7 +108,7 @@ const ObjProperties = () => {
                     </button>
                     <button onClick={objectLock}     className={ Objproperties.toggleBtn } color="undefined"  >
                         <span className={ Objproperties.material_symbols_outlined_box} > {canvas.getActiveObject().lockMovementX && canvas.getActiveObject().lockMovementY ? "lock"  : "lock_open" }</span>
-                        {canvas.getActiveObject().lockMovementX && canvas.getActiveObject().lockMovementY ? "lock"  : "UnLock" }
+                        {isObjLock}
                     </button>
                 <button onClick={bringToFronts}   className={ Objproperties.toggleBtn } color="undefined"  >
                     <span className={ Objproperties.material_symbols_outlined_box} >move_up</span>

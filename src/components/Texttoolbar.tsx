@@ -11,15 +11,11 @@ const Texttoolbar = () => {
     const [isAlignBoxToggle, setAlignBoxToggle] = useState(false);
     const [isTextFontToggle, setTextFontToggle] = useState(false);
     const [isFontToggle, setFontToggle] = useState(false);
-    const [isFontBold, setFontBold] = useState(false);
-    const [isFontStyle, setFontStyle] = useState(false);
-    const [isOpacityBold, setOpacityBold] = useState({
-        opacity:0.2
-    });
+    const {isFontBold, setFontBold}:any = useContext(CanvasStore);
+    const {isOpacityBold, setOpacityBold}:any = useContext(CanvasStore);
+    const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
+    const {isFontStyle, setFontStyle}:any = useContext(CanvasStore);
 
-    const [isOpacityItalic, setOpacityItalic] = useState({
-        opacity:0.2
-    });
 
     const { canvas }:any = useContext(CanvasStore);
     const ref = useRef(null);
