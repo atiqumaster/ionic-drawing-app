@@ -1,9 +1,11 @@
 import React, {useContext ,  useState } from 'react';
 import {CanvasStore} from "../Store/CanvasStore";
 import Objproperties from "./ObjProperties.module.css"
+import {fastFood} from "ionicons/icons";
 
 
 const ObjProperties = () => {
+
     const [isObjLock, setObjLock] = useState(false);    
     
     const { canvas }:any = useContext(CanvasStore);
@@ -40,6 +42,9 @@ const ObjProperties = () => {
             canvas.requestRenderAll();
         });
 
+
+
+
     }
 
     const objectDelete = () => {
@@ -51,35 +56,24 @@ const ObjProperties = () => {
     }
 
   const objectLock = () => {
-      setObjLock(!isObjLock)
-      let activeObject = canvas.getActiveObject();
-      let  items = canvas.getObjects();
 
-      if(isObjLock === false) {
-          items.forEach(function(item:any) {
-          if(item.selectable == true) {
-              activeObject.selectable = false;
-              activeObject.evented = false
-              activeObject.hoverCursor = 'default';
-          }
-          });
+      let activeObject = canvas.getActiveObject();
+      //console.log('isObjLock',isObjLock);
+      setObjLock(isObjLock)
+      if(isObjLock === true) {
+
+                  activeObject.set({lockMovementX: false, lockMovementY: false})
+                  setObjLock(false)
 
       } else {
 
-          items.forEach(function(item:any) {
+              activeObject.set({lockMovementX: true, lockMovementY: true})
+              setObjLock(true)
 
-              if(item.selectable == false){
-                  item.selectable = true;
-                  item.hoverCursor= 'move';
-                  item.evented = true;
-              }
-
-          });
+      }
+      canvas.renderAll();
 
 
-              }
-
-       canvas.discardActiveObject().renderAll();
   }
 
 
