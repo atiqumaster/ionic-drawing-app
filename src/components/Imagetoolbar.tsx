@@ -13,7 +13,6 @@ const Imagetoolbar = () => {
     const { canvas }:any = useContext(CanvasStore);
 
     const [isImageToolbarToggle, setImageToolbarToggle] = useState(false);
-    const [isObjLock, setObjLock] = useState(false);
     const [isFlipVertical  , setFlipVertical ] = useState(false);
     const [isFlipHorizontal  , setFlipHorizontal] = useState(false);
     const [isimgInverted  , setimgInverted] = useState(false);

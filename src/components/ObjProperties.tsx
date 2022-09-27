@@ -59,7 +59,7 @@ const ObjProperties = () => {
 
       let activeObject = canvas.getActiveObject();
       //console.log('isObjLock',isObjLock);
-      setObjLock(isObjLock)
+
       if(isObjLock === true) {
 
                   activeObject.set({lockMovementX: false, lockMovementY: false})

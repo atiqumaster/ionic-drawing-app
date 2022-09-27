@@ -13,7 +13,6 @@ const Texttoolbar = () => {
     const [isFontToggle, setFontToggle] = useState(false);
     const [isFontBold, setFontBold] = useState(false);
     const [isFontStyle, setFontStyle] = useState(false);
-    const [isObjLock, setObjLock] = useState(false);
     const [isOpacityBold, setOpacityBold] = useState({
         opacity:0.2
     });
