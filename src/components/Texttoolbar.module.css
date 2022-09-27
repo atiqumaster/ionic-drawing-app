@@ -29,8 +29,14 @@
 /*  opacity: 0.5;*/
 /*}*/
 
-
-
+.current_font {
+    width: 80px;
+    font-family: "Brush Script MT";
+    font-size: 18px;
+}
+.button_grp {
+    display: flex;
+}
 
 .toolbararea {
     position: relative;
@@ -58,7 +64,7 @@
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
- color:black;
+    color:black;
 }
 
 .material_symbols_outlined2 {
@@ -103,7 +109,7 @@
     visibility:hidden;
 }
 .open_toggle_box {
-   z-index: 9999;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     position: absolute;

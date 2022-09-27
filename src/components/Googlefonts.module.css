@@ -1,14 +1,38 @@
 
 .text_font_toggle {
-    text-decoration: none;
+    width: 250px !important;
+    flex-direction: row;
     background-color: whitesmoke;
-    border: 0px;
-    width: 80px;
-
-
+    border-radius: 10px;
+    box-shadow: -5px 5px 0 black;
+    color: black;
+    position: absolute;
+    top: 52px;
+    left: 0;
+    height: 405px;
+    width: fit-content;
+    margin-right: 0;
+    padding: 5px 0;
+    overflow-y: auto;
 }
 .font_option {
 
+    width: fit-content;
+    padding: 0 50px 0 15px;
+    font-size: 18px;
+    text-align: left;
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    appearance: none;
+    cursor: pointer;
+    line-height: 1;
 }
 
 .font_selected  {

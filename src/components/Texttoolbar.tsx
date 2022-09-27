@@ -1,4 +1,4 @@
-import React, {useContext ,   useState } from 'react';
+import React, {useContext ,   useState , useEffect ,  useRef} from 'react';
 import { IonButton } from '@ionic/react';
 import texttoolbar from "./Texttoolbar.module.css"
 import {CanvasStore} from "../Store/CanvasStore";
@@ -10,6 +10,7 @@ const Texttoolbar = () => {
     const [isTextBoxToggle, setTextBoxToggle] = useState(false);
     const [isAlignBoxToggle, setAlignBoxToggle] = useState(false);
     const [isTextFontToggle, setTextFontToggle] = useState(false);
+    const [isFontToggle, setFontToggle] = useState(false);
     const [isFontBold, setFontBold] = useState(false);
     const [isFontStyle, setFontStyle] = useState(false);
     const [isObjLock, setObjLock] = useState(false);
@@ -22,17 +23,27 @@ const Texttoolbar = () => {
     });
 
     const { canvas }:any = useContext(CanvasStore);
+    const ref = useRef(null);
 
+    const showFontToggle = () => {
+        setFontToggle(!isFontToggle)
+        setAlignBoxToggle(false)
+        setTextBoxToggle(false);
+    }
 
     const showToggleTextBox = () => {
         setTextBoxToggle(!isTextBoxToggle)
         setAlignBoxToggle(false)
+        setFontToggle(false);
+
     }
 
 
     const showAlignTextBox = () => {
         setAlignBoxToggle(!isAlignBoxToggle)
         setTextBoxToggle(false);
+        setFontToggle(false);
+
     }
 
     function showTextFont() {
@@ -40,6 +51,15 @@ const Texttoolbar = () => {
 
     }
 
+    // document.body.addEventListener('click', (event) => {
+    //     let a:any = event.currentTarget;
+    //     if (a.classList.contains('btn')) {
+    //         console.log('Element contains class');
+    //       } else {
+    //         console.log('Element does NOT contain class');
+    //       }
+
+    // });
 
 
     const fontBold = () => {
@@ -99,10 +119,16 @@ const Texttoolbar = () => {
             <div className={texttoolbar.toolbararea} >
                 <div className={ texttoolbar.btnHold } >
 
-                    <IonButton  className={ texttoolbar.btn1 } color="undefined" >
+                    <IonButton class="red" className={ texttoolbar.btn1 } color="undefined" >
                         <strong className="dragable-span"> <span className={ texttoolbar.material_symbols_outlined} >open_with</span></strong>
                     </IonButton>
-                   < GoogleFonts/>
+
+                    <div id="font" className={texttoolbar.button_grp}  onClick={showFontToggle} >
+                        <button className={texttoolbar.current_font} >
+                            Font
+                        </button>
+                    </div>
+
                     <IonButton onClick={fontBold} className={ texttoolbar.btn } color="undefined"  >
                         <span  style= {isOpacityBold} className={ texttoolbar.material_symbols_outlined }  >format_bold</span>
                     </IonButton>
@@ -114,39 +140,44 @@ const Texttoolbar = () => {
                     </IonButton>
 
 
-                    <IonButton  className={ texttoolbar.btn }  onClick={showToggleTextBox} color="undefined" >
+                    <IonButton ref={ref}  className={ texttoolbar.btn } onClick={showToggleTextBox} color="undefined" >
                         <span className={ texttoolbar.material_symbols_outlined} >more_horiz</span>
                     </IonButton>
 
+                    {
+                        isFontToggle ?
+                            < GoogleFonts/>
+                            : null
+                    }
 
 
-                {
-                    isTextBoxToggle ?
-                              <ObjProperties/>
-                        : null
-                }
-                {
-                    isAlignBoxToggle ?
-                        <div className={ texttoolbar.open_align_toggle_box } >
-                            <IonButton onClick={alignLeft}  className={ texttoolbar.aligntoggleBtn } color="undefined"  >
-                                <span className={ texttoolbar.material_symbols_outlined_box} >format_align_left</span>
-                            </IonButton>
-                            <IonButton  onClick={alignCenter}   class="ion-text-left" className={ texttoolbar.aligntoggleBtn } color="undefined"  >
-                                <span className={ texttoolbar.material_symbols_outlined_box} >format_align_center</span>
-                            </IonButton>
-                            <IonButton onClick={alignRight}  className={ texttoolbar.aligntoggleBtn } color="undefined"  >
-                                <span className={ texttoolbar.material_symbols_outlined_box} >format_align_right</span>
-                            </IonButton>
-                            <IonButton  onClick={alignJustify} className={ texttoolbar.aligntoggleBtn } color="undefined"  >
-                                <span className={ texttoolbar.material_symbols_outlined_box} >format_align_justify</span>
-                            </IonButton>
+                    {
+                        isTextBoxToggle ?
+                            <ObjProperties/>
+                            : null
+                    }
+                    {
+                        isAlignBoxToggle ?
+                            <div className={ texttoolbar.open_align_toggle_box } >
+                                <IonButton onClick={alignLeft}  className={ texttoolbar.aligntoggleBtn } color="undefined"  >
+                                    <span className={ texttoolbar.material_symbols_outlined_box} >format_align_left</span>
+                                </IonButton>
+                                <IonButton  onClick={alignCenter}   class="ion-text-left" className={ texttoolbar.aligntoggleBtn } color="undefined"  >
+                                    <span className={ texttoolbar.material_symbols_outlined_box} >format_align_center</span>
+                                </IonButton>
+                                <IonButton onClick={alignRight}  className={ texttoolbar.aligntoggleBtn } color="undefined"  >
+                                    <span className={ texttoolbar.material_symbols_outlined_box} >format_align_right</span>
+                                </IonButton>
+                                <IonButton  onClick={alignJustify} className={ texttoolbar.aligntoggleBtn } color="undefined"  >
+                                    <span className={ texttoolbar.material_symbols_outlined_box} >format_align_justify</span>
+                                </IonButton>
 
-                        </div>
-                        : null
+                            </div>
+                            : null
 
-                }
+                    }
 
-             </div>
+                </div>
             </div>
         </>
     );

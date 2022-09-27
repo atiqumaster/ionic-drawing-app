@@ -23,10 +23,10 @@ const GoogleFonts = () => {
                 `https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBB1ro9c5u6LIfsdsndwKTfRD8YsJIFO-U`
             );
             // console.log(fonts.data.items);
-            const fontArray = fonts.data.items.slice(0, 4);
+            const fontArray = fonts.data.items.slice(0, 10);
 
             fontArray.forEach((font:any)=>{
-               // console.log(font.family);
+                console.log(font.family);
                 loadGoogleFonts(font.family,font.files.regular);
             })
 
@@ -35,9 +35,10 @@ const GoogleFonts = () => {
         getData()
     });
 
-    const arrayFonts = ["ABeeZee", "Abel"  ,"ABeeZee" , "Acme" , "Adamina" ]
+    const arrayFonts = ["ABeeZee", "Abel"   , "Abhaya Libre","Aboreto","Abril Fatface","Abyssinica SIL","Aclonica","Acme" ,"Actor", "Adamina" , "playball"]
 
     const selectFonts = (event:any) => {
+
         let activeObj = canvas.getActiveObject();
         activeObj.set('fontFamily', event.target.value);
         canvas.renderAll();
@@ -47,19 +48,20 @@ const GoogleFonts = () => {
         <>
 
 
-                  <select className={googleFonts.text_font_toggle}  onChange={selectFonts}   >
-                      <option className={googleFonts.font_selected} selected  >font</option>
-                      {
-                          arrayFonts.map((font:any) => {
-                              return <option
-                                  className={googleFonts.font_option}
-                                  value={font}  >{font}</option>
-                          })
-                      }
-                   </select>
+
+            <div id="font-list" className={googleFonts.text_font_toggle} >
+                {
+                    arrayFonts.map((font:any) => {
+                        return  <button className={googleFonts.font_option}
+                                        value={font} style={{fontFamily: font}}  onClick={selectFonts} >{font}</button>
+
+                    })
+                }
+            </div>
+
 
         </>
-);
+    );
 
 }
 export { GoogleFonts };
