@@ -7,7 +7,7 @@ import axios from "axios";
 const GoogleFonts = () => {
 
     const { canvas }:any = useContext(CanvasStore);
-
+    const { isFontToggleAdjust, setFontToggleAdjust }:any = useContext(CanvasStore);
 
 
     const loadGoogleFonts =async (fontFamily:any , fontUrl:any)=>{
@@ -49,7 +49,7 @@ const GoogleFonts = () => {
 
 
 
-            <div id="font-list" className={googleFonts.text_font_toggle} >
+            <div style={isFontToggleAdjust}   id="font-list" className={googleFonts.text_font_toggle} >
                 {
                     arrayFonts.map((font:any) => {
                         return  <button className={googleFonts.font_option}

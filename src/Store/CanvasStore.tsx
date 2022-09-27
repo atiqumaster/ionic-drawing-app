@@ -48,6 +48,12 @@ export function StoreContext({ children }:any) {
     const [isToggleAdjust , setToggleAdjust ] = useState({
         top:52
     });
+    const [isFontToggleAdjust , setFontToggleAdjust ] = useState({
+        top:52
+    });
+    const [isAlignToggleAdjust , setAlignToggleAdjust ] = useState({
+        top:42
+    });
 
     const [isCanvasDesign , setCanvasDesign ] = useState(null);
     const [isTitleInput , setTitleInput ] = useState(null);
@@ -66,14 +72,23 @@ export function StoreContext({ children }:any) {
         isTitleInput ,
         setTitleInput,
         isDeleteDesign,
-        setDeleteDesign
+        setDeleteDesign ,
+        isFontToggleAdjust,
+        setFontToggleAdjust,
+        isAlignToggleAdjust,
+        setAlignToggleAdjust
+
+
     }), [
         dimension,
         canvas ,
         isToggleAdjust ,
         isCanvasDesign ,
         isTitleInput ,
-        isDeleteDesign
+        isDeleteDesign,
+        isFontToggleAdjust,
+        isAlignToggleAdjust
+
 
     ]);
 

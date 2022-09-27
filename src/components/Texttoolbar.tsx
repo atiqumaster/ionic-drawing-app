@@ -23,6 +23,10 @@ const Texttoolbar = () => {
 
     const { canvas }:any = useContext(CanvasStore);
     const ref = useRef(null);
+    const { isToggleAdjust, setToggleAdjust }:any = useContext(CanvasStore);
+
+    const { isAlignToggleAdjust, setAlignToggleAdjust }:any = useContext(CanvasStore);
+
 
     const showFontToggle = () => {
         setFontToggle(!isFontToggle)
@@ -50,15 +54,7 @@ const Texttoolbar = () => {
 
     }
 
-    // document.body.addEventListener('click', (event) => {
-    //     let a:any = event.currentTarget;
-    //     if (a.classList.contains('btn')) {
-    //         console.log('Element contains class');
-    //       } else {
-    //         console.log('Element does NOT contain class');
-    //       }
 
-    // });
 
 
     const fontBold = () => {
@@ -157,7 +153,7 @@ const Texttoolbar = () => {
                     }
                     {
                         isAlignBoxToggle ?
-                            <div className={ texttoolbar.open_align_toggle_box } >
+                            <div style={isAlignToggleAdjust}  className={ texttoolbar.open_align_toggle_box } >
                                 <IonButton onClick={alignLeft}  className={ texttoolbar.aligntoggleBtn } color="undefined"  >
                                     <span className={ texttoolbar.material_symbols_outlined_box} >format_align_left</span>
                                 </IonButton>

@@ -29,6 +29,8 @@ const Toolbarmodule = () => {
     const [isBoundleft , setBoundleft] = useState(window.innerWidth/2 -175 );
     const [isBoundRight , setBoundRight] = useState(window.innerWidth/2 -175 );
 
+    const { setFontToggleAdjust }:any = useContext(CanvasStore);
+    const { setAlignToggleAdjust  }:any = useContext(CanvasStore);
     const { setToggleAdjust }:any = useContext(CanvasStore);
 
     const handleStop = (event :any, dragElement:any ) => {
@@ -36,22 +38,16 @@ const Toolbarmodule = () => {
 
         if(window.innerHeight - 420  < dragElement.y ) {
 
-
-            setToggleAdjust(
-                {
-                    top: -310
-                }
-            )
-
+            setToggleAdjust({ top: -310 })
+            setAlignToggleAdjust({ top: -60 })
+            setFontToggleAdjust({   top: -412})
 
         }else {
-            //console.log("no hmm 2");
 
-            setToggleAdjust(
-                {
-                    top:52
-                }
-            )
+            setToggleAdjust({ top:52 })
+            setAlignToggleAdjust({ top: 42 })
+            setFontToggleAdjust({ top: 52})
+
         }
 
 
