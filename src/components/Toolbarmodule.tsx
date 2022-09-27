@@ -16,6 +16,7 @@ const Toolbarmodule = () => {
     const [isTextToolbar, setTextToolbar] = useState(false);
     const [isImageToolbar , setImageToolbar] = useState(false);
     const [isColorMOde, setColorMode] = useState(false);
+    const [isColorModeIcon, setColorModeIcon] = useState("light_mode");
     const [baseImage , setBaseImg] = useState("");
     const [isUndo, setUndo] = useState({
         opacity:0.2
@@ -161,6 +162,10 @@ const Toolbarmodule = () => {
         canvas.add(iTextSample);
         canvas.setActiveObject(iTextSample );
         canvas.centerObject(iTextSample);
+
+        if(canvas.backgroundColor=='black') {
+            canvas.getActiveObject().set("fill", "#fff");
+        }
     }
 
 
@@ -307,13 +312,16 @@ const Toolbarmodule = () => {
                obj.set("fill", "#fff");
             })
 
+
+            setColorModeIcon("dark_mode")
+
         } else {
             canvas.backgroundColor="white";
             let objects = canvas.getObjects();
             objects.forEach((obj:any)=>{
                 obj.set("fill", "#000");
             })
-
+            setColorModeIcon("light_mode")
         }
         canvas.renderAll();
     }
@@ -355,7 +363,7 @@ const Toolbarmodule = () => {
                                 <span style= {isRedo} className={toolbarmodule.material_symbols_outlined} >redo</span>
                             </IonButton>
                             <IonButton onClick={handleColorMode} className={toolbarmodule.btn } color="undefined" >
-                                <span className={toolbarmodule.material_symbols_outlined} >dark_mode</span>
+                                <span className={toolbarmodule.material_symbols_outlined} >{isColorModeIcon}</span>
                             </IonButton>
 
 
