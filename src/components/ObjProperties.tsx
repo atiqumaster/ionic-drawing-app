@@ -6,7 +6,7 @@ import {fastFood} from "ionicons/icons";
 
 const ObjProperties = () => {
 
-    const [isObjLock, setObjLock] = useState(false);    
+    //const [isObjLock, setObjLock] = useState("UnLock");
     
     const { canvas }:any = useContext(CanvasStore);
    
@@ -58,22 +58,9 @@ const ObjProperties = () => {
   const objectLock = () => {
 
       let activeObject = canvas.getActiveObject();
-      //console.log('isObjLock',isObjLock);
+      activeObject.lockMovementX && activeObject.lockMovementY ? activeObject.set({lockMovementX: false, lockMovementY: false})  : activeObject.set({lockMovementX: true, lockMovementY: true});
 
-      if(isObjLock === true) {
-
-                  activeObject.set({lockMovementX: false, lockMovementY: false})
-                  setObjLock(false)
-
-      } else {
-
-              activeObject.set({lockMovementX: true, lockMovementY: true})
-              setObjLock(true)
-
-      }
       canvas.renderAll();
-
-
   }
 
 
@@ -113,8 +100,8 @@ const ObjProperties = () => {
                         Duplicate
                     </button>
                     <button onClick={objectLock}     className={ Objproperties.toggleBtn } color="undefined"  >
-                        <span className={ Objproperties.material_symbols_outlined_box} >lock</span>
-                        LOCK
+                        <span className={ Objproperties.material_symbols_outlined_box} > {canvas.getActiveObject().lockMovementX && canvas.getActiveObject().lockMovementY ? "lock"  : "lock_open" }</span>
+                        {canvas.getActiveObject().lockMovementX && canvas.getActiveObject().lockMovementY ? "lock"  : "UnLock" }
                     </button>
                 <button onClick={bringToFronts}   className={ Objproperties.toggleBtn } color="undefined"  >
                     <span className={ Objproperties.material_symbols_outlined_box} >move_up</span>
