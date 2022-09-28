@@ -5,23 +5,17 @@ import {CanvasStore} from "../Store/CanvasStore";
 import {GoogleFonts} from "./GoogleFonts";
 import { ObjProperties } from './ObjProperties';
 
+
 const Texttoolbar = () => {
 
     const [isTextBoxToggle, setTextBoxToggle] = useState(false);
     const [isAlignBoxToggle, setAlignBoxToggle] = useState(false);
-    const [isTextFontToggle, setTextFontToggle] = useState(false);
     const [isFontToggle, setFontToggle] = useState(false);
-    const {isFontBold, setFontBold}:any = useContext(CanvasStore);
     const {isOpacityBold, setOpacityBold}:any = useContext(CanvasStore);
     const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
-    const {isFontStyle, setFontStyle}:any = useContext(CanvasStore);
-
-
     const { canvas }:any = useContext(CanvasStore);
-    const ref = useRef(null);
-    const { isToggleAdjust, setToggleAdjust }:any = useContext(CanvasStore);
-
     const { isAlignToggleAdjust, setAlignToggleAdjust }:any = useContext(CanvasStore);
+    const ref = useRef(null);
 
 
     const showFontToggle = () => {
@@ -42,11 +36,6 @@ const Texttoolbar = () => {
         setAlignBoxToggle(!isAlignBoxToggle)
         setTextBoxToggle(false);
         setFontToggle(false);
-
-    }
-
-    function showTextFont() {
-        setTextFontToggle(!isTextFontToggle)
 
     }
 
@@ -147,9 +136,35 @@ const Texttoolbar = () => {
     }
 
 
+// 👇️ check if user click outside of specific container
+
+    function useOutsideAlerter(ref:any) {
+        useEffect(() => {
+
+            function handleClickOutside(event:any) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    setAlignBoxToggle(false)
+                    setTextBoxToggle(false);
+                    setFontToggle(false);
+
+                }
+            }
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+        const wrapperRef = useRef(null);
+        useOutsideAlerter(wrapperRef);
+
+
     return (
         <>
-
+            <div ref={wrapperRef}>
             <div className={texttoolbar.toolbararea} >
                 <div className={ texttoolbar.btnHold } >
 
@@ -174,9 +189,10 @@ const Texttoolbar = () => {
                     </IonButton>
 
 
-                    <IonButton ref={ref}  className={ texttoolbar.btn } onClick={showToggleTextBox} color="undefined" >
+                    <IonButton  className={ texttoolbar.btn } onClick={showToggleTextBox} color="undefined" >
                         <span className={ texttoolbar.material_symbols_outlined} >more_horiz</span>
                     </IonButton>
+                </div>
 
                     {
                         isFontToggle ?

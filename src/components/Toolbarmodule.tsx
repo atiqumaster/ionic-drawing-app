@@ -38,7 +38,7 @@ const Toolbarmodule = () => {
 
         if(window.innerHeight - 420  < dragElement.y ) {
 
-            setToggleAdjust({ top: -310 })
+            setToggleAdjust({ top: -228 })
             setAlignToggleAdjust({ top: -60 })
             setFontToggleAdjust({   top: -412})
 

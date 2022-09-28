@@ -24,7 +24,7 @@ interface Props {
     setThumbnail: any;
     isCanvasDesign: any;
     setCanvasDesign:any;
-
+    OutsideClickHandler:any;
 }
 
 
