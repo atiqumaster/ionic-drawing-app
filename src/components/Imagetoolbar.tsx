@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import { fabric } from 'fabric';
 import {IonButton } from '@ionic/react';
 import imagetoolbar from "./Imagetoolbar.module.css"
@@ -68,9 +68,34 @@ const Imagetoolbar = () => {
         canvas.renderAll();
     }
 
+    // 👇️ check if user click outside of specific container
+
+    function useOutsideAlerter(ref:any) {
+        useEffect(() => {
+
+            function handleClickOutside(event:any) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    setImageToolbarToggle(false);
+
+                }
+            }
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
+
+
+
     return (
         <>
-
+            <div ref={wrapperRef}>
             <div className={imagetoolbar.toolbararea}>
                 <div className={ imagetoolbar.btnHold } >
                     <strong className="dragable-span">
@@ -102,7 +127,7 @@ const Imagetoolbar = () => {
 
             }
             </div>
-
+            </div>
         </>
     );
 
