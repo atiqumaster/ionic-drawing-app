@@ -59,11 +59,19 @@ const Texttoolbar = () => {
         } else {
             setOpacityBold({opacity: 0.2});
         }
+
+        if(canvas.getActiveObject().fontWeight == 'italic' ) {
+            setOpacityItalic({opacity: 1});
+        } else {
+            setOpacityItalic({opacity: 0.2 });
+        }
+
         canvas.renderAll();
     });
 
     canvas?.on('object:added', ()=>{
         setOpacityBold({opacity: 0.2});
+        setOpacityItalic({opacity: 0.2 });
     });
 
     canvas?.on('selection:created', ()=>{
@@ -73,6 +81,11 @@ const Texttoolbar = () => {
         } else {
             setOpacityBold({opacity: 0.2});
 
+        }
+        if(canvas.getActiveObject().fontWeight == 'italic' ) {
+            setOpacityItalic({opacity: 1});
+        } else {
+            setOpacityItalic({opacity: 0.2 });
         }
         canvas.renderAll();
     });
@@ -98,12 +111,12 @@ const Texttoolbar = () => {
 
     const fontStyle = () => {
       //  setFontStyle(!isFontStyle);
-        if(canvas.getActiveObject().fontStyle == 'normal') {
-            setOpacityItalic({opacity: 1});
-            canvas.getActiveObject().set("fontStyle","italic");
-        } else {
+        if(canvas.getActiveObject().fontStyle == 'italic') {
             setOpacityItalic({opacity: 0.2});
             canvas.getActiveObject().set("fontStyle","normal");
+        } else {
+            setOpacityItalic({opacity: 1});
+            canvas.getActiveObject().set("fontStyle","italic");
         }
         canvas.renderAll();
 
