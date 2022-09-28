@@ -52,23 +52,53 @@ const Texttoolbar = () => {
 
 
 
-
-    const fontBold = () => {
-        setFontBold(!isFontBold);
-
-        if(isFontBold=== false) {
+    canvas?.on('selection:updated', ()=>{
+  console.log("zabi");
+        if(canvas.getActiveObject().fontWeight == 'bold' ) {
             setOpacityBold({opacity: 1});
-            canvas.getActiveObject().set("fontWeight","bold");
         } else {
             setOpacityBold({opacity: 0.2});
+        }
+        canvas.renderAll();
+    });
+
+    canvas?.on('object:added', ()=>{
+        setOpacityBold({opacity: 0.2});
+    });
+
+    canvas?.on('selection:created', ()=>{
+        if(canvas.getActiveObject().fontWeight == 'bold') {
+            setOpacityBold({opacity: 1});
+
+        } else {
+            setOpacityBold({opacity: 0.2});
+
+        }
+        canvas.renderAll();
+    });
+
+
+
+
+    const fontBold = () => {
+
+        if(canvas.getActiveObject().fontWeight == 'bold') {
+            //console.log("gill");
+            setOpacityBold({opacity: 0.2});
             canvas.getActiveObject().set("fontWeight","400");
+
+
+        } else {
+            //console.log("nill");
+            setOpacityBold({opacity: 1});
+            canvas.getActiveObject().set("fontWeight","bold");
         }
         canvas.renderAll();
     }
 
     const fontStyle = () => {
-        setFontStyle(!isFontStyle);
-        if(isFontStyle === false) {
+      //  setFontStyle(!isFontStyle);
+        if(canvas.getActiveObject().fontStyle == 'normal') {
             setOpacityItalic({opacity: 1});
             canvas.getActiveObject().set("fontStyle","italic");
         } else {

@@ -146,7 +146,6 @@ const Toolbarmodule = () => {
             top: 50,
             originX: 'center' ,
             originY: 'center',
-            fontFamily: 'Montserrat',
             lineHeight: 1.1,
             fontSize: 28
 

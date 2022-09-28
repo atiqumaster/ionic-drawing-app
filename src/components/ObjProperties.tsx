@@ -60,10 +60,10 @@ const ObjProperties = () => {
       let activeObject = canvas.getActiveObject();
       if(activeObject.lockMovementX && activeObject.lockMovementY ) {
           activeObject.set({lockMovementX: false, lockMovementY: false})
-          setObjLock("UnLock");
+          setObjLock("Lock");
       }else{
           activeObject.set({lockMovementX: true, lockMovementY: true})
-          setObjLock("Lock");
+          setObjLock("UnLock");
       }
      // activeObject.lockMovementX && activeObject.lockMovementY ? activeObject.set({lockMovementX: false, lockMovementY: false})  : activeObject.set({lockMovementX: true, lockMovementY: true});
 
@@ -107,7 +107,7 @@ const ObjProperties = () => {
                         Duplicate
                     </button>
                     <button onClick={objectLock}     className={ Objproperties.toggleBtn } color="undefined"  >
-                        <span className={ Objproperties.material_symbols_outlined_box} > {canvas.getActiveObject().lockMovementX && canvas.getActiveObject().lockMovementY ? "lock"  : "lock_open" }</span>
+                        <span className={ Objproperties.material_symbols_outlined_box} > {canvas.getActiveObject().lockMovementX && canvas.getActiveObject().lockMovementY ? "lock_open"  : "lock" }</span>
                         {isObjLock}
                     </button>
                 <button onClick={bringToFronts}   className={ Objproperties.toggleBtn } color="undefined"  >

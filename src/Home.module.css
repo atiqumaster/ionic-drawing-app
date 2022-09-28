@@ -1,9 +1,4 @@
-/*@font-face {*/
-/*    font-family: "Montserrat";*/
-/*    src: local("Montserrat"),*/
-/*    url("./public/assets/Fonts/montserrat/Montserrat-Black.otf") format("otf");*/
-/*    font-weight: bold;*/
-/*}*/
+
 .btn {
     font-size: 18px;
     font-weight: 900;
@@ -105,10 +100,28 @@
 
 }
 .SaveDesignAdjust {
+    min-height: 480px;
     margin-left: 20px;
     margin-top: 30px;
     margin-right: 40px;
 }
+
+
+.thumbnailRow{
+    min-height: 400px;
+    align-items: center;
+}
+
+.bluetoothRow{
+    min-height: 40px;
+    align-items: center;
+}
+
+.titleInputRow{
+    min-height: 40px;
+    align-items: center;
+}
+
 
 .BlueToothBtn {
     margin-bottom: 10px !important;
@@ -137,15 +150,15 @@
     z-index: 1;
 }
 .designImg {
-    height: 250px;
+
     display: flex;
     margin: 0 auto;
-    width: 200px;
+
 }
 .btn1 {
 
     --box-shadow:none;
-    /*border-right: 2px solid;*/
+/*/border-right: 2px solid;/*/
 }
 
 .toggleBtn{
@@ -195,9 +208,9 @@
     max-width: 330px;
 }
 
-/*.designGrid {*/
-/*    overflow-y: auto;*/
-/*}*/
+.designGrid {
+     /*    overflow-y: auto;*/
+ }
 @media (max-width: 768px) {
     .designGrid {
         overflow-y: auto;
@@ -205,8 +218,7 @@
 }
 @media (max-width: 300px) {
     .text {
-       line-height: 18px;
+        line-height: 18px;
         padding-left: 4px;
     }
 }
-

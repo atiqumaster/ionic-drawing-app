@@ -10,7 +10,7 @@ const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
             <IonCol className={home.saveCardSize}  key={val} >
                 <div   className={home.SaveDesignWrapper} >
                     <div className={home.SaveDesignAdjust} >
-                        <IonRow>
+                        <IonRow className={home.titleInputRow}>
                             <IonCol size="11" >
                                 <h3 style={{color: "white"}} >{design.isTitleInput}</h3>
                             </IonCol>
@@ -27,16 +27,16 @@ const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
                                         : null
                                 }
                             </IonCol>
-                        </IonRow>
+                        </IonRow >
 
-                        <IonRow>
+                        <IonRow className={home.thumbnailRow} >
 
                             <IonCol onClick={()=>{loadCanvas(design)}}>
                                 <img className={home.designImg }    src={design.thumbnail} />
                             </IonCol>
 
                         </IonRow>
-                        <IonRow>
+                        <IonRow className={home.bluetoothRow} >
                             <IonCol>
                                 <IonButton   size="large" className={home.BlueToothBtn} >
                                     <span className={home.material_symbols_outlined} >send</span>
