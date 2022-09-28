@@ -28,6 +28,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { AnyMxRecord } from 'dns';
 import app from './App.module.css'
+import axios from "axios";
 
 
 setupIonicReact();
@@ -38,6 +39,36 @@ const App = () => {
 
     let myDesigns:any = [];
     localStorage.setItem("myDesign", myDesigns);
+
+
+    const loadGoogleFonts =async (fontFamily:any , fontUrl:any)=>{
+        const font:any = new FontFace(fontFamily, `local(${fontFamily}), url(${fontUrl})`);
+        await font.load()
+        document.fonts.add(font);
+        document.body.classList.add("fonts-loaded");
+
+    }
+
+
+    useEffect(()=> {
+        async function getData() {
+            const fonts = await axios.get(
+                `https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBB1ro9c5u6LIfsdsndwKTfRD8YsJIFO-U`
+            );
+            // console.log(fonts.data.items);
+            const fontArray = fonts.data.items.slice(0, 10);
+
+            fontArray.forEach((font:any)=>{
+                console.log(font.family);
+                loadGoogleFonts(font.family,font.files.regular);
+            })
+
+
+        }
+        getData()
+    } , []);
+
+
     return (
 
         <IonApp className={app.appFlow}  >
