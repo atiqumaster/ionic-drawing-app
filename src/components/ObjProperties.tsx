@@ -6,18 +6,12 @@ import {fastFood} from "ionicons/icons";
 
 const ObjProperties = () => {
 
-    //const [isObjLock, setObjLock] = useState("UnLock");
-    
     const { canvas }:any = useContext(CanvasStore);
-   
     const { isToggleAdjust, setToggleAdjust }:any = useContext(CanvasStore);
     const { isObjLock, setObjLock }:any = useContext(CanvasStore);
- 
-  // console.log(isToggleAdjust);
 
 
     const objectClone = () => {
-        // setObjClone(!isObjClone);
 
         let cloned = canvas.getActiveObject()
         cloned.clone(function(clonedObj:any) {
@@ -65,7 +59,7 @@ const ObjProperties = () => {
           activeObject.set({lockMovementX: true, lockMovementY: true})
           setObjLock("UnLock");
       }
-     // activeObject.lockMovementX && activeObject.lockMovementY ? activeObject.set({lockMovementX: false, lockMovementY: false})  : activeObject.set({lockMovementX: true, lockMovementY: true});
+
 
       canvas.renderAll();
   }

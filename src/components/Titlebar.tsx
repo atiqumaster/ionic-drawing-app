@@ -19,8 +19,8 @@ const Titlebar  = () => {
     }
 
     const handleInput = (event:any) => {
+
         setTitleInput(event.target.value)
-      console.log(event.target.value);
 
     }
 

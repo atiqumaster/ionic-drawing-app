@@ -1,25 +1,4 @@
-import React, {useContext ,  createContext , useEffect} from 'react';
-import { fabric } from 'fabric';
-import {
-    IonList,
-    IonItem,
-    IonThumbnail,
-    IonImg,
-    IonLabel,
-    IonContent ,
-    IonHeader,
-    IonToolbar,
-    IonButtons,
-    IonBackButton,
-    IonTitle,
-    IonFooter ,
-    IonButton,
-    IonIcon ,
-    IonGrid ,
-    IonRow
-} from '@ionic/react';
-import { Redirect, Route ,  Router , Link  , BrowserRouter ,Switch} from 'react-router-dom';
-
+import React, {useContext , useEffect} from 'react';
 import {Toolbarmodule} from "./Toolbarmodule";
 import {CanvasStore} from "../Store/CanvasStore";
 

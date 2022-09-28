@@ -1,4 +1,4 @@
-import React, {useContext  , useState} from 'react';
+import React, {useContext  } from 'react';
 import {
     IonButton,
     IonGrid,
@@ -32,7 +32,6 @@ const Menubutton = (props:any) => {
                 }
             })
             setCanvasDesign(null);
-            //  localStorage.setItem('myDesign', JSON.stringify(localArray));
             await storage.set('myDesign', JSON.stringify(localArray));
             canvas.renderAll();
             history.push("/");
@@ -49,19 +48,17 @@ const Menubutton = (props:any) => {
                 designId,
                 isTitleInput
             }
-            // let designData:any = {designJson,thumbnail}
+
             let tempArray: any = [];
-            // if (localStorage?.getItem('myDesign')) {
+
             if (await storage.get('myDesign')) {
-                //let getLocalArray: any = JSON.parse(localStorage?.getItem('myDesign') || '[]');
+
                 let getLocalArray: any = JSON.parse(await storage.get('myDesign') || '[]');
                 tempArray.push(...getLocalArray);
             }
 
             tempArray.push(canvasDesign);
-            // localStorage.setItem('myDesign', JSON.stringify(tempArray));
             await storage.set('myDesign', JSON.stringify(tempArray));
-
             canvas.renderAll();
             history.push("/");
         }

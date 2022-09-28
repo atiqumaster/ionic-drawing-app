@@ -55,8 +55,6 @@ const Toolbarmodule = () => {
 
 
 
-
-
     canvas?.on('selection:created', ()=>{
         if(canvas?.getActiveObject()?.type == 'i-text')
         {
@@ -320,8 +318,6 @@ const Toolbarmodule = () => {
         }
         canvas.renderAll();
     }
-
-
 
 
 

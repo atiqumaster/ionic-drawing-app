@@ -9,7 +9,7 @@ import {Menubutton} from "../components/Menubutton";
 import {CanvasStore} from "../Store/CanvasStore";
 import {CancelWarning} from '../components/CancelWarning';
 import { useHistory } from "react-router-dom";
-// import 'fabric-history';
+
 
 declare global {
     interface Window {
