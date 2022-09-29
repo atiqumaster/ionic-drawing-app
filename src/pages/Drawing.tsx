@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext , useRef} from 'react';
 import { fabric } from 'fabric';
 
 import { IonContent } from '@ionic/react';
@@ -9,7 +9,13 @@ import {Menubutton} from "../components/Menubutton";
 import {CanvasStore} from "../Store/CanvasStore";
 import {CancelWarning} from '../components/CancelWarning';
 import { useHistory } from "react-router-dom";
-
+import {
+    TransformWrapper,
+    TransformComponent ,
+    ReactZoomPanPinchProps,
+    ReactZoomPanPinchRef,
+      } from "react-zoom-pan-pinch";
+import {disable} from "workbox-navigation-preload";
 
 declare global {
     interface Window {
@@ -36,7 +42,7 @@ const Drawing = () => {
     const { canvas }:any = useContext(CanvasStore);
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
     const [cancelToggle, setCancelToggle]: any = useState(false)
-
+    const ref = useRef<ReactZoomPanPinchRef | null>(null);
 
     let history = useHistory();
 
@@ -93,6 +99,11 @@ const Drawing = () => {
 
     }
 
+    //zoom and panning working is here
+
+
+
+
 
     return (
 
@@ -104,9 +115,17 @@ const Drawing = () => {
                     <IonContent>
                         <Titlebar/>
                         <Toolbar/>
-                        <div   className={drawing.HandleCanvas} >
-                            <canvas id="canvas"  className={drawing.canvasUi}  />
-                        </div>
+
+                          <div   className={drawing.HandleCanvas} >
+                             <TransformWrapper panning={{ disabled: true }}
+                             >
+                               <TransformComponent>
+                                   <canvas id="canvas"  className={drawing.canvasUi}  />
+                               </TransformComponent>
+                             </TransformWrapper>
+                          </div>
+
+
                         <Menubutton toggleCancel={toggleCancel}  />
                     </IonContent>
             }
