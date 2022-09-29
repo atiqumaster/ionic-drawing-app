@@ -59,11 +59,13 @@ const Texttoolbar = () => {
     });
 
     canvas?.on('object:added', ()=>{
+        console.log("selection: added");
         setOpacityBold({opacity: 0.2});
         setOpacityItalic({opacity: 0.2 });
     });
 
     canvas?.on('selection:created', ()=>{
+        console.log("selection: created");
         if(canvas.getActiveObject().fontWeight == 'bold') {
             setOpacityBold({opacity: 1});
 
