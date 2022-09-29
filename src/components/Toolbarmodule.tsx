@@ -10,9 +10,7 @@ import 'fabric-history';
 
 const Toolbarmodule = () => {
 
-
     const { canvas }:any = useContext(CanvasStore);
-
     const [isTextToolbar, setTextToolbar] = useState(false);
     const [isImageToolbar , setImageToolbar] = useState(false);
     const [isColorMOde, setColorMode] = useState(false);
@@ -25,9 +23,9 @@ const Toolbarmodule = () => {
         opacity:0.2
     });
 
-    const [isBound , setBound] = useState(window.innerHeight - 220);
-    const [isBoundleft , setBoundleft] = useState(window.innerWidth/2 -175 );
-    const [isBoundRight , setBoundRight] = useState(window.innerWidth/2 -175 );
+    const [isBound ] = useState(window.innerHeight - 220);
+    const [isBoundleft ] = useState(window.innerWidth/2 -175 );
+    const [isBoundRight ] = useState(window.innerWidth/2 -175 );
 
     const { setFontToggleAdjust }:any = useContext(CanvasStore);
     const { setAlignToggleAdjust  }:any = useContext(CanvasStore);
@@ -38,7 +36,7 @@ const Toolbarmodule = () => {
 
         if(window.innerHeight - 420  < dragElement.y ) {
 
-            setToggleAdjust({ top: -280 })
+            setToggleAdjust({ top: -230 })
             setAlignToggleAdjust({ top: -60 })
             setFontToggleAdjust({   top: -412})
 
@@ -68,7 +66,6 @@ const Toolbarmodule = () => {
         let objects = canvas.getActiveObject();
 
         objects.set({
-            // cornerStyle:'square',.
 
             borderColor: '#4285F4',
             cornerColor: '#4285F4',
@@ -131,15 +128,10 @@ const Toolbarmodule = () => {
 
     });
 
-
-
-
-
-
     const showTextToolbar = () => {
 
             setTextToolbar(!isTextToolbar);
-        let iTextSample = new fabric.IText(     "Double tap \nto edit"  , {
+         let iTextSample = new fabric.IText(     "Double tap \nto edit"  , {
             left: 50,
             top: 50,
             originX: 'center' ,
@@ -148,7 +140,6 @@ const Toolbarmodule = () => {
             fontSize: 28
 
         });
-
 
 
         // push iText in canvas
@@ -162,25 +153,20 @@ const Toolbarmodule = () => {
     }
 
 
-
     const uploadImg = async (e:any) => {
         setImageToolbar(!isImageToolbar);
 
-
         const file = e.target.files[0];  // select only one file in sys
-        //console.log(file);
         const base64:any = await convertBase64(file);  // call func to convet img to base64
         setBaseImg(base64);  // Connect Base64 url with useState hook
 
         // set Base64i img in canvas using fabric img Object
 
-
-
         fabric.Image.fromURL(base64 , function(myImg:any) {
 
            let scaleHeight = canvas.height -10;
            let scaleWidth = canvas.width - 10 ;
-            //console.log(scale);
+
             if (myImg.width > myImg.height) {
                 myImg.scaleToWidth(scaleWidth)
             } else {
@@ -206,8 +192,6 @@ const Toolbarmodule = () => {
                 mt: false,
                 mtr: true,
             });
-
-
 
 
             canvas.add(myImg);

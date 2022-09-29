@@ -30,7 +30,6 @@ const Home = () => {
 
 
     const loadDesign = async () => {
-        //let localvar = localStorage.getItem('myDesign')|| '[]';
         let localvar = await storage.get('myDesign') || '[]';
         let getLocalArray: any = JSON.parse(localvar);
         setThumbnail([...getLocalArray as []]);
@@ -38,24 +37,19 @@ const Home = () => {
 
 
     const loadCanvas = (design: any) => {
-
         setCanvasDesign(design)
-
-        //canvas.onload(canvasLoad );
         history.push("/drawing");
     }
     const deleteCards = async () => {
-       // console.log("design",isDeleteDesign);
+
         let filteredArray = thumbnail.filter((des:any)=> des.designId !== isDeleteDesign.designId);
         setThumbnail([...filteredArray as []]);
-        //console.log("after",filteredArray);
         await storage.set('myDesign', JSON.stringify(filteredArray));
         setDeleteToggle(false);
         history.push("/");
     }
     const toggleDelete=(design:any)=>{
         setDeleteToggle(!deleteToggle);
-      //  console.log("Design selected to be deleted",design)
         !deleteToggle ? setDeleteDesign(design) :setDeleteDesign(null) ;
     }
 
@@ -77,11 +71,8 @@ const Home = () => {
 
                         <IonGrid  >
                             <IonRow className={home.text} >
-
                                 {
                                     thumbnail?.length != 0 && thumbnail.map((design: any, val: any) => {
-                                        console.log(thumbnail);
-                                        console.log(design);
                                         return (
                                             <>
                                                 <ThumbnailCards val={val} design={design} loadCanvas={loadCanvas} deleteCard={toggleDelete} />

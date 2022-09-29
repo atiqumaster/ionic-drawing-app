@@ -14,7 +14,7 @@ const Texttoolbar = () => {
     const {isOpacityBold, setOpacityBold}:any = useContext(CanvasStore);
     const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
     const { canvas }:any = useContext(CanvasStore);
-    const { isAlignToggleAdjust, setAlignToggleAdjust }:any = useContext(CanvasStore);
+    const { isAlignToggleAdjust }:any = useContext(CanvasStore);
     const ref = useRef(null);
 
 
@@ -42,7 +42,7 @@ const Texttoolbar = () => {
 
 
     canvas?.on('selection:updated', ()=>{
-  console.log("zabi");
+
         if(canvas.getActiveObject().fontWeight == 'bold' ) {
             setOpacityBold({opacity: 1});
         } else {
@@ -59,13 +59,11 @@ const Texttoolbar = () => {
     });
 
     canvas?.on('object:added', ()=>{
-        console.log("selection: added");
         setOpacityBold({opacity: 0.2});
         setOpacityItalic({opacity: 0.2 });
     });
 
     canvas?.on('selection:created', ()=>{
-        console.log("selection: created");
         if(canvas.getActiveObject().fontWeight == 'bold') {
             setOpacityBold({opacity: 1});
 
@@ -83,17 +81,14 @@ const Texttoolbar = () => {
 
 
 
-
     const fontBold = () => {
 
         if(canvas.getActiveObject().fontWeight == 'bold') {
-            //console.log("gill");
             setOpacityBold({opacity: 0.2});
             canvas.getActiveObject().set("fontWeight","400");
 
 
         } else {
-            //console.log("nill");
             setOpacityBold({opacity: 1});
             canvas.getActiveObject().set("fontWeight","bold");
         }
@@ -101,7 +96,6 @@ const Texttoolbar = () => {
     }
 
     const fontStyle = () => {
-      //  setFontStyle(!isFontStyle);
         if(canvas.getActiveObject().fontStyle == 'italic') {
             setOpacityItalic({opacity: 0.2});
             canvas.getActiveObject().set("fontStyle","normal");
@@ -113,11 +107,9 @@ const Texttoolbar = () => {
 
     }
 
-
     const alignLeft = () => {
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'left');
-
         canvas.renderAll();
 
     }

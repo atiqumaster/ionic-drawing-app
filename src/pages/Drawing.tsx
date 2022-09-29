@@ -15,7 +15,6 @@ import {
     ReactZoomPanPinchProps,
     ReactZoomPanPinchRef,
       } from "react-zoom-pan-pinch";
-import {disable} from "workbox-navigation-preload";
 
 declare global {
     interface Window {
@@ -49,8 +48,9 @@ const Drawing = () => {
     // First reload initCanvas function trigger
 
     useEffect(() => {
+
         initCanvas();
-        // setCanvasDesign(null);
+
     }, [cancelToggle]);
 
     // Connect Fabric Canvas with canvas and set height /width
@@ -73,7 +73,6 @@ const Drawing = () => {
         if(isCanvasDesign?.designJson)
         {
             fabricCanvas.loadFromJSON(isCanvasDesign?.designJson, fabricCanvas.renderAll.bind(fabricCanvas), ()=>{
-                // console.log("canvas",fabricCanvas)
             });
         }
     }
@@ -93,15 +92,13 @@ const Drawing = () => {
             thumbnail,
             designId,
         }
-        //console.log(canvasDesign);
+
         setCanvasDesign(canvasDesign)
         setCancelToggle(!cancelToggle);
 
     }
 
     //zoom and panning working is here
-
-
 
 
 
@@ -117,14 +114,12 @@ const Drawing = () => {
                         <Toolbar/>
 
                           <div   className={drawing.HandleCanvas} >
-                             <TransformWrapper panning={{ disabled: true }}
-                             >
+                             <TransformWrapper ref={ref} panning={{ disabled: true }}>
                                <TransformComponent>
                                    <canvas id="canvas"  className={drawing.canvasUi}  />
                                </TransformComponent>
                              </TransformWrapper>
                           </div>
-
 
                         <Menubutton toggleCancel={toggleCancel}  />
                     </IonContent>

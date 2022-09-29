@@ -12,7 +12,6 @@ interface Props {
     theme: any;
     setTheme: any;
     setDimension:any;
-
     canvas:any;
     setCanvas:any;
     baseImage:any;
@@ -25,18 +24,14 @@ interface Props {
     isCanvasDesign: any;
     setCanvasDesign:any;
     OutsideClickHandler:any;
+
 }
-
-
-
-
 
 export const CanvasStore = createContext<Props |null>(null);
 
 export const useStore = create(subscribeWithSelector(() => ({
     canvasSaving: false,
 })));
-
 
 
 export function StoreContext({ children }:any) {

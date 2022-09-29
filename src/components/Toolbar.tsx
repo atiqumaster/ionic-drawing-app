@@ -7,13 +7,12 @@ const Toolbar = () => {
     const { canvas }:any = useContext(CanvasStore);
 
 useEffect(()=> {
-  //  console.log("come");
+
     if(canvas?.getObjects()?.length && canvas.getActiveObject())
     {
         let objects = canvas.getActiveObject();
 
         objects.set({
-            // cornerStyle:'square',.
 
             borderColor: '#4285F4',
             cornerColor: '#4285F4',
@@ -38,8 +37,6 @@ useEffect(()=> {
 
 } , [canvas?.on('selection:created')])
    // zoom in/out for mobile app
-
-
 
 
     return (

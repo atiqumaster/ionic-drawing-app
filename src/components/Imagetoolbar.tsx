@@ -6,8 +6,6 @@ import {CanvasStore} from "../Store/CanvasStore";
 import { ObjProperties } from './ObjProperties';
 
 
-
-
 const Imagetoolbar = () => {
 
     const { canvas }:any = useContext(CanvasStore);
@@ -22,8 +20,6 @@ const Imagetoolbar = () => {
         setImageToolbarToggle(!isImageToolbarToggle)
 
     }
-
-
 
     const flipVertical = () => {
         setFlipVertical(!isFlipVertical);

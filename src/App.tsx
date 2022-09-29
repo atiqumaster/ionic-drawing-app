@@ -1,6 +1,6 @@
 import React ,{useEffect} from 'react';
 import { IonApp ,  setupIonicReact ,  IonRouterOutlet } from '@ionic/react';
-import { Redirect, Route ,  Router , Link  , BrowserRouter ,Switch} from 'react-router-dom';
+import {  Route  ,Switch} from 'react-router-dom';
 
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './Home';
@@ -36,10 +36,8 @@ setupIonicReact();
 
 const App = () => {
 
-
     let myDesigns:any = [];
     localStorage.setItem("myDesign", myDesigns);
-
 
     const loadGoogleFonts =async (fontFamily:any , fontUrl:any)=>{
         WebFont.load({
@@ -49,13 +47,12 @@ const App = () => {
         });
     }
 
-
     useEffect(()=> {
         async function getData() {
             const fonts = await axios.get(
                 `https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBB1ro9c5u6LIfsdsndwKTfRD8YsJIFO-U`
             );
-            // console.log(fonts.data.items);
+
             const fontArray = fonts.data.items.slice(0, 10);
 
             fontArray.forEach((font:any)=>{
@@ -71,7 +68,6 @@ const App = () => {
     return (
 
         <IonApp className={app.appFlow}  >
-
             <IonReactRouter>
 
                 <Switch>
@@ -79,9 +75,8 @@ const App = () => {
                     <Route  exact path="/sizes" component={Sizes}   />
                     <Route exact path="/drawing" component={Drawing}   />
                 </Switch>
+
             </IonReactRouter>
-
-
         </IonApp>
 
     );

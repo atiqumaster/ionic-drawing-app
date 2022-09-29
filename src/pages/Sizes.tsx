@@ -32,10 +32,8 @@ const items: Item[] = [
 ];
 
 
-
 const Home = () => {
  const { setDimension }:any = useContext(CanvasStore);
-
 
     return (
         <>

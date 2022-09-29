@@ -1,14 +1,11 @@
 import React, {useContext  , useEffect} from 'react';
 import {CanvasStore} from "../Store/CanvasStore";
 import googleFonts from "./Googlefonts.module.css"
-import axios from "axios";
-
 
 const GoogleFonts = () => {
 
     const { canvas }:any = useContext(CanvasStore);
-    const { isFontToggleAdjust, setFontToggleAdjust }:any = useContext(CanvasStore);
-
+    const { isFontToggleAdjust }:any = useContext(CanvasStore);
 
     const arrayFonts = ["ABeeZee", "Abel"   , "Abhaya Libre","Aboreto","Abril Fatface","Abyssinica SIL","Aclonica","Acme" ,"Actor", "Adamina" , "playball"]
     const selectFonts = (event:any) => {
