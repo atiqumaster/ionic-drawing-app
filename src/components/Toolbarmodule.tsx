@@ -1,4 +1,4 @@
-import React, {useContext,  useState , useMemo , memo} from 'react';
+import React, {useContext, useState, useMemo, memo, useEffect} from 'react';
 import { fabric } from 'fabric';
 import { IonButton } from '@ionic/react';
 import toolbarmodule from "./Toolbarmodule.module.css";
@@ -9,6 +9,7 @@ import {CanvasStore} from "../Store/CanvasStore";
 import 'fabric-history';
 
 const Toolbarmodule = () => {
+   // console.log("Toolbarmodule")
 
     const { canvas }:any = useContext(CanvasStore);
     const [isTextToolbar, setTextToolbar] = useState(false);
@@ -48,17 +49,20 @@ const Toolbarmodule = () => {
 
         }
 
-
     }
 
+    useEffect(()=>{
+        canvas?.on ('selection:created', HandleControls );
+        canvas?.on('selection:created', HandleControls );
+        return ()=>{
+            canvas?.off ('selection:created', HandleControls );
+            canvas?.off('selection:created', HandleControls );
+        }
+    })
 
-    canvas?.on({
-        'selection:updated': HandleControls,
-        'selection:created': HandleControls
-    });
 
     function HandleControls(){
-
+            console.log("update");
         if(canvas?.getActiveObject()?.type == 'i-text')
         {
             setTextToolbar(true);
@@ -103,7 +107,7 @@ const Toolbarmodule = () => {
     const showTextToolbar = () => {
 
             setTextToolbar(!isTextToolbar);
-         let iTextSample = new fabric.IText(     "Double tap \nto edit"  , {
+            let iTextSample = new fabric.IText(     "Double tap \nto edit"  , {
             left: 50,
             top: 50,
             originX: 'center' ,

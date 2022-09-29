@@ -45,7 +45,7 @@ const Texttoolbar = () => {
     });
 
     function HandleFontsStyle() {
-
+        console.log("HandleFontsStyl");
         if(canvas.getActiveObject().fontWeight == 'bold' ) {
             setOpacityBold({opacity: 1});
         } else {
