@@ -13,8 +13,6 @@ import {  Link  } from 'react-router-dom';
 
 import {CanvasStore} from "../Store/CanvasStore";
 
-
-
 type Item = {
     src: string;
     text: string;

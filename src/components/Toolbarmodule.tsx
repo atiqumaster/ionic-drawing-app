@@ -1,4 +1,4 @@
-import React, {useContext,  useState} from 'react';
+import React, {useContext,  useState , useMemo , memo} from 'react';
 import { fabric } from 'fabric';
 import { IonButton } from '@ionic/react';
 import toolbarmodule from "./Toolbarmodule.module.css";
@@ -54,6 +54,7 @@ const Toolbarmodule = () => {
 
 
     canvas?.on('selection:created', ()=>{
+        //console.log("selection created");
         if(canvas?.getActiveObject()?.type == 'i-text')
         {
             setTextToolbar(true);
@@ -86,6 +87,7 @@ const Toolbarmodule = () => {
         });
 
     });
+
     canvas?.on('selection:updated', ()=>{
         if(canvas?.getActiveObject()?.type == 'i-text')
         {
@@ -173,25 +175,6 @@ const Toolbarmodule = () => {
                 myImg.scaleToHeight(scaleHeight)
             }
 
-
-            myImg.set({
-                borderColor: '#4285F4',
-                cornerColor: '#4285F4',
-                cornerSize: 9,
-                transparentCorners: true
-            })
-
-            myImg.setControlsVisibility({
-                bl: true,
-                br: true,
-                tl: true,
-                tr: true,
-                mb: false,
-                ml: false,
-                mr: false,
-                mt: false,
-                mtr: true,
-            });
 
 
             canvas.add(myImg);
@@ -342,8 +325,6 @@ const Toolbarmodule = () => {
                             </IonButton>
 
 
-
-
                     </div>
                     }
             </div>
@@ -356,4 +337,7 @@ const Toolbarmodule = () => {
 
 }
 
-export {  Toolbarmodule};
+
+
+
+export {  Toolbarmodule}

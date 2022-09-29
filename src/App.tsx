@@ -56,8 +56,9 @@ const App = () => {
             const fontArray = fonts.data.items.slice(0, 10);
 
             fontArray.forEach((font:any)=>{
-                console.log(font.family);
+
                 loadGoogleFonts(font.family,font.files.regular);
+
             })
 
         }
