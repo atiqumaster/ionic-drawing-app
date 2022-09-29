@@ -39,9 +39,12 @@ const Texttoolbar = () => {
 
     }
 
+    canvas?.on({
+        'selection:updated': HandleFontsStyle,
+        'selection:created': HandleFontsStyle
+    });
 
-
-    canvas?.on('selection:updated', ()=>{
+    function HandleFontsStyle() {
 
         if(canvas.getActiveObject().fontWeight == 'bold' ) {
             setOpacityBold({opacity: 1});
@@ -56,30 +59,15 @@ const Texttoolbar = () => {
         }
 
         canvas.renderAll();
-    });
+
+    }
+
+
 
     canvas?.on('object:added', ()=>{
         setOpacityBold({opacity: 0.2});
         setOpacityItalic({opacity: 0.2 });
     });
-
-    canvas?.on('selection:created', ()=>{
-        if(canvas.getActiveObject().fontWeight == 'bold') {
-            setOpacityBold({opacity: 1});
-
-        } else {
-            setOpacityBold({opacity: 0.2});
-
-        }
-        if(canvas.getActiveObject().fontWeight == 'italic' ) {
-            setOpacityItalic({opacity: 1});
-        } else {
-            setOpacityItalic({opacity: 0.2 });
-        }
-        canvas.renderAll();
-    });
-
-
 
     const fontBold = () => {
 

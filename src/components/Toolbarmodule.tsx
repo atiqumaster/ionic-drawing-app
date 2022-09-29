@@ -52,9 +52,13 @@ const Toolbarmodule = () => {
     }
 
 
+    canvas?.on({
+        'selection:updated': HandleControls,
+        'selection:created': HandleControls
+    });
 
-    canvas?.on('selection:created', ()=>{
-        //console.log("selection created");
+    function HandleControls(){
+
         if(canvas?.getActiveObject()?.type == 'i-text')
         {
             setTextToolbar(true);
@@ -85,43 +89,9 @@ const Toolbarmodule = () => {
             mt: false,
             mtr: true,
         });
+    }
 
-    });
 
-    canvas?.on('selection:updated', ()=>{
-        if(canvas?.getActiveObject()?.type == 'i-text')
-        {
-            setTextToolbar(true);
-            setImageToolbar(false);
-        }
-        else{
-            setTextToolbar(false);
-            setImageToolbar(true);
-        }
-        let objects = canvas.getActiveObject();
-
-        objects.set({
-            // cornerStyle:'square',.
-
-            borderColor: '#4285F4',
-            cornerColor: '#4285F4',
-            cornerSize: 9,
-            transparentCorners: true
-        })
-
-        objects.setControlsVisibility({
-            bl: true,
-            br: true,
-            tl: true,
-            tr: true,
-            mb: false,
-            ml: false,
-            mr: false,
-            mt: false,
-            mtr: true,
-        });
-
-    });
 
     canvas?.on('selection:cleared', ()=>{
 
@@ -175,8 +145,6 @@ const Toolbarmodule = () => {
                 myImg.scaleToHeight(scaleHeight)
             }
 
-
-
             canvas.add(myImg);
             canvas.centerObject(myImg);
             canvas.setActiveObject(myImg);
@@ -213,7 +181,6 @@ const Toolbarmodule = () => {
 
         });
     };
-
 
 
 
