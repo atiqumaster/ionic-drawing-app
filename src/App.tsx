@@ -6,7 +6,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './Home';
 import Sizes from './pages/Sizes';
 import Drawing from './pages/Drawing';
-
+import WebFont from 'webfontloader';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -42,11 +42,11 @@ const App = () => {
 
 
     const loadGoogleFonts =async (fontFamily:any , fontUrl:any)=>{
-        const font:any = new FontFace(fontFamily, `local(${fontFamily}), url(${fontUrl})`);
-        await font.load()
-        document.fonts.add(font);
-        document.body.classList.add("fonts-loaded");
-
+        WebFont.load({
+            google: {
+                families: [fontFamily]
+            }
+        });
     }
 
 
@@ -62,7 +62,6 @@ const App = () => {
                 console.log(font.family);
                 loadGoogleFonts(font.family,font.files.regular);
             })
-
 
         }
         getData()
