@@ -18,6 +18,9 @@ const Texttoolbar = () => {
     const ref = useRef(null);
 
 
+    const styles = {
+        borderRight: '2px solid black',
+    };
 
 
 
@@ -126,11 +129,11 @@ const Texttoolbar = () => {
             <div ref={wrapperRef}>
             <div className={texttoolbar.toolbararea} >
                 <div className={ texttoolbar.btnHold } >
-
+                    <strong style={styles} className="dragable-span">
                     <IonButton class="red" className={ texttoolbar.btn1 } color="undefined" >
-                        <strong className="dragable-span"> <span className={ texttoolbar.material_symbols_outlined} >open_with</span></strong>
+                         <span className={ texttoolbar.material_symbols_outlined} >open_with</span>
                     </IonButton>
-
+                    </strong>
                     <div id="font" className={texttoolbar.button_grp}  onClick={showFontToggle} >
                         <button className={texttoolbar.current_font} >
                             Font

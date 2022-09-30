@@ -34,6 +34,10 @@ const Toolbarmodule = () => {
     const {isOpacityBold, setOpacityBold}:any = useContext(CanvasStore);
     const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
 
+    const styles = {
+        borderRight: '2px solid black',
+    };
+
     const handleStop = (event :any, dragElement:any ) => {
 
 
@@ -308,7 +312,7 @@ const Toolbarmodule = () => {
                         ? <Imagetoolbar/>
                         :
                         <div className={toolbarmodule.btnHold } >
-                            <strong className={toolbarmodule.dragable_span}>
+                            <strong style={styles} className="dragable-span">
                             <IonButton  className={toolbarmodule.btn1 } color="undefined" >
                                 <span className={toolbarmodule.material_symbols_outlined} >open_with</span>
                             </IonButton>

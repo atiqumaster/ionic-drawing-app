@@ -4,10 +4,10 @@
     width:46px;
 }
 .btn1 {
-    width:44px;
+    width:40px;
     color:black;
     --box-shadow:none;
-    border-right: 2px solid;
+
 }
 .btnHold {
     height: 42px;

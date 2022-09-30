@@ -14,6 +14,10 @@ const Imagetoolbar = () => {
     const [isFlipVertical  , setFlipVertical ] = useState(false);
     const [isFlipHorizontal  , setFlipHorizontal] = useState(false);
     const [isimgInverted  , setimgInverted] = useState(false);
+    const styles = {
+        borderRight: '2px solid black',
+    };
+
 
 
     const  showImageToolbar = () => {
@@ -94,16 +98,16 @@ const Imagetoolbar = () => {
             <div ref={wrapperRef}>
             <div className={imagetoolbar.toolbararea}>
                 <div className={ imagetoolbar.btnHold } >
-                    <strong className="dragable-span">
+                    <strong style={styles} className="dragable-span">
                     <IonButton  className={ imagetoolbar.btn1 } color="undefined" >
                         <span className={ imagetoolbar.material_symbols_outlined} >open_with</span>
                     </IonButton>
                     </strong>
-                    <IonButton onClick={flipVertical} className={ imagetoolbar.btn } color="undefined"  >
-                        <span className={ imagetoolbar.material_symbols_outlineds} >flip</span>
-                    </IonButton>
                     <IonButton  onClick={flipHorizontal } className={ imagetoolbar.btn } color="undefined" >
                         <span className={ imagetoolbar.material_symbols_outlined} >flip</span>
+                    </IonButton>
+                    <IonButton onClick={flipVertical} className={ imagetoolbar.btn } color="undefined"  >
+                        <span className={ imagetoolbar.material_symbols_outlineds} >flip</span>
                     </IonButton>
                     <IonButton id="test1"  onClick={imgInverted} className={ imagetoolbar.btn } color="undefined" >
                         <span className={ imagetoolbar.material_symbols_outlined} >invert_colors</span>

@@ -6,7 +6,6 @@
 .btn1 {
     color:black;
     --box-shadow:none;
-    border-right: 2px solid;
     width: 40px;
 }
 .btnHold {
