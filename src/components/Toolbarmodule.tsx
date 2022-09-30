@@ -60,7 +60,8 @@ const Toolbarmodule = () => {
                 'selection:updated': HandleControls,
                 'selection:created': HandleControls ,
                 'selection:cleared' : HandleCleared ,
-                'object:added': HandelObjectAdd
+                'object:added': HandelObjectAdd ,
+                'object:removed' : HandelObjectRemove
             });
         }
     } , [canvas?.on( 'selection:updated')]  )
@@ -70,7 +71,8 @@ const Toolbarmodule = () => {
             'selection:updated': HandleControls,
             'selection:created': HandleControls,
             'selection:cleared' : HandleCleared,
-            'object:added': HandelObjectAdd
+            'object:added': HandelObjectAdd ,
+            'object:removed' : HandelObjectRemove
         });
 
     }
@@ -139,7 +141,17 @@ const Toolbarmodule = () => {
 
         setOpacityBold({opacity: 0.2});
         setOpacityItalic({opacity: 0.2 });
+        setUndo({opacity: 1});
+        console.log("add objects");
     }
+
+    function HandelObjectRemove() {
+        console.log("removed objects");
+        setRedo({opacity: 1});
+    }
+
+
+
 
     const showTextToolbar = () => {
 
@@ -225,17 +237,6 @@ const Toolbarmodule = () => {
 
 
 
-    canvas?.on('object:added', ()=>{
-
-            setUndo({opacity: 1});
-
-    });
-
-    canvas?.on('object:removed', ()=>{
-
-        setRedo({opacity: 1});
-
-    });
 
 
 
@@ -312,7 +313,7 @@ const Toolbarmodule = () => {
                                 <span className={toolbarmodule.material_symbols_outlined} >open_with</span>
                             </IonButton>
                             </strong>
-                            <IonButton  className={toolbarmodule.btn }  onClick={showTextToolbar}  color="undefined">
+                            <IonButton  className={toolbarmodule.btn }   onClick={showTextToolbar}  color="undefined">
                                 <span className={toolbarmodule.material_symbols_outlined} >format_shapes</span>
                             </IonButton>
 
