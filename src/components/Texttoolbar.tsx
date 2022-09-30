@@ -39,13 +39,28 @@ const Texttoolbar = () => {
 
     }
 
-    canvas?.on({
-        'selection:updated': HandleFontsStyle,
-        'selection:created': HandleFontsStyle
-    });
+    useEffect(()=> {
+        eventStart()
+        return () => {
+            canvas?.off({
+                'selection:updated': HandleFontsStyle,
+                'selection:created': HandleFontsStyle
+            });
+        }
+    } )
+
+    function eventStart() {
+        canvas?.on({
+            'selection:updated': HandleFontsStyle,
+            'selection:created': HandleFontsStyle
+        });
+
+
+    }
+
 
     function HandleFontsStyle() {
-        console.log("HandleFontsStyl");
+
         if(canvas.getActiveObject().fontWeight == 'bold' ) {
             setOpacityBold({opacity: 1});
         } else {

@@ -51,27 +51,41 @@ const Toolbarmodule = () => {
 
     }
 
-    useEffect(()=>{
-        canvas?.on ('selection:created', HandleControls );
-        canvas?.on('selection:created', HandleControls );
-        return ()=>{
-            canvas?.off ('selection:created', HandleControls );
-            canvas?.off('selection:created', HandleControls );
+    useEffect(()=> {
+        eventStart()
+        return () => {
+            canvas?.off({
+                'selection:updated': HandleControls,
+                'selection:created': HandleControls ,
+                'selection:cleared' : HandleCleared
+            });
         }
-    })
+    } , [canvas?.on( 'selection:updated')])
+
+    function eventStart() {
+        canvas?.on({
+            'selection:updated': HandleControls,
+            'selection:created': HandleControls,
+            'selection:cleared' : HandleCleared
+        });
+
+    }
 
 
     function HandleControls(){
-            console.log("update");
+           console.log("selection:updated");
         if(canvas?.getActiveObject()?.type == 'i-text')
         {
+
             setTextToolbar(true);
             setImageToolbar(false);
         }
         else{
+
             setTextToolbar(false);
             setImageToolbar(true);
         }
+
         let objects = canvas.getActiveObject();
 
         objects.set({
@@ -97,12 +111,11 @@ const Toolbarmodule = () => {
 
 
 
-    canvas?.on('selection:cleared', ()=>{
+ function HandleCleared() {
+     setTextToolbar(false);
+     setImageToolbar(false);
 
-            setTextToolbar(false);
-            setImageToolbar(false);
-
-    });
+ }
 
     const showTextToolbar = () => {
 
