@@ -308,7 +308,7 @@ const Toolbarmodule = () => {
                         ? <Imagetoolbar/>
                         :
                         <div className={toolbarmodule.btnHold } >
-                            <strong className="dragable-span">
+                            <strong className={toolbarmodule.dragable_span}>
                             <IonButton  className={toolbarmodule.btn1 } color="undefined" >
                                 <span className={toolbarmodule.material_symbols_outlined} >open_with</span>
                             </IonButton>

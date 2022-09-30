@@ -7,7 +7,7 @@ color:black;
    width:46px;
     color:black;
     --box-shadow:none;
-    border-right: 2px solid;
+
 }
 .btnHold {
     max-width: 294px;
@@ -64,6 +64,9 @@ color:black;
     width: fit-content;
     margin: 0 auto;
 
+}
+dragable_span {
+    border-right: 2px solid;
 }
 @media (max-width: 360px) {
     /*.material_symbols_outlined {*/
