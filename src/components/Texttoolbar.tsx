@@ -105,10 +105,13 @@ const Texttoolbar = () => {
 
             function handleClickOutside(event:any) {
                 if (ref.current && !ref.current.contains(event.target)) {
+                    //console.log(event.target);
                     setAlignBoxToggle(false)
                     setTextBoxToggle(false);
                     setFontToggle(false);
-
+                     //console.log("nill");
+                    //  canvas.discardActiveObject()
+                    // canvas.renderAll()
                 }
             }
             // Bind the event listener

@@ -58,6 +58,7 @@ const Drawing = () => {
 
         let canvasWidth = window.innerWidth > dimension.width ? dimension.width : window.innerWidth;
         let canvasHeight= canvasWidth * (dimension.height/dimension.width);
+
         let fabricCanvas:any = new fabric.Canvas('canvas', {
                 width: canvasWidth - 30,
                 height: canvasHeight - 30,
@@ -99,7 +100,27 @@ const Drawing = () => {
     }
 
     //zoom and panning working is here
-
+    // function useOutsideAlerter(ref:any) {
+    //     useEffect(() => {
+    //
+    //         function handleClickOutside(event:any) {
+    //             if (ref.current && !ref.current.contains(event.target)) {
+    //                 console.log(canvas);
+    //
+    //             }
+    //         }
+    //         // Bind the event listener
+    //         document.addEventListener("mousedown", handleClickOutside);
+    //         return () => {
+    //             // Unbind the event listener on clean up
+    //             document.removeEventListener("mousedown", handleClickOutside);
+    //         };
+    //     }, [ref , canvas]);
+    // }
+    //
+    //
+    // const wrapperRef = useRef(null);
+    // useOutsideAlerter(wrapperRef);
 
 
     return (
@@ -111,12 +132,15 @@ const Drawing = () => {
                     :
                     <IonContent>
                         <Titlebar/>
+
                         <Toolbar/>
 
                           <div   className={drawing.HandleCanvas} >
                              <TransformWrapper ref={ref} panning={{ disabled: true }}>
                                <TransformComponent>
-                                   <canvas id="canvas"  className={drawing.canvasUi}  />
+                                   {/*<div ref={wrapperRef}>*/}
+                                    <canvas id="canvas"  className={drawing.canvasUi}  />
+                                   {/*</div>*/}
                                </TransformComponent>
                              </TransformWrapper>
                           </div>
@@ -129,4 +153,4 @@ const Drawing = () => {
 }
 
 
-export  default  Drawing;
+export default Drawing;
