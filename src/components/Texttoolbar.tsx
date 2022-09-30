@@ -18,6 +18,10 @@ const Texttoolbar = () => {
     const ref = useRef(null);
 
 
+
+
+
+
     const showFontToggle = () => {
         setFontToggle(!isFontToggle)
         setAlignBoxToggle(false)
@@ -39,50 +43,8 @@ const Texttoolbar = () => {
 
     }
 
-    useEffect(()=> {
-        eventStart()
-        return () => {
-            canvas?.off({
-                'selection:updated': HandleFontsStyle,
-                'selection:created': HandleFontsStyle
-            });
-        }
-    } )
-
-    function eventStart() {
-        canvas?.on({
-            'selection:updated': HandleFontsStyle,
-            'selection:created': HandleFontsStyle
-        });
 
 
-    }
-
-
-    function HandleFontsStyle() {
-
-        if(canvas.getActiveObject().fontWeight == 'bold' ) {
-            setOpacityBold({opacity: 1});
-        } else {
-            setOpacityBold({opacity: 0.2});
-        }
-
-        if(canvas.getActiveObject().fontWeight == 'italic' ) {
-            setOpacityItalic({opacity: 1});
-        } else {
-            setOpacityItalic({opacity: 0.2 });
-        }
-
-        canvas.renderAll();
-
-    }
-
-
-
-    canvas?.on('object:added', ()=>{
-        setOpacityBold({opacity: 0.2});
-        setOpacityItalic({opacity: 0.2 });
-    });
 
     const fontBold = () => {
 

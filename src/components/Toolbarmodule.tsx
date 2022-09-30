@@ -31,6 +31,8 @@ const Toolbarmodule = () => {
     const { setFontToggleAdjust }:any = useContext(CanvasStore);
     const { setAlignToggleAdjust  }:any = useContext(CanvasStore);
     const { setToggleAdjust }:any = useContext(CanvasStore);
+    const {isOpacityBold, setOpacityBold}:any = useContext(CanvasStore);
+    const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
 
     const handleStop = (event :any, dragElement:any ) => {
 
@@ -57,23 +59,25 @@ const Toolbarmodule = () => {
             canvas?.off({
                 'selection:updated': HandleControls,
                 'selection:created': HandleControls ,
-                'selection:cleared' : HandleCleared
+                'selection:cleared' : HandleCleared ,
+                'object:added': HandelObjectAdd
             });
         }
-    } , [canvas?.on( 'selection:updated')])
+    } , [canvas?.on( 'selection:updated')]  )
 
     function eventStart() {
         canvas?.on({
             'selection:updated': HandleControls,
             'selection:created': HandleControls,
-            'selection:cleared' : HandleCleared
+            'selection:cleared' : HandleCleared,
+            'object:added': HandelObjectAdd
         });
 
     }
 
 
     function HandleControls(){
-           console.log("selection:updated");
+          // console.log("selection:updated");
         if(canvas?.getActiveObject()?.type == 'i-text')
         {
 
@@ -107,8 +111,22 @@ const Toolbarmodule = () => {
             mt: false,
             mtr: true,
         });
-    }
 
+
+        if(canvas.getActiveObject().fontWeight == 'bold' ) {
+            setOpacityBold({opacity: 1});
+        } else {
+            setOpacityBold({opacity: 0.2});
+        }
+
+        if(canvas.getActiveObject().fontWeight == 'italic' ) {
+            setOpacityItalic({opacity: 1});
+        } else {
+            setOpacityItalic({opacity: 0.2 });
+        }
+
+        canvas.renderAll();
+    }
 
 
  function HandleCleared() {
@@ -116,6 +134,12 @@ const Toolbarmodule = () => {
      setImageToolbar(false);
 
  }
+
+    function HandelObjectAdd() {
+
+        setOpacityBold({opacity: 0.2});
+        setOpacityItalic({opacity: 0.2 });
+    }
 
     const showTextToolbar = () => {
 
@@ -320,7 +344,6 @@ const Toolbarmodule = () => {
     );
 
 }
-
 
 
 
