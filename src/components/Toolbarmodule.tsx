@@ -15,7 +15,7 @@ const Toolbarmodule = () => {
     const [isTextToolbar, setTextToolbar] = useState(false);
     const [isImageToolbar , setImageToolbar] = useState(false);
     const [isColorMOde, setColorMode] = useState(false);
-    const [isColorModeIcon, setColorModeIcon] = useState("light_mode");
+    const [isColorModeIcon, setColorModeIcon] = useState("dark_mode");
     const [baseImage , setBaseImg] = useState("");
     const [isUndo, setUndo] = useState({
         opacity:0.2
@@ -286,7 +286,7 @@ const Toolbarmodule = () => {
             })
 
 
-            setColorModeIcon("dark_mode")
+            setColorModeIcon("light_mode")
 
         } else {
             canvas.backgroundColor="white";
@@ -294,7 +294,7 @@ const Toolbarmodule = () => {
             objects.forEach((obj:any)=>{
                 obj.set("fill", "#000");
             })
-            setColorModeIcon("light_mode")
+            setColorModeIcon("dark_mode")
         }
         canvas.renderAll();
     }

@@ -25,13 +25,14 @@
     line-height: 1;
     background-color: #e3e3e3;
     border-radius: 15px;
-
+    --box-shadow:none;
 }
 
 
 
 
 .save {
+    box-shadow: none;
     position: relative;
     height: 60px;
     --width: 50%;
@@ -53,6 +54,18 @@
     cursor: pointer;
     font-family: montserrat;
     line-height: 1;
+    --box-shadow:none;
+    --boxShadow:none;
+    --background-activated-opacity:none;
+    --background-focused-opacity:none;
+    --background-focused:none;
+    --background-hover-opacity:none;
+    --background-hover:none;
+    --background-activated:none;
+    --ripple-color:none;
+    --transition: none;
+
+
 }
 
 
@@ -64,7 +77,7 @@
 
 
 .material_symbols_outlined {
-
+    padding: 4px;
     font-size: 28px;
     font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
     font-family: 'Material Symbols Outlined';

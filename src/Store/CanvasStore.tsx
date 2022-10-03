@@ -59,7 +59,7 @@ export function StoreContext({ children }:any) {
     const [isFontStyle, setFontStyle] = useState(false);
 
     const [isCanvasDesign , setCanvasDesign ] = useState(null);
-    const [isTitleInput , setTitleInput ] = useState(null);
+    const [isTitleInput , setTitleInput ] = useState("Untitled");
     const [isDeleteDesign , setDeleteDesign ] = useState(null);
     const [isObjLock, setObjLock] = useState("UnLock");
     const [isFontBold, setFontBold] = useState(false);

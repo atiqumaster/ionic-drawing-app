@@ -1,4 +1,5 @@
 .material_symbols_outlined {
+    color:white;
     margin-top: -7px;
     margin-right: 5px;
     font-size: 28px;
@@ -22,4 +23,47 @@
     border: 2px solid white;
     border-radius: 25px;
     padding: 0px 5px 12px 15px;
+}
+.deleteBg {
+    --ion-background-color:black
+}
+.headWarning {
+    color: white;
+    font-family: none;
+    font-size: 45px;
+    font-style: italic;
+}
+.paraWarning{
+    color: white;
+}
+.btnWarning {
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.btnWarning h3 {
+   color:white;
+    margin: 0px;
+}
+.btnWarning p {
+    color:white;
+    margin: 0px;
+}
+
+.delRowOne {
+    margin-top: 35px;
+    margin-left: 10px;
+}
+.delRowTwo {
+    margin-top: 40px;
+    margin-left: 10px;
+}
+.delRowThree {
+    margin-top: 55px;
+    margin-left: 10px;
+}
+.delRowFour {
+    margin-top: 200px;
+    margin-left: 10px;
 }

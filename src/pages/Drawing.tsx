@@ -56,7 +56,7 @@ const Drawing = () => {
     // Connect Fabric Canvas with canvas and set height /width
     const initCanvas = () => {
 
-        let canvasWidth = window.innerWidth > dimension.width ? dimension.width : window.innerWidth;
+        let canvasWidth = window.innerWidth ;
         let canvasHeight= canvasWidth * (dimension.height/dimension.width);
 
         let fabricCanvas:any = new fabric.Canvas('canvas', {

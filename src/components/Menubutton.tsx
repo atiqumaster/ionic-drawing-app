@@ -74,7 +74,7 @@ const Menubutton = (props:any) => {
                         <IonButton    className={menubutton.cancel} color="undefined"  onClick={props.toggleCancel}>Cancel</IonButton>
                     </IonCol>
                     <IonCol size="6" >
-                        <IonButton    onClick={()=>{storeCanvas()}}  className={menubutton.save }>
+                        <IonButton    onClick={()=>{storeCanvas()}}   className={menubutton.save }>
                             <span className={ menubutton.material_symbols_outlined} >check</span>save
                         </IonButton>
                     </IonCol>

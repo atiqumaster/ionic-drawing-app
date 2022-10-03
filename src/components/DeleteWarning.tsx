@@ -6,30 +6,31 @@ const DeleteWarning = (props:any) => {
 
     return (
         <>
-           <IonContent>
+           <IonContent className={deleteWarning.deleteBg}>
                 <IonGrid>
 
-                    <IonRow>
-                        <IonCol size="4" >  <span onClick={props.toggleDelete}>arrow_back</span></IonCol>
+                    <IonRow className={deleteWarning.delRowOne} >
+                        <IonCol size="4" className={deleteWarning.material_symbols_outlined} >  <span onClick={props.toggleDelete}>arrow_back</span></IonCol>
                     </IonRow>
 
-                    <IonRow>
+                    <IonRow  className={deleteWarning.delRowTwo} >
                         <IonCol size="6">
-                            <h1>Warning</h1>
+                            <h1 className={deleteWarning.headWarning
+                            } >Warning</h1>
                         </IonCol>
                     </IonRow>
 
-                    <IonRow>
-                        <IonCol size="8">
+                    <IonRow  className={deleteWarning.delRowThree} >
+                        <IonCol size="8" className={deleteWarning.paraWarning}>
                             Are you sure you want to delete this design?
                         </IonCol>
                     </IonRow>
 
-                    <IonRow>
+                    <IonRow className={deleteWarning.delRowFour} >
                         <IonCol size="6">
-                            <div onClick={props.deleteCards} >
+                            <div onClick={props.deleteCards}  className={deleteWarning.btnWarning} >
                               <h3>Yes</h3>
-                              Delete design
+                                <p>Delete design</p>
                             </div>
                         </IonCol>
                     </IonRow>
