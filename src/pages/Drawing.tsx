@@ -121,7 +121,7 @@ const Drawing = () => {
             function handleClickOutside(event:any) {
                 if (ref.current && !ref.current.contains(event.target)) {
 
-                    console.log("nill");
+                    // console.log("nill");
                     canvas.discardActiveObject()
                     canvas.renderAll()
                 }
@@ -148,17 +148,17 @@ const Drawing = () => {
                     :
                     <IonContent>
                         <Titlebar/>
-                        <div ref={wrapperRef}>
+                        <div ref={wrapperRef} className={drawing.handleCanvasHeight}>
                             <Toolbar/>
 
                             <div   className={drawing.HandleCanvas} >
-                                <TransformWrapper ref={ref} panning={{ disabled: true }}>
-                                    <TransformComponent>
-                                        {/*<div ref={wrapperRef}>*/}
-                                        <canvas id="canvas"  className={drawing.canvasUi}  />
-                                        {/*</div>*/}
-                                    </TransformComponent>
-                                </TransformWrapper>
+                                {/*<TransformWrapper ref={ref} panning={{ disabled: true }}>*/}
+                                {/*    <TransformComponent>*/}
+
+                                         <canvas id="canvas"  className={drawing.canvasUi}  />
+
+                                {/*    </TransformComponent>*/}
+                                {/*</TransformWrapper>*/}
                             </div>
                         </div>
                         <Menubutton toggleCancel={toggleCancel}  />

@@ -14,7 +14,7 @@ const DeleteWarning = (props:any) => {
                     </IonRow>
 
                     <IonRow  className={deleteWarning.delRowTwo} >
-                        <IonCol size="6">
+                        <IonCol size="7">
                             <h1 className={deleteWarning.headWarning
                             } >Warning</h1>
                         </IonCol>

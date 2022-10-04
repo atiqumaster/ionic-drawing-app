@@ -9,7 +9,7 @@ const ObjProperties = () => {
     const { isToggleAdjust, setToggleAdjust }:any = useContext(CanvasStore);
     const { isObjLock, setObjLock }:any = useContext(CanvasStore);
     const { setTextBoxToggle }:any = useContext(CanvasStore);
-
+    const {isImageToolbarToggle, setImageToolbarToggle}:any = useContext(CanvasStore);
     const objectClone = () => {
 
         let cloned = canvas.getActiveObject()
@@ -36,6 +36,7 @@ const ObjProperties = () => {
         });
 
         setTextBoxToggle(false)
+        setImageToolbarToggle(false)
     }
 
     const objectDelete = () => {
@@ -44,6 +45,8 @@ const ObjProperties = () => {
             canvas.remove(obj)
         });
         canvas.discardActiveObject().renderAll()
+        setTextBoxToggle(false)
+        setImageToolbarToggle(false)
     }
 
   const objectLock = () => {
@@ -60,6 +63,7 @@ const ObjProperties = () => {
 
       canvas.renderAll();
       setTextBoxToggle(false)
+      setImageToolbarToggle(false)
   }
 
 
@@ -69,6 +73,7 @@ const ObjProperties = () => {
         canvas.bringToFront(activeObj);
         canvas.renderAll();
         setTextBoxToggle(false)
+        setImageToolbarToggle(false)
     }
 
 
@@ -77,6 +82,7 @@ const ObjProperties = () => {
         canvas.sendToBack(activeObj);
         canvas.renderAll();
         setTextBoxToggle(false)
+        setImageToolbarToggle(false)
     }
 
 

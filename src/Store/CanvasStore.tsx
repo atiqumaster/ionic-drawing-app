@@ -66,7 +66,7 @@ export function StoreContext({ children }:any) {
     const [isTextBoxToggle, setTextBoxToggle] = useState(false);
     const [isAlignBoxToggle, setAlignBoxToggle] = useState(false);
     const [isFontToggle, setFontToggle] = useState(false);
-
+    const [isImageToolbarToggle, setImageToolbarToggle] = useState(false);
 
 
     const canvasProviderValues:any = useMemo(() => ({
@@ -101,7 +101,9 @@ export function StoreContext({ children }:any) {
         isAlignBoxToggle,
         setAlignBoxToggle,
         isFontToggle,
-        setFontToggle
+        setFontToggle,
+        isImageToolbarToggle,
+        setImageToolbarToggle
 
 
     }), [
@@ -120,7 +122,8 @@ export function StoreContext({ children }:any) {
         isOpacityItalic,
         isTextBoxToggle,
         isAlignBoxToggle,
-        isFontToggle
+        isFontToggle,
+        isImageToolbarToggle
 
 
     ]);

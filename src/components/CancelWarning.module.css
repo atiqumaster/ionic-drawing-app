@@ -29,3 +29,14 @@
     --box-shadow: -5px 5px 0 black;
     --color: white;
 }
+.cancelRowOne {
+    margin-top: 50%;
+    margin-left: 5px;
+}
+.cancelRowTwo {
+    margin-top: 40px;
+    margin-left: 5px;
+}
+.cancelRowThree {
+    margin-left: 5px;
+}

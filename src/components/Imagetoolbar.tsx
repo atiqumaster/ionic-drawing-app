@@ -10,10 +10,11 @@ const Imagetoolbar = () => {
 
     const { canvas }:any = useContext(CanvasStore);
 
-    const [isImageToolbarToggle, setImageToolbarToggle] = useState(false);
+
     const [isFlipVertical  , setFlipVertical ] = useState(false);
     const [isFlipHorizontal  , setFlipHorizontal] = useState(false);
     const [isimgInverted  , setimgInverted] = useState(false);
+    const {isImageToolbarToggle, setImageToolbarToggle}:any = useContext(CanvasStore);
     const styles = {
         borderRight: '2px solid black',
     };

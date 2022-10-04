@@ -16,7 +16,8 @@ const Titlebar  = () => {
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
 
     const handleClick = () => {
-        history.push("/sizes");
+        console.log(history);
+        history.goBack();
         setCanvasDesign(null);
     }
 
@@ -32,7 +33,7 @@ const Titlebar  = () => {
             <IonGrid>
                 <IonRow>
                     <IonCol  size="1" className={titlebars.colBtn}>
-                        <IonButton   onClick={handleClick} size="large" className={titlebars.btn} >
+                        <IonButton   onClick={() => handleClick()} size="large" className={titlebars.btn} >
                             <span className={titlebars.material_symbols_outlined} >arrow_back</span>
                         </IonButton>
                     </IonCol>
