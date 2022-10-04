@@ -8,6 +8,7 @@ const ObjProperties = () => {
     const { canvas }:any = useContext(CanvasStore);
     const { isToggleAdjust, setToggleAdjust }:any = useContext(CanvasStore);
     const { isObjLock, setObjLock }:any = useContext(CanvasStore);
+    const { setTextBoxToggle }:any = useContext(CanvasStore);
 
     const objectClone = () => {
 
@@ -34,7 +35,7 @@ const ObjProperties = () => {
             canvas.requestRenderAll();
         });
 
-
+        setTextBoxToggle(false)
     }
 
     const objectDelete = () => {
@@ -49,15 +50,16 @@ const ObjProperties = () => {
 
       let activeObject = canvas.getActiveObject();
       if(activeObject.lockMovementX && activeObject.lockMovementY ) {
-          activeObject.set({lockMovementX: false, lockMovementY: false})
+          activeObject.set({lockMovementX: false, lockMovementY: false , hasControls:true, borderDashArray:[0]})
           setObjLock("Lock");
       }else{
-          activeObject.set({lockMovementX: true, lockMovementY: true})
+          activeObject.set({lockMovementX: true, lockMovementY: true , hasControls:false , borderDashArray:[3]})
           setObjLock("UnLock");
       }
 
 
       canvas.renderAll();
+      setTextBoxToggle(false)
   }
 
 
@@ -66,6 +68,7 @@ const ObjProperties = () => {
         let activeObj = canvas.getActiveObject();
         canvas.bringToFront(activeObj);
         canvas.renderAll();
+        setTextBoxToggle(false)
     }
 
 
@@ -73,6 +76,7 @@ const ObjProperties = () => {
         let activeObj = canvas.getActiveObject();
         canvas.sendToBack(activeObj);
         canvas.renderAll();
+        setTextBoxToggle(false)
     }
 
 

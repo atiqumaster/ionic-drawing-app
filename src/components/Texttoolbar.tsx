@@ -8,9 +8,9 @@ import { ObjProperties } from './ObjProperties';
 
 const Texttoolbar = () => {
 
-    const [isTextBoxToggle, setTextBoxToggle] = useState(false);
-    const [isAlignBoxToggle, setAlignBoxToggle] = useState(false);
-    const [isFontToggle, setFontToggle] = useState(false);
+    const {isTextBoxToggle, setTextBoxToggle}:any = useContext(CanvasStore);
+    const {isAlignBoxToggle, setAlignBoxToggle} :any= useContext(CanvasStore);
+    const {isFontToggle, setFontToggle}:any = useContext(CanvasStore);
     const {isOpacityBold, setOpacityBold}:any = useContext(CanvasStore);
     const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
     const { canvas }:any = useContext(CanvasStore);
@@ -79,22 +79,26 @@ const Texttoolbar = () => {
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'left');
         canvas.renderAll();
+        setAlignBoxToggle(false)
 
     }
     const alignCenter = () => {
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'center');
         canvas.renderAll();
+        setAlignBoxToggle(false)
     }
     const alignRight = () => {
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'right');
         canvas.renderAll();
+        setAlignBoxToggle(false)
     }
     const alignJustify = () => {
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'justify');
         canvas.renderAll();
+        setAlignBoxToggle(false)
     }
 
 

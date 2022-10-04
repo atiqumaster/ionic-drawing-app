@@ -13,9 +13,11 @@ import {CanvasStore} from "../Store/CanvasStore";
 const Titlebar  = () => {
     let history = useHistory();
     const { setTitleInput  }:any = useContext(CanvasStore)
+    const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
 
     const handleClick = () => {
         history.push("/sizes");
+        setCanvasDesign(null);
     }
 
     const handleInput = (event:any) => {

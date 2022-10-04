@@ -14,7 +14,7 @@ import {
     TransformComponent ,
     ReactZoomPanPinchProps,
     ReactZoomPanPinchRef,
-      } from "react-zoom-pan-pinch";
+} from "react-zoom-pan-pinch";
 
 declare global {
     interface Window {
@@ -41,7 +41,9 @@ const Drawing = () => {
     const { canvas }:any = useContext(CanvasStore);
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
     const [cancelToggle, setCancelToggle]: any = useState(false)
-    const ref = useRef<ReactZoomPanPinchRef | null>(null);
+    const [tempCanvas, setTempCanvas]: any = useState()
+    //const ref = useRef<ReactZoomPanPinchRef | null>(null);
+    const ref = useRef(null);
 
     let history = useHistory();
 
@@ -71,9 +73,15 @@ const Drawing = () => {
 
         setCanvas(fabricCanvas);
 
-        if(isCanvasDesign?.designJson)
+        if(isCanvasDesign?.designJson && !tempCanvas)
         {
             fabricCanvas.loadFromJSON(isCanvasDesign?.designJson, fabricCanvas.renderAll.bind(fabricCanvas), ()=>{
+            });
+        }
+        else if(tempCanvas?.designJson)
+        {
+            console.log("aya ree")
+            fabricCanvas.loadFromJSON(tempCanvas?.designJson, fabricCanvas.renderAll.bind(fabricCanvas), ()=>{
             });
         }
     }
@@ -87,40 +95,48 @@ const Drawing = () => {
 
         let designJson: any = JSON.stringify(canvas.toJSON());
         let thumbnail: any = canvas.toDataURL();
-        let designId: any = Math.random();
+        let designId: any ;
+        if(isCanvasDesign?.designJson)
+        {
+            designId= isCanvasDesign?.designId;
+        }
+        else {
+            designId= Math.random();
+        }
+
         let canvasDesign = {
             designJson,
             thumbnail,
             designId,
         }
-
-        setCanvasDesign(canvasDesign)
+        setTempCanvas(canvasDesign);
         setCancelToggle(!cancelToggle);
 
     }
 
-    //zoom and panning working is here
-    // function useOutsideAlerter(ref:any) {
-    //     useEffect(() => {
-    //
-    //         function handleClickOutside(event:any) {
-    //             if (ref.current && !ref.current.contains(event.target)) {
-    //                 console.log(canvas);
-    //
-    //             }
-    //         }
-    //         // Bind the event listener
-    //         document.addEventListener("mousedown", handleClickOutside);
-    //         return () => {
-    //             // Unbind the event listener on clean up
-    //             document.removeEventListener("mousedown", handleClickOutside);
-    //         };
-    //     }, [ref , canvas]);
-    // }
-    //
-    //
-    // const wrapperRef = useRef(null);
-    // useOutsideAlerter(wrapperRef);
+
+    function useOutsideAlerter(ref:any) {
+        useEffect(() => {
+
+            function handleClickOutside(event:any) {
+                if (ref.current && !ref.current.contains(event.target)) {
+
+                    console.log("nill");
+                    canvas.discardActiveObject()
+                    canvas.renderAll()
+                }
+            }
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref , canvas]);
+    }
+
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
 
 
     return (
@@ -132,19 +148,19 @@ const Drawing = () => {
                     :
                     <IonContent>
                         <Titlebar/>
+                        <div ref={wrapperRef}>
+                            <Toolbar/>
 
-                        <Toolbar/>
-
-                          <div   className={drawing.HandleCanvas} >
-                             <TransformWrapper ref={ref} panning={{ disabled: true }}>
-                               <TransformComponent>
-                                   {/*<div ref={wrapperRef}>*/}
-                                    <canvas id="canvas"  className={drawing.canvasUi}  />
-                                   {/*</div>*/}
-                               </TransformComponent>
-                             </TransformWrapper>
-                          </div>
-
+                            <div   className={drawing.HandleCanvas} >
+                                <TransformWrapper ref={ref} panning={{ disabled: true }}>
+                                    <TransformComponent>
+                                        {/*<div ref={wrapperRef}>*/}
+                                        <canvas id="canvas"  className={drawing.canvasUi}  />
+                                        {/*</div>*/}
+                                    </TransformComponent>
+                                </TransformWrapper>
+                            </div>
+                        </div>
                         <Menubutton toggleCancel={toggleCancel}  />
                     </IonContent>
             }

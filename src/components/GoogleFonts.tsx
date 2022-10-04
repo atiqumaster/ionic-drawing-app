@@ -6,6 +6,7 @@ const GoogleFonts = () => {
 
     const { canvas }:any = useContext(CanvasStore);
     const { isFontToggleAdjust }:any = useContext(CanvasStore);
+    const { setFontToggle}:any = useContext(CanvasStore);
 
     const arrayFonts = ["ABeeZee", "Abel"   , "Abhaya Libre","Aboreto","Abril Fatface","Abyssinica SIL","Aclonica","Acme" ,"Actor", "Adamina" , "playball"]
     const selectFonts = (event:any) => {
@@ -13,6 +14,7 @@ const GoogleFonts = () => {
         let activeObj = canvas.getActiveObject();
         activeObj.set('fontFamily', event.target.value);
         canvas.renderAll();
+        setFontToggle(false)
     }
 
 

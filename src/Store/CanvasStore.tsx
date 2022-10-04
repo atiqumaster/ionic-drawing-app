@@ -63,6 +63,11 @@ export function StoreContext({ children }:any) {
     const [isDeleteDesign , setDeleteDesign ] = useState(null);
     const [isObjLock, setObjLock] = useState("UnLock");
     const [isFontBold, setFontBold] = useState(false);
+    const [isTextBoxToggle, setTextBoxToggle] = useState(false);
+    const [isAlignBoxToggle, setAlignBoxToggle] = useState(false);
+    const [isFontToggle, setFontToggle] = useState(false);
+
+
 
     const canvasProviderValues:any = useMemo(() => ({
         dimension,
@@ -90,7 +95,13 @@ export function StoreContext({ children }:any) {
         isOpacityItalic ,
         setOpacityItalic ,
         isFontStyle ,
-        setFontStyle
+        setFontStyle,
+        isTextBoxToggle,
+        setTextBoxToggle,
+        isAlignBoxToggle,
+        setAlignBoxToggle,
+        isFontToggle,
+        setFontToggle
 
 
     }), [
@@ -106,7 +117,10 @@ export function StoreContext({ children }:any) {
         isOpacityBold ,
         isFontBold ,
         isFontStyle ,
-        isOpacityItalic
+        isOpacityItalic,
+        isTextBoxToggle,
+        isAlignBoxToggle,
+        isFontToggle
 
 
     ]);

@@ -6,22 +6,25 @@ const CancelWarning = (props:any) => {
 
     return (
         <>
-            <IonContent>
+            <IonContent className={cancelwarning.cancelBg} >
                 <IonGrid>
 
                     <IonRow>
-                        <IonCol size="4" ><h1>DO YOU REALLY WANT TO CANCEL AND DISCARD YOUR CHANGES?</h1></IonCol>
+                        <IonCol size="9" >
+                            <h2 className={cancelwarning.headWarning }>
+                                DO YOU REALLY WANT TO CANCEL AND DISCARD YOUR CHANGES?</h2>
+                        </IonCol>
                     </IonRow>
 
                     <IonRow>
                         <IonCol size="6">
-                            <IonButton  onClick={props.toggleCancel} >NO , I WANT TO SAVE FIRST</IonButton>
+                            <IonButton  className={cancelwarning.btnCanceNo } onClick={props.toggleCancel} >NO , I WANT TO SAVE FIRST</IonButton>
                         </IonCol>
                     </IonRow>
 
                     <IonRow>
                         <IonCol size="3">
-                          <IonButton onClick={props.yesCancel } >YES</IonButton>
+                            <IonButton className={cancelwarning.btnCanceYes } onClick={props.yesCancel } >YES</IonButton>
                         </IonCol>
                     </IonRow>
 
