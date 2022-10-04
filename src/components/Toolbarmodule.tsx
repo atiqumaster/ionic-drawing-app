@@ -33,7 +33,8 @@ const Toolbarmodule = () => {
     const { setToggleAdjust }:any = useContext(CanvasStore);
     const {isOpacityBold, setOpacityBold}:any = useContext(CanvasStore);
     const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
-
+    const {isTextBoxToggle, setTextBoxToggle}:any = useContext(CanvasStore);
+    const { isObjLock, setObjLock }:any = useContext(CanvasStore);
     const styles = {
         borderRight: '2px solid black',
     };
@@ -131,7 +132,16 @@ const Toolbarmodule = () => {
             setOpacityItalic({opacity: 0.2 });
         }
 
+        if(objects.lockMovementX && objects.lockMovementY ) {
+
+            setObjLock("UnLock");
+        }else{
+
+            setObjLock("Lock");
+        }
+
         canvas.renderAll();
+        setTextBoxToggle(false)
     }
 
 
@@ -175,10 +185,12 @@ const Toolbarmodule = () => {
         canvas.add(iTextSample);
         canvas.setActiveObject(iTextSample );
         canvas.centerObject(iTextSample);
-
+        setTextBoxToggle(false)
         if(canvas.backgroundColor=='black') {
             canvas.getActiveObject().set("fill", "#fff");
         }
+
+
     }
 
 

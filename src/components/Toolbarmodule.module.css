@@ -1,5 +1,5 @@
 .btn {
-    width:48px;
+    width:50px;
 color:black;
     --box-shadow:none;
 }
@@ -54,8 +54,8 @@ dragable_span {
 
 .btnInput  {
     padding-top: 8px;
-    margin-right: 5px;
-    margin-left: 5px;
+    text-align: center;
+    width:50px;
 }
 .moveRestrict {
     position: relative;

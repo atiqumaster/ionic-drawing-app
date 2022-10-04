@@ -21,6 +21,7 @@ const Home = () => {
     const [deleteToggle, setDeleteToggle]: any = useState(false)
     const { setCanvasDesign }: any = useContext(CanvasStore);
     const [isDeleteDesign , setDeleteDesign ]: any = useState();
+    const [isDesignHome ,  setDesignHome]: any = useState(true);
 
     let history = useHistory();
 
@@ -33,6 +34,14 @@ const Home = () => {
         let localvar = await storage.get('myDesign') || '[]';
         let getLocalArray: any = JSON.parse(localvar);
         setThumbnail([...getLocalArray as []]);
+        console.log(getLocalArray.length)
+        if(getLocalArray.length == 0) {
+            setDesignHome(false)
+            console.log("no design");
+        }else {
+            setDesignHome(true)
+            console.log("yes design");
+        }
     }
 
 
@@ -45,6 +54,10 @@ const Home = () => {
         let filteredArray = thumbnail.filter((des:any)=> des.designId !== isDeleteDesign.designId);
         setThumbnail([...filteredArray as []]);
         await storage.set('myDesign', JSON.stringify(filteredArray));
+         console.log(filteredArray.length)
+        if(filteredArray.length == 0 ) {
+             setDesignHome(false)
+        }
         setDeleteToggle(false);
         history.push("/");
     }
@@ -52,7 +65,7 @@ const Home = () => {
         setDeleteToggle(!deleteToggle);
         !deleteToggle ? setDeleteDesign(design) :setDeleteDesign(null) ;
     }
-
+    console.log(isDesignHome);
 
     return (
         <>
@@ -72,7 +85,9 @@ const Home = () => {
                         <IonGrid  >
                             <IonRow className={home.text} >
                                 {
+                                    isDesignHome ? (
                                     thumbnail?.length != 0 && thumbnail.map((design: any, val: any) => {
+
                                         return (
                                             <>
                                                 <ThumbnailCards val={val} design={design} loadCanvas={loadCanvas} deleteCard={toggleDelete} />
@@ -80,6 +95,7 @@ const Home = () => {
                                             </>
                                         );
                                     })
+                                    )  : <h1 className={home.deisgnHeading}>YOU HAVE NO SAVED DESIGNS</h1>
                                 }
 
                             </IonRow>

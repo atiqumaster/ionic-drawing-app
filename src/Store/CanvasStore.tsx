@@ -61,7 +61,7 @@ export function StoreContext({ children }:any) {
     const [isCanvasDesign , setCanvasDesign ] = useState(null);
     const [isTitleInput , setTitleInput ] = useState("Untitled");
     const [isDeleteDesign , setDeleteDesign ] = useState(null);
-    const [isObjLock, setObjLock] = useState("UnLock");
+    const [isObjLock, setObjLock] = useState("Lock");
     const [isFontBold, setFontBold] = useState(false);
     const [isTextBoxToggle, setTextBoxToggle] = useState(false);
     const [isAlignBoxToggle, setAlignBoxToggle] = useState(false);

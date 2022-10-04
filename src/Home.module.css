@@ -211,6 +211,15 @@
 .designGrid {
      /*    overflow-y: auto;*/
  }
+
+.deisgnHeading {
+    font-family: "Montserrat";
+    font-size: 18px;
+    top: 46%;
+    font-weight: 900;
+    position: absolute;
+    text-transform: uppercase;
+}
 @media (max-width: 768px) {
     .designGrid {
         overflow-y: auto;
