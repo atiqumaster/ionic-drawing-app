@@ -13,3 +13,8 @@
 .handleCanvasHeight{
     height: 100%;
 }
+.hiddenFlow{
+
+    --overflow: hidden;
+
+}

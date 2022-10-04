@@ -146,7 +146,7 @@ const Drawing = () => {
                 cancelToggle ?
                     <CancelWarning toggleCancel={toggleCancel}  yesCancel={yesCancel}  />
                     :
-                    <IonContent>
+                    <IonContent className={drawing.hiddenFlow}>
                         <Titlebar/>
                         <div ref={wrapperRef} className={drawing.handleCanvasHeight}>
                             <Toolbar/>
