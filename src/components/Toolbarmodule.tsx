@@ -263,10 +263,14 @@ const Toolbarmodule = () => {
             } else {
                 myImg.scaleToHeight(scaleHeight  )
             }
-
+            myImg.set({
+                originX: 'center' ,
+                originY: 'center',
+                left: canvas.width/2,
+                top: canvas.height/2,
+            })
             canvas.add(myImg);
             canvas.centerObject(myImg);
-            canvas.setActiveObject(myImg);
 
             let object = canvas.getActiveObject();
             let filter = new fabric.Image.filters.Grayscale();
