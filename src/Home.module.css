@@ -224,6 +224,14 @@
     .designGrid {
         overflow-y: auto;
     }
+    .SaveDesignAdjust {
+        min-height: 0px;
+
+    }
+    .thumbnailRow{
+        min-height: 0px;
+        align-items: center;
+    }
 }
 @media (max-width: 300px) {
     .text {
