@@ -31,10 +31,14 @@ const Toolbarmodule = () => {
     const { setFontToggleAdjust }:any = useContext(CanvasStore);
     const { setAlignToggleAdjust  }:any = useContext(CanvasStore);
     const { setToggleAdjust }:any = useContext(CanvasStore);
-    const {isOpacityBold, setOpacityBold}:any = useContext(CanvasStore);
-    const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
-    const {isTextBoxToggle, setTextBoxToggle}:any = useContext(CanvasStore);
-    const { isObjLock, setObjLock }:any = useContext(CanvasStore);
+    const { setOpacityBold}:any = useContext(CanvasStore);
+    const {setOpacityItalic}:any = useContext(CanvasStore);
+    const { setTextBoxToggle}:any = useContext(CanvasStore);
+    const {  setObjLock }:any = useContext(CanvasStore);
+    const { setAlignBoxToggle} :any= useContext(CanvasStore);
+    const { setFontToggle}:any = useContext(CanvasStore);
+    const { setImageToolbarToggle}:any = useContext(CanvasStore);
+    const { isObjLockIcon, setObjLockIcon }:any = useContext(CanvasStore);
     const styles = {
         borderRight: '2px solid black',
     };
@@ -126,22 +130,26 @@ const Toolbarmodule = () => {
             setOpacityBold({opacity: 0.2});
         }
 
-        if(canvas.getActiveObject().fontWeight == 'italic' ) {
+        if(canvas.getActiveObject().fontStyle  == 'italic' ) {
             setOpacityItalic({opacity: 1});
         } else {
             setOpacityItalic({opacity: 0.2 });
         }
 
         if(objects.lockMovementX && objects.lockMovementY ) {
-
             setObjLock("UnLock");
+            setObjLockIcon("lock_open")
         }else{
 
             setObjLock("Lock");
+            setObjLockIcon("lock")
         }
 
         canvas.renderAll();
         setTextBoxToggle(false)
+        setAlignBoxToggle(false)
+        setFontToggle(false)
+        setImageToolbarToggle(false)
     }
 
 
@@ -185,11 +193,13 @@ const Toolbarmodule = () => {
         canvas.add(iTextSample);
         canvas.setActiveObject(iTextSample );
         canvas.centerObject(iTextSample);
-        setTextBoxToggle(false)
+
         if(canvas.backgroundColor=='black') {
             canvas.getActiveObject().set("fill", "#fff");
         }
-
+        setTextBoxToggle(false)
+        setAlignBoxToggle(false)
+        setFontToggle(false)
 
     }
 
@@ -224,7 +234,7 @@ const Toolbarmodule = () => {
             object.applyFilters();
         });
 
-
+        setImageToolbarToggle(false)
     }
 
     const convertBase64 = (file:any) => {
@@ -332,10 +342,11 @@ const Toolbarmodule = () => {
                             <IonButton  className={toolbarmodule.btn }   onClick={showTextToolbar}  color="undefined">
                                 <span className={toolbarmodule.material_symbols_outlined} >format_shapes</span>
                             </IonButton>
-
-                            <label htmlFor="file-input" className={toolbarmodule.btnInput }>
+                           <IonButton  className={toolbarmodule.btn }  color="undefined">
+                            <label htmlFor="file-input" >
                                  <span className={toolbarmodule.material_symbols_outlined} >add_photo_alternate</span>
                             </label>
+                            </IonButton>
                             <input accept="image/*"  id="file-input"  type="file" onChange={  uploadImg }
                                     style={{display:"none"}} />
 

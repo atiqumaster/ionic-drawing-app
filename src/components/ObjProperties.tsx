@@ -8,6 +8,7 @@ const ObjProperties = () => {
     const { canvas }:any = useContext(CanvasStore);
     const { isToggleAdjust, setToggleAdjust }:any = useContext(CanvasStore);
     const { isObjLock, setObjLock }:any = useContext(CanvasStore);
+    const { isObjLockIcon, setObjLockIcon }:any = useContext(CanvasStore);
     const { setTextBoxToggle }:any = useContext(CanvasStore);
     const {isImageToolbarToggle, setImageToolbarToggle}:any = useContext(CanvasStore);
     const objectClone = () => {
@@ -55,9 +56,11 @@ const ObjProperties = () => {
       if(activeObject.lockMovementX && activeObject.lockMovementY ) {
           activeObject.set({lockMovementX: false, lockMovementY: false , hasControls:true, borderDashArray:[0]})
           setObjLock("UnLock");
+          setObjLockIcon("lock")
       }else{
           activeObject.set({lockMovementX: true, lockMovementY: true , hasControls:false , borderDashArray:[3]})
           setObjLock("Lock");
+          setObjLockIcon("lock_open")
       }
 
 
@@ -70,8 +73,8 @@ const ObjProperties = () => {
 
     const bringToFronts = () => {
         let activeObj = canvas.getActiveObject();
-        canvas.bringToFront(activeObj);
-        canvas.renderAll();
+        activeObj.bringToFront()
+        canvas.discardActiveObject().renderAll()
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
     }
@@ -79,8 +82,8 @@ const ObjProperties = () => {
 
     const sendToBacks = () => {
         let activeObj = canvas.getActiveObject();
-        canvas.sendToBack(activeObj);
-        canvas.renderAll();
+        activeObj.sendToBack()
+        canvas.discardActiveObject().renderAll()
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
     }
@@ -95,7 +98,7 @@ const ObjProperties = () => {
                         Duplicate
                     </button>
                     <button onClick={objectLock}     className={ Objproperties.toggleBtn } color="undefined"  >
-                        <span className={ Objproperties.material_symbols_outlined_box} > {canvas.getActiveObject().lockMovementX && canvas.getActiveObject().lockMovementY ? "lock_open"  : "lock" }</span>
+                        <span className={ Objproperties.material_symbols_outlined_box} >{isObjLockIcon}</span>
                         {isObjLock}
                     </button>
                 <button onClick={bringToFronts}   className={ Objproperties.toggleBtn } color="undefined"  >
