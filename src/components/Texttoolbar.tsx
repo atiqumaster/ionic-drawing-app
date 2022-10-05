@@ -15,6 +15,8 @@ const Texttoolbar = () => {
     const {isOpacityItalic, setOpacityItalic}:any = useContext(CanvasStore);
     const { canvas }:any = useContext(CanvasStore);
     const { isAlignToggleAdjust }:any = useContext(CanvasStore);
+    const { formatAlignText , setFormatAlignText }:any = useContext(CanvasStore);
+   // const [formatAlignTextCenter , setFormatAlignTextCenter ] = useState("format_align_center");
     const ref = useRef(null);
 
 
@@ -80,6 +82,7 @@ const Texttoolbar = () => {
         activeObj.set('textAlign', 'left');
         canvas.renderAll();
         setAlignBoxToggle(false)
+        setFormatAlignText('format_align_left')
 
     }
     const alignCenter = () => {
@@ -87,18 +90,21 @@ const Texttoolbar = () => {
         activeObj.set('textAlign', 'center');
         canvas.renderAll();
         setAlignBoxToggle(false)
+        setFormatAlignText('format_align_center')
     }
     const alignRight = () => {
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'right');
         canvas.renderAll();
         setAlignBoxToggle(false)
+        setFormatAlignText('format_align_right')
     }
     const alignJustify = () => {
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'justify');
         canvas.renderAll();
         setAlignBoxToggle(false)
+        setFormatAlignText('format_align_justify')
     }
 
 
@@ -154,7 +160,7 @@ const Texttoolbar = () => {
                         <span  style= {isOpacityItalic}  className={ texttoolbar.material_symbols_outlined} >format_italic</span>
                     </IonButton>
                     <IonButton  className={ texttoolbar.btn }  onClick={showAlignTextBox} color="undefined" >
-                        <span className={ texttoolbar.material_symbols_outlined} >format_align_left</span>
+                        <span className={ texttoolbar.material_symbols_outlined} >{formatAlignText}</span>
                     </IonButton>
 
 

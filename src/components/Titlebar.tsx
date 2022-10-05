@@ -16,7 +16,7 @@ const Titlebar  = () => {
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
 
     const handleClick = () => {
-        console.log(history);
+
         history.goBack();
         setCanvasDesign(null);
     }

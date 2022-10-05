@@ -68,6 +68,7 @@ export function StoreContext({ children }:any) {
     const [isFontToggle, setFontToggle] = useState(false);
     const [isImageToolbarToggle, setImageToolbarToggle] = useState(false);
     const [isObjLockIcon , setObjLockIcon ] = useState("lock");
+    const [formatAlignText , setFormatAlignText ] = useState("format_align_left");
 
     const canvasProviderValues:any = useMemo(() => ({
         dimension,
@@ -105,7 +106,9 @@ export function StoreContext({ children }:any) {
         isImageToolbarToggle,
         setImageToolbarToggle,
         isObjLockIcon ,
-        setObjLockIcon
+        setObjLockIcon ,
+        formatAlignText ,
+        setFormatAlignText
 
 
     }), [
@@ -126,7 +129,8 @@ export function StoreContext({ children }:any) {
         isAlignBoxToggle,
         isFontToggle,
         isImageToolbarToggle,
-        isObjLockIcon
+        isObjLockIcon,
+        formatAlignText
 
 
     ]);

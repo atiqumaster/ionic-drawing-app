@@ -38,7 +38,8 @@ const Toolbarmodule = () => {
     const { setAlignBoxToggle} :any= useContext(CanvasStore);
     const { setFontToggle}:any = useContext(CanvasStore);
     const { setImageToolbarToggle}:any = useContext(CanvasStore);
-    const { isObjLockIcon, setObjLockIcon }:any = useContext(CanvasStore);
+    const { setObjLockIcon }:any = useContext(CanvasStore);
+    const { setFormatAlignText }:any = useContext(CanvasStore);
     const styles = {
         borderRight: '2px solid black',
     };
@@ -46,7 +47,7 @@ const Toolbarmodule = () => {
     const handleStop = (event :any, dragElement:any ) => {
 
 
-        if(window.innerHeight - 420  < dragElement.y ) {
+        if(window.innerHeight - 450  < dragElement.y ) {
 
             setToggleAdjust({ top: -230 })
             setAlignToggleAdjust({ top: -60 })
@@ -145,11 +146,46 @@ const Toolbarmodule = () => {
             setObjLockIcon("lock")
         }
 
-        canvas.renderAll();
+
+
+
+        if( canvas.getActiveObject().type === 'activeSelection') {
+        let obj = canvas.getActiveObject()
+        obj._objects.forEach((o:any) => {
+
+            if (o.type === 'i-text') {
+                console.log("text is here")
+                setTextToolbar(true);
+                setImageToolbar(false);
+
+                } else if (o.type === 'image') {
+                console.log("Image is here")
+                setImageToolbar(true);
+                setTextToolbar(false);
+            }
+
+
+            }
+        );
+       }
+
+        if(canvas.getActiveObject().textAlign === 'left' ) {
+            setFormatAlignText('format_align_left')
+        }else if(canvas.getActiveObject().textAlign === 'center') {
+            setFormatAlignText('format_align_center')
+        }else if(canvas.getActiveObject().textAlign === 'right') {
+            setFormatAlignText('format_align_right')
+        } else{
+            setFormatAlignText('format_align_justify')
+        }
+
+
         setTextBoxToggle(false)
         setAlignBoxToggle(false)
         setFontToggle(false)
         setImageToolbarToggle(false)
+
+       canvas.renderAll()
     }
 
 
@@ -164,7 +200,6 @@ const Toolbarmodule = () => {
         setOpacityBold({opacity: 0.2});
         setOpacityItalic({opacity: 0.2 });
         setUndo({opacity: 1});
-        console.log("add objects");
     }
 
     function HandelObjectRemove() {
@@ -320,8 +355,6 @@ const Toolbarmodule = () => {
         }
         canvas.renderAll();
     }
-
-
 
     return (
 
