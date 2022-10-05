@@ -109,7 +109,8 @@ const Toolbarmodule = () => {
             borderColor: '#4285F4',
             cornerColor: '#4285F4',
             cornerSize: 9,
-            transparentCorners: true
+            transparentCorners: true ,
+
         })
 
         objects.setControlsVisibility({
@@ -122,7 +123,12 @@ const Toolbarmodule = () => {
             mr: false,
             mt: false,
             mtr: true,
+
         });
+
+
+
+        fabric.Object.prototype.controls.mtr.offsetY = -20
 
 
         if(canvas.getActiveObject().fontWeight == 'bold' ) {
@@ -203,7 +209,7 @@ const Toolbarmodule = () => {
     }
 
     function HandelObjectRemove() {
-        console.log("removed objects");
+
         setRedo({opacity: 1});
     }
 
@@ -214,12 +220,12 @@ const Toolbarmodule = () => {
 
             setTextToolbar(!isTextToolbar);
             let iTextSample = new fabric.IText(     "Double tap \nto edit"  , {
-            left: 50,
-            top: 50,
             originX: 'center' ,
             originY: 'center',
             lineHeight: 1.1,
-            fontSize: 28
+            fontSize: 28,
+                left: canvas.width/2,
+                top: canvas.height/2,
 
         });
 
@@ -227,7 +233,6 @@ const Toolbarmodule = () => {
         // push iText in canvas
         canvas.add(iTextSample);
         canvas.setActiveObject(iTextSample );
-        canvas.centerObject(iTextSample);
 
         if(canvas.backgroundColor=='black') {
             canvas.getActiveObject().set("fill", "#fff");
@@ -249,14 +254,14 @@ const Toolbarmodule = () => {
         // set Base64i img in canvas using fabric img Object
 
         fabric.Image.fromURL(base64 , function(myImg:any) {
+           console.log(myImg.width-200)
+           let scaleHeight = canvas.height;
+           let scaleWidth = canvas.width -30;
 
-           let scaleHeight = canvas.height -10;
-           let scaleWidth = canvas.width - 10 ;
-
-            if (myImg.width > myImg.height) {
-                myImg.scaleToWidth(scaleWidth)
+            if (myImg.width > myImg.height ) {
+                myImg.scaleToWidth(scaleWidth )
             } else {
-                myImg.scaleToHeight(scaleHeight)
+                myImg.scaleToHeight(scaleHeight  )
             }
 
             canvas.add(myImg);
@@ -302,7 +307,7 @@ const Toolbarmodule = () => {
 
 
     const undo = () => {
-
+     console.log("re");
         canvas.undo();
         canvas.discardActiveObject().renderAll();
 
