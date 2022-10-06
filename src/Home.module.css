@@ -186,6 +186,7 @@
     cursor: pointer;
     line-height: 1;
     color: black;
+    background-color: #efefef;
     --color: black;
 }
 .material_symbols_outlined_box {

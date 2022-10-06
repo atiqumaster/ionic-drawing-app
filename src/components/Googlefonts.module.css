@@ -33,6 +33,7 @@
     appearance: none;
     cursor: pointer;
     line-height: 1;
+    color:black;
 }
 
 .font_selected  {
