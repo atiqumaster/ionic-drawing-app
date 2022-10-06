@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 65%;
+    height: 75%;
 
 }
 .handleCanvasHeight{
@@ -17,4 +17,7 @@
 
     --overflow: hidden;
 
+}
+.transform-component-module_wrapper__1_Fgj {
+    overflow:visible !important;
 }

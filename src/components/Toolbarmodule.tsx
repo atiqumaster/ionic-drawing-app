@@ -71,7 +71,8 @@ const Toolbarmodule = () => {
                 'selection:created': HandleControls ,
                 'selection:cleared' : HandleCleared ,
                 'object:added': HandelObjectAdd ,
-                'object:removed' : HandelObjectRemove
+                'object:removed' : HandelObjectRemove,
+                'touch:gesture' : HandelMouseGesture
             });
         }
     } , [canvas?.on( 'selection:updated')]  )
@@ -82,7 +83,8 @@ const Toolbarmodule = () => {
             'selection:created': HandleControls,
             'selection:cleared' : HandleCleared,
             'object:added': HandelObjectAdd ,
-            'object:removed' : HandelObjectRemove
+            'object:removed' : HandelObjectRemove,
+            'touch:gesture' : HandelMouseGesture
         });
 
     }
@@ -206,6 +208,9 @@ const Toolbarmodule = () => {
         setOpacityBold({opacity: 0.2});
         setOpacityItalic({opacity: 0.2 });
         setUndo({opacity: 1});
+        // if(canvas.backgroundColor=='black') {
+        //     canvas.getActiveObject().set("fill", "#fff");
+        // }
     }
 
     function HandelObjectRemove() {
@@ -213,8 +218,20 @@ const Toolbarmodule = () => {
         setRedo({opacity: 1});
     }
 
+function  HandelMouseGesture (e :any){
+    console.log(e)
 
 
+}
+
+    // canvas?.on({
+    //     'touch:gesture': function () {
+    //               alert("finger")
+    //     },
+    //     'touch:drag': function () {
+    //         console.log("draggin")
+    //     }
+    // });
 
     const showTextToolbar = () => {
 
@@ -237,6 +254,7 @@ const Toolbarmodule = () => {
         if(canvas.backgroundColor=='black') {
             canvas.getActiveObject().set("fill", "#fff");
         }
+        canvas.renderAll()
         setTextBoxToggle(false)
         setAlignBoxToggle(false)
         setFontToggle(false)

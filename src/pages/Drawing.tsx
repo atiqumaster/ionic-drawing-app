@@ -42,9 +42,8 @@ const Drawing = () => {
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
     const [cancelToggle, setCancelToggle]: any = useState(false)
     const [tempCanvas, setTempCanvas]: any = useState()
-
-    //const ref = useRef<ReactZoomPanPinchRef | null>(null);
-    const ref = useRef(null);
+    const ref = useRef<ReactZoomPanPinchRef | null>(null);
+    //const ref = useRef(null);
 
     let history = useHistory();
 
@@ -157,7 +156,7 @@ const Drawing = () => {
                                 {/*<TransformWrapper ref={ref} panning={{ disabled: true }}>*/}
                                 {/*    <TransformComponent>*/}
 
-                                         <canvas id="canvas"  className={drawing.canvasUi}  />
+                                         <canvas id="canvas"   />
 
                                 {/*    </TransformComponent>*/}
                                 {/*</TransformWrapper>*/}

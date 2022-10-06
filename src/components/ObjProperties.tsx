@@ -54,11 +54,17 @@ const ObjProperties = () => {
 
       let activeObject = canvas.getActiveObject();
       if(activeObject.lockMovementX && activeObject.lockMovementY ) {
-          activeObject.set({lockMovementX: false, lockMovementY: false , hasControls:true, borderDashArray:[0]})
+          activeObject.set({ lockMovementX: false, lockMovementY: false , hasControls:true  , borderDashArray:[0]})
+
+          canvas.getActiveObject().editable= true;
+          canvas.renderAll()
+
           setObjLock("UnLock");
           setObjLockIcon("lock")
       }else{
           activeObject.set({lockMovementX: true, lockMovementY: true , hasControls:false , borderDashArray:[3]})
+          canvas.getActiveObject().editable= false;
+          canvas.renderAll()
           setObjLock("Lock");
           setObjLockIcon("lock_open")
       }
