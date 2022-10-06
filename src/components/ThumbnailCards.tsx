@@ -42,8 +42,9 @@ const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
                         <IonRow className={home.bluetoothRow} >
                             <IonCol>
                                 <IonButton   size="large" className={home.BlueToothBtn} >
-                                    <span className={home.material_symbols_outlined} >send</span>
-                                    Send
+                                    <img className={home.sendImg} src=".././assets/images/send48.png"  />
+                                    {/*<span className={home.material_symbols_outlined} >send</span>*/}
+                                    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Send
                                 </IonButton>
                             </IonCol>
                         </IonRow>

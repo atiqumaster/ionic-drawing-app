@@ -1,4 +1,8 @@
-
+.sendImg{
+ width:30px;
+    position: absolute;
+    left: -5px;
+}
 .btn {
     font-size: 18px;
     font-weight: 900;
@@ -124,29 +128,27 @@
 
 
 .BlueToothBtn {
+    position: relative;
+    text-transform: capitalize;
     margin-bottom: 10px !important;
-    margin-top: 10px !important;
     font-size: 18px;
-    font-weight: 900;
     font-family: "Montserrat";
-    --color: white;
+    --color: #e3e3e3;
     --background: black;
-    --border-radius: 12px;
-    height: 55px;
+    --border-radius: 10px;
+    height: 60px;
     width: 140px !important;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
+    border: 1px solid #e3e3e3;
     outline: 0;
     appearance: none;
     cursor: pointer;
     line-height: 1;
     letter-spacing: 0px;
     display: flex;
-    background-color: #fff;
-    border-radius: 12px;
-    text-transform: uppercase;
+    border-radius: 10px;
     z-index: 1;
 }
 .designImg {
