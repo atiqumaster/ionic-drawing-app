@@ -22,7 +22,7 @@ const Home = () => {
     const { setCanvasDesign }: any = useContext(CanvasStore);
     const [isDeleteDesign , setDeleteDesign ]: any = useState();
     const [isDesignHome ,  setDesignHome]: any = useState(true);
-
+    const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
     let history = useHistory();
 
     useEffect(() => {
@@ -42,12 +42,14 @@ const Home = () => {
             setDesignHome(true)
             console.log("yes design");
         }
+
     }
 
 
     const loadCanvas = (design: any) => {
         setCanvasDesign(design)
         history.push("/drawing");
+
     }
     const deleteCards = async () => {
 

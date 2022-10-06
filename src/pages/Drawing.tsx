@@ -42,6 +42,7 @@ const Drawing = () => {
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
     const [cancelToggle, setCancelToggle]: any = useState(false)
     const [tempCanvas, setTempCanvas]: any = useState()
+
     //const ref = useRef<ReactZoomPanPinchRef | null>(null);
     const ref = useRef(null);
 
@@ -52,6 +53,7 @@ const Drawing = () => {
     useEffect(() => {
 
         initCanvas();
+
 
     }, [cancelToggle]);
 

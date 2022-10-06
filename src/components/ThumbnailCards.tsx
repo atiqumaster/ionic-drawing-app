@@ -1,10 +1,13 @@
-import React, { useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {IonButton,IonRow ,IonCol} from '@ionic/react';
 import home from "../Home.module.css";
+import {CanvasStore} from "../Store/CanvasStore";
 
 const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
     const [isSaveBoxToggle, setSaveBoxToggle] = useState(false);
+    const { setTitleInput  }:any = useContext(CanvasStore)
 
+    setTitleInput(design.isTitleInput)
     return (
         <>
             <IonCol className={home.saveCardSize}  key={val} >

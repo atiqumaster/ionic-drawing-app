@@ -13,13 +13,14 @@ import {storage} from "../Hooks/useStorage";
 
 const Menubutton = (props:any) => {
 
-    const { canvas, isTitleInput }:any = useContext(CanvasStore);
+    const { canvas }:any = useContext(CanvasStore);
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
     let history = useHistory();
-
+    const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
     const storeCanvas = async () => {
 
         if (isCanvasDesign) {
+
             let getID = isCanvasDesign.designId;
 
             let localArray: [] = JSON.parse(await storage.get('myDesign') || '[]');
@@ -35,7 +36,7 @@ const Menubutton = (props:any) => {
             await storage.set('myDesign', JSON.stringify(localArray));
             canvas.renderAll();
             history.push("/");
-
+            setTitleInput(isTitleInput)
         } else {
 
             let designJson: any = JSON.stringify(canvas.toJSON());
@@ -61,6 +62,7 @@ const Menubutton = (props:any) => {
             await storage.set('myDesign', JSON.stringify(tempArray));
             canvas.renderAll();
             history.push("/");
+
         }
     }
 

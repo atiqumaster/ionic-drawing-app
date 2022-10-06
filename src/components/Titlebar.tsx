@@ -12,7 +12,7 @@ import {CanvasStore} from "../Store/CanvasStore";
 
 const Titlebar  = () => {
     let history = useHistory();
-    const { setTitleInput  }:any = useContext(CanvasStore)
+    const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
 
     const handleClick = () => {
@@ -22,7 +22,7 @@ const Titlebar  = () => {
     }
 
     const handleInput = (event:any) => {
-
+            console.log(event.target.value)
         setTitleInput(event.target.value)
 
     }
@@ -39,7 +39,7 @@ const Titlebar  = () => {
                     </IonCol>
                     <IonCol size="11" >
 
-                        <IonInput type="text"  onIonChange={handleInput}  className={titlebars.tileInput}   placeholder="Enter Title" />
+                        <IonInput type="text"  value={isTitleInput} onIonChange={handleInput}  className={titlebars.tileInput}   placeholder="Enter Title" />
 
 
                     </IonCol>
