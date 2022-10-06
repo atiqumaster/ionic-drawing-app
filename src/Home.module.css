@@ -70,7 +70,7 @@
 .material_symbols_outlineds {
     color: white;
 
-    margin-top: 16px;
+    margin-top: 10px;
     margin-right: 5px;
     font-size: 28px;
     font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
@@ -101,14 +101,14 @@
 }
 .SaveDesignAdjust {
     min-height: 480px;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 30px;
-    margin-right: 40px;
+    margin-right: 10px;
 }
 
 
 .thumbnailRow{
-    min-height: 340px;
+    min-height: 390px;
     align-items: center;
 }
 

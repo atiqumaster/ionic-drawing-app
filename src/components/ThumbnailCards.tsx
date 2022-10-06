@@ -14,10 +14,10 @@ const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
                 <div   className={home.SaveDesignWrapper} >
                     <div className={home.SaveDesignAdjust} >
                         <IonRow className={home.titleInputRow}>
-                            <IonCol size="11" >
+                            <IonCol size="10" >
                                 <h3 style={{color: "white"}} >{design.isTitleInput}</h3>
                             </IonCol>
-                            <IonCol size="1" >
+                            <IonCol size="2" >
                                 <IonButton  className={home.btn1 } onClick={()=>{setSaveBoxToggle(!isSaveBoxToggle)}} color="undefined" >
                                     <span className={ home.material_symbols_outlineds} >more_horiz</span>
                                 </IonButton>
