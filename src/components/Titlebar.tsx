@@ -12,6 +12,7 @@ import {CanvasStore} from "../Store/CanvasStore";
 
 const Titlebar  = () => {
     let history = useHistory();
+    console.log(history)
     const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
 

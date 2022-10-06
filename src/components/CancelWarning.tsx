@@ -2,6 +2,7 @@ import React from 'react';
 import { IonGrid, IonRow, IonCol, IonContent , IonButton } from '@ionic/react';
 import cancelwarning from './CancelWarning.module.css'
 import deleteWarning from "./DeleteWarning.module.css";
+import {  Link  } from 'react-router-dom';
 
 const CancelWarning = (props:any) => {
 
@@ -25,7 +26,7 @@ const CancelWarning = (props:any) => {
 
                     <IonRow className={cancelwarning.cancelRowThree} >
                         <IonCol size="3">
-                            <IonButton className={cancelwarning.btnCanceYes } onClick={props.yesCancel } >YES</IonButton>
+                           <IonButton className={cancelwarning.btnCanceYes } onClick={props.yesCancel } >YES</IonButton>
                         </IonCol>
                     </IonRow>
 

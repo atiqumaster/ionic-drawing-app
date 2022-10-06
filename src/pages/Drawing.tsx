@@ -9,6 +9,8 @@ import {Menubutton} from "../components/Menubutton";
 import {CanvasStore} from "../Store/CanvasStore";
 import {CancelWarning} from '../components/CancelWarning';
 import { useHistory } from "react-router-dom";
+import {  Link  } from 'react-router-dom';
+
 import {
     TransformWrapper,
     TransformComponent ,
@@ -89,7 +91,8 @@ const Drawing = () => {
 
 
     const yesCancel = () => {
-        history.push("/");
+        //history.replace("/");
+          history.go(-2);
     }
 
     const toggleCancel = () => {

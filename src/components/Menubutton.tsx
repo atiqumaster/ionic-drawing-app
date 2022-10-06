@@ -35,7 +35,7 @@ const Menubutton = (props:any) => {
             setCanvasDesign(null);
             await storage.set('myDesign', JSON.stringify(localArray));
             canvas.renderAll();
-            history.push("/");
+            history.go(-2);
             setTitleInput(isTitleInput)
         } else {
 
@@ -61,7 +61,7 @@ const Menubutton = (props:any) => {
             tempArray.push(canvasDesign);
             await storage.set('myDesign', JSON.stringify(tempArray));
             canvas.renderAll();
-            history.push("/");
+            history.go(-2);
 
         }
     }
