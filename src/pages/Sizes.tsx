@@ -45,7 +45,7 @@ const Home = () => {
 
                         <div className={sizes.handleItem} key={i}  >
                             <Link to="/drawing"  className={sizes.linkBox}  onClick={()=>{
-                                setTitleInput("Untitled")
+                                setTitleInput("")
                                 setDimension(
                                     {
                                         width:image.width,

@@ -47,17 +47,17 @@ const Toolbarmodule = () => {
     const handleStop = (event :any, dragElement:any ) => {
 
 
-        if(window.innerHeight - 450  < dragElement.y ) {
+        if(window.innerHeight - window.innerHeight/2 -110  < dragElement.y ) {
 
-            setToggleAdjust({ top: -230 })
-            setAlignToggleAdjust({ top: -60 })
+            setToggleAdjust({ top: -229 })
+            setAlignToggleAdjust({ top: -59 })
             setFontToggleAdjust({   top: -412})
 
         }else {
 
-            setToggleAdjust({ top:52 })
-            setAlignToggleAdjust({ top: 42 })
-            setFontToggleAdjust({ top: 52})
+            setToggleAdjust({ top:50 })
+            setAlignToggleAdjust({ top: 40 })
+            setFontToggleAdjust({ top: 50 })
 
         }
 
@@ -152,9 +152,23 @@ const Toolbarmodule = () => {
 
             setObjLock("Lock");
             setObjLockIcon("lock")
+            canvas.renderAll()
         }
 
+        if( canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX && o.lockMovementY ) {
 
+                    setObjLock("UnLock");
+                    setObjLockIcon("lock_open")
+                } else{
+
+                    setObjLock("Lock");
+                    setObjLockIcon("lock")
+                }
+                canvas.renderAll()
+            })
+        }
 
 
         if( canvas.getActiveObject().type === 'activeSelection') {
@@ -185,6 +199,77 @@ const Toolbarmodule = () => {
             setFormatAlignText('format_align_right')
         } else{
             setFormatAlignText('format_align_justify')
+        }
+
+
+        if(canvas.getActiveObject().type === 'activeSelection' ) {
+
+            let obj = canvas.getActiveObject()
+            obj._objects.forEach((o:any) => {
+                if (o.fontWeight == 'bold') {
+                    console.log("bold2");
+
+                    setOpacityBold({opacity: 1});
+                    canvas.renderAll();
+                }
+
+            })
+
+
+
+            obj._objects.forEach((o:any) => {
+                if (o.fontWeight == '400') {
+
+                    console.log("4002");
+                    setOpacityBold({opacity: 0.2});
+                    canvas.renderAll();
+                }
+
+            })
+
+            obj._objects.forEach((o:any) => {
+                if (o.fontStyle == 'italic') {
+
+
+                    setOpacityItalic({opacity: 1});
+                    canvas.renderAll();
+                }
+
+            })
+
+
+
+            obj._objects.forEach((o:any) => {
+                if (o.fontStyle == 'normal') {
+
+
+                    setOpacityItalic({opacity: 0.2});
+                    canvas.renderAll();
+                }
+
+            })
+
+        }
+
+        if(canvas.getActiveObject().type === 'activeSelection' ) {
+
+            objects._objects.forEach((o:any) => {
+
+                if(o.lockMovementX && o.lockMovementY ) {
+
+
+
+                    objects.set({lockMovementX: true, lockMovementY: true ,editable:false , hasControls:false , borderDashArray:[3]})
+
+                }
+
+                // setObjLock("UnLock");
+                // setObjLockIcon("lock_open")
+
+                canvas.renderAll()
+            })
+
+
         }
 
 
@@ -224,14 +309,7 @@ function  HandelMouseGesture (e :any){
 
 }
 
-    // canvas?.on({
-    //     'touch:gesture': function () {
-    //               alert("finger")
-    //     },
-    //     'touch:drag': function () {
-    //         console.log("draggin")
-    //     }
-    // });
+
 
     const showTextToolbar = () => {
 

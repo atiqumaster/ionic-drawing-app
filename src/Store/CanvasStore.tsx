@@ -41,13 +41,13 @@ export function StoreContext({ children }:any) {
     });
     const [canvas, setCanvas] = useState(null);
     const [isToggleAdjust , setToggleAdjust ] = useState({
-        top:52
+        top:50
     });
     const [isFontToggleAdjust , setFontToggleAdjust ] = useState({
-        top:52
+        top:50
     });
     const [isAlignToggleAdjust , setAlignToggleAdjust ] = useState({
-        top:42
+        top:40
     });
     const [isOpacityBold, setOpacityBold] = useState({
         opacity:0.2

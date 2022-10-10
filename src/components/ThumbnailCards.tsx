@@ -7,7 +7,7 @@ const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
     const [isSaveBoxToggle, setSaveBoxToggle] = useState(false);
     const { setTitleInput  }:any = useContext(CanvasStore)
 
-    setTitleInput(design.isTitleInput)
+
     return (
         <>
             <IonCol className={home.saveCardSize}  key={val} >
@@ -15,7 +15,10 @@ const ThumbnailCards  = ({val,design,loadCanvas,deleteCard}:any) => {
                     <div className={home.SaveDesignAdjust} >
                         <IonRow className={home.titleInputRow}>
                             <IonCol size="10" >
-                                <h3 style={{color: "white"}} >{design.isTitleInput}</h3>
+                                <h3 style={{color: "white" , textTransform: "uppercase"}} >{ design.isTitleInput.length != 0 ?
+                                    design.isTitleInput : "UNTITLED"
+
+                                }</h3>
                             </IonCol>
                             <IonCol size="2" >
                                 <IonButton  className={home.btn1 } onClick={()=>{setSaveBoxToggle(!isSaveBoxToggle)}} color="undefined" >

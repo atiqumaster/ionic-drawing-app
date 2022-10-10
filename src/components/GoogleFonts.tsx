@@ -8,7 +8,9 @@ const GoogleFonts = () => {
     const { isFontToggleAdjust }:any = useContext(CanvasStore);
     const { setFontToggle}:any = useContext(CanvasStore);
 
-    const arrayFonts = ["ABeeZee", "Abel"   , "Abhaya Libre","Aboreto","Abril Fatface","Abyssinica SIL","Aclonica","Acme" ,"Actor", "Adamina" , "playball"]
+    const arrayFonts = ["Acme", "Akshar"   , "Artifika","Comic Neue","Courier Prime","EB Garamond","Just Another Hand",
+        "Black Han Sans" ,"Montserrat", "Playball" , "Poppins" , " Ultra" , "Smythe" , " Rock Salt","Brush Script MT" ]
+
     const selectFonts = (event:any) => {
 
         let activeObj = canvas.getActiveObject();

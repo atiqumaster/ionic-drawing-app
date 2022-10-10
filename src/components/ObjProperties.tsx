@@ -54,20 +54,45 @@ const ObjProperties = () => {
 
       let activeObject = canvas.getActiveObject();
       if(activeObject.lockMovementX && activeObject.lockMovementY ) {
-          activeObject.set({ lockMovementX: false, lockMovementY: false , hasControls:true  , borderDashArray:[0]})
 
-          canvas.getActiveObject().editable= true;
-          canvas.renderAll()
+          activeObject.set({lockMovementX: false, lockMovementY: false, editable:true , hasControls: true, borderDashArray: [0]})
+
+
+          setObjLock("Lock");
+          setObjLockIcon("lock")
+
+
+
+      }else{
+
+          activeObject.set({lockMovementX: true, lockMovementY: true ,editable:false , hasControls:false , borderDashArray:[3]})
 
           setObjLock("UnLock");
-          setObjLockIcon("lock")
-      }else{
-          activeObject.set({lockMovementX: true, lockMovementY: true , hasControls:false , borderDashArray:[3]})
-          canvas.getActiveObject().editable= false;
-          canvas.renderAll()
-          setObjLock("Lock");
           setObjLockIcon("lock_open")
+
+
+
       }
+
+
+      canvas.renderAll();
+      setTextBoxToggle(false)
+      setImageToolbarToggle(false)
+
+
+      activeObject._objects.forEach((o:any) => {
+
+          if(o.lockMovementX && o.lockMovementY ) {
+
+              o.set({lockMovementX: false, lockMovementY: false, editable:true , hasControls: true, borderDashArray: [0]})
+
+
+          } else{
+
+              o.set({lockMovementX: true, lockMovementY: true ,  editable:false , hasControls:false , borderDashArray:[3]})
+
+          }
+      })
 
 
       canvas.renderAll();

@@ -62,6 +62,19 @@ const Texttoolbar = () => {
             setOpacityBold({opacity: 1});
             canvas.getActiveObject().set("fontWeight","bold");
         }
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.fontWeight == 'bold') {
+
+                    setOpacityBold({opacity: 0.2});
+                    o.set("fontWeight","400");
+                } else{
+                    setOpacityBold({opacity: 1});
+                    o.set("fontWeight","bold");
+                }
+            })
+        }
         canvas.renderAll();
     }
 
@@ -72,6 +85,19 @@ const Texttoolbar = () => {
         } else {
             setOpacityItalic({opacity: 1});
             canvas.getActiveObject().set("fontStyle","italic");
+        }
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.fontStyle == 'italic') {
+
+                    setOpacityItalic({opacity: 0.2});
+                    o.set("fontStyle","normal");
+                } else{
+                    setOpacityItalic({opacity: 1});
+                    o.set("fontStyle","italic");
+                }
+            })
         }
         canvas.renderAll();
 

@@ -12,7 +12,7 @@ import {CanvasStore} from "../Store/CanvasStore";
 
 const Titlebar  = () => {
     let history = useHistory();
-    console.log(history)
+
     const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
 
@@ -23,7 +23,7 @@ const Titlebar  = () => {
     }
 
     const handleInput = (event:any) => {
-            console.log(event.target.value)
+
         setTitleInput(event.target.value)
 
     }

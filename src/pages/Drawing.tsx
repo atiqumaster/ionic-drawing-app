@@ -83,7 +83,7 @@ const Drawing = () => {
         }
         else if(tempCanvas?.designJson)
         {
-            console.log("aya ree")
+
             fabricCanvas.loadFromJSON(tempCanvas?.designJson, fabricCanvas.renderAll.bind(fabricCanvas), ()=>{
             });
         }

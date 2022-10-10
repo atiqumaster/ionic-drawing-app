@@ -123,6 +123,7 @@
 
 .titleInputRow{
     min-height: 40px;
+    text-transform: uppercase;
     align-items: center;
 }
 

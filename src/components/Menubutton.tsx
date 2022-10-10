@@ -36,7 +36,7 @@ const Menubutton = (props:any) => {
             await storage.set('myDesign', JSON.stringify(localArray));
             canvas.renderAll();
             history.go(-2);
-            setTitleInput(isTitleInput)
+
         } else {
 
             let designJson: any = JSON.stringify(canvas.toJSON());

@@ -37,10 +37,10 @@ const Home = () => {
         console.log(getLocalArray.length)
         if(getLocalArray.length == 0) {
             setDesignHome(false)
-            console.log("no design");
+
         }else {
             setDesignHome(true)
-            console.log("yes design");
+
         }
 
     }
@@ -49,14 +49,14 @@ const Home = () => {
     const loadCanvas = (design: any) => {
         setCanvasDesign(design)
         history.push("/drawing");
-
+        setTitleInput(design.isTitleInput)
     }
     const deleteCards = async () => {
 
         let filteredArray = thumbnail.filter((des:any)=> des.designId !== isDeleteDesign.designId);
         setThumbnail([...filteredArray as []]);
         await storage.set('myDesign', JSON.stringify(filteredArray));
-         console.log(filteredArray.length)
+
         if(filteredArray.length == 0 ) {
              setDesignHome(false)
         }
@@ -67,7 +67,7 @@ const Home = () => {
         setDeleteToggle(!deleteToggle);
         !deleteToggle ? setDeleteDesign(design) :setDeleteDesign(null) ;
     }
-    console.log(isDesignHome);
+
 
     return (
         <>
