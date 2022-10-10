@@ -35,36 +35,32 @@ setupIonicReact();
 
 
 const App = () => {
-
     let myDesigns:any = [];
     localStorage.setItem("myDesign", myDesigns);
 
-    const loadGoogleFonts =async (fontFamily:any , fontUrl:any)=>{
+
+
+    const loadGoogleFonts =async (fontFamily:any)=>{
+
         WebFont.load({
             google: {
-                families: [fontFamily]
+                families: fontFamily
             }
         });
     }
 
+
     useEffect(()=> {
         async function getData() {
-            const fonts = await axios.get(
-                `https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBB1ro9c5u6LIfsdsndwKTfRD8YsJIFO-U`
-            );
 
-            const fontArray = fonts.data.items.slice(0, 10);
+            let fontArray2 = ["Acme", "Akshar"   , "Artifika","Comic Neue","Courier Prime","EB Garamond","Just Another Hand",
+                "Black Han Sans" ,"Montserrat", "Playball" , "Poppins" , " Ultra" , "Smythe" , " Rock Salt","Brush Script MT" ]
 
-            fontArray.forEach((font:any)=>{
-
-                loadGoogleFonts(font.family,font.files.regular);
-
-            })
+            loadGoogleFonts(fontArray2)
 
         }
         getData()
     } , []);
-
 
     return (
 
