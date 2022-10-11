@@ -18,6 +18,7 @@
     --overflow: hidden;
 
 }
-.transform-component-module_wrapper__1_Fgj {
-    overflow:visible !important;
+.transform-component-module_wrapper__1_Fgj{
+    display: none !important;
 }
+

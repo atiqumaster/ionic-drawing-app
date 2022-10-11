@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext , useRef} from 'react';
 import { fabric } from 'fabric';
-
+import './drawing.css'
 import { IonContent } from '@ionic/react';
 import  drawing from './Drawing.module.css';
 import { Toolbar } from "../components/Toolbar";
@@ -17,6 +17,7 @@ import {
     ReactZoomPanPinchProps,
     ReactZoomPanPinchRef,
 } from "react-zoom-pan-pinch";
+import {alert} from "ionicons/icons";
 
 declare global {
     interface Window {
@@ -35,9 +36,19 @@ interface AppContextInterface {
     pausePanning:any;
     PinchToZoom:any;
 }
+// interface Props {
+//     style?: any;
+//     className?: any;
+//
+// }
+type Props = {
+    style?: any;
+    className?: any;
+    contentStyle?: React.CSSProperties;
+};
 
 
-const Drawing = () => {
+const Drawing  = () => {
 
     const { dimension, setCanvas }:any = useContext(CanvasStore);
     const { canvas }:any = useContext(CanvasStore);
@@ -46,7 +57,7 @@ const Drawing = () => {
     const [tempCanvas, setTempCanvas]: any = useState()
     const ref = useRef<ReactZoomPanPinchRef | null>(null);
     //const ref = useRef(null);
-
+    const [panningEnable, setPanningEnable]: any = useState(true)
     let history = useHistory();
 
     // First reload initCanvas function trigger
@@ -143,6 +154,56 @@ const Drawing = () => {
     useOutsideAlerter(wrapperRef);
 
 
+    // panning two finger Detect
+
+
+    // const onChangeStart = (refWrapper:any ) => {
+    //
+    //     console.log(refWrapper.state.positionX)
+    //
+    // }
+    // const onChangeStop = (refWrapper:any ) => {
+    //     console.log(refWrapper.state)
+    //
+    // }
+
+
+
+        // document.body.addEventListener('touchstart', function(e:any){
+        //     if(e.touches.length > 1) {
+        //         e.preventDefault()
+        //         prompt("give")
+        //     }else {
+        //         prompt("nevere give")
+        //     }
+        //
+        //     // alert pageX coordinate of touch point
+        // }, false)
+    //     document.body.addEventListener('touchend', function(e:any){
+    //
+    //             e.preventDefault()
+    //             prompt("NEVER")
+    //
+    //
+    //         // alert pageX coordinate of touch point
+    //     }, false)
+    //
+    //
+    // document.body.addEventListener('touchmove', function(e:any){
+    //
+    //     if(e.touches.length > 1) {
+    //         e.preventDefault()
+    //         prompt("give")
+    //     }else {
+    //         prompt("nevere give")
+    //     }
+    //
+    //
+    //     // alert pageX coordinate of touch point
+    // }, false)
+
+
+    // @ts-ignore
     return (
 
         <>
@@ -156,13 +217,26 @@ const Drawing = () => {
                             <Toolbar/>
 
                             <div   className={drawing.HandleCanvas} >
-                                {/*<TransformWrapper ref={ref} panning={{ disabled: true }}>*/}
-                                {/*    <TransformComponent>*/}
+                                <TransformWrapper
+                                    ref={ref}
+
+                                    minScale={0.5}
+                                    maxScale={7}
+                                    pinch={{disabled:false}}
+                                    doubleClick={ {disabled:true}}
+                                    panning={{ disabled: panningEnable }}
+                                    // onPanningStart={onChangeStart }
+                                    // onPanningStop={onChangeStop }
+
+                                >
+
+                                    <TransformComponent >
 
                                          <canvas id="canvas"   />
 
-                                {/*    </TransformComponent>*/}
-                                {/*</TransformWrapper>*/}
+                                    </TransformComponent>
+
+                                </TransformWrapper>
                             </div>
                         </div>
                         <Menubutton toggleCancel={toggleCancel}  />

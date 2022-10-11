@@ -1,3 +1,12 @@
+
+
+@font-face {
+    font-family: "Brush Script MT";   /*Can be any text*/
+    src: local("BrushScriptStd"),
+    url("../fonts/brushscript/BrushScriptStd.otf") format("otf");
+}
+
+
 .btn {
     color:black;
     --box-shadow:none;
@@ -32,6 +41,8 @@
 .current_font {
     width: 80px;
     font-family: "Brush Script MT";
+
+    --ion-font-family: "Brush Script MT";
     font-size: 18px;
 }
 .button_grp {
@@ -89,6 +100,7 @@
 .current_font {
   color:black;
     font-family: "Brush Script MT";
+    --ion-font-family: "Brush Script MT";
     font-size: 18px;
     border: 0;
     border-radius: 0;
