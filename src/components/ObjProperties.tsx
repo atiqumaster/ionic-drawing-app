@@ -13,6 +13,10 @@ const ObjProperties = () => {
     const {isImageToolbarToggle, setImageToolbarToggle}:any = useContext(CanvasStore);
     const objectClone = () => {
 
+        setTextBoxToggle(false)
+        setImageToolbarToggle(false)
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
+
         let cloned = canvas.getActiveObject()
         cloned.clone(function(clonedObj:any) {
 
@@ -103,6 +107,9 @@ const ObjProperties = () => {
 
 
     const bringToFronts = () => {
+        setTextBoxToggle(false)
+        setImageToolbarToggle(false)
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.bringToFront()
         canvas.discardActiveObject().renderAll()
@@ -112,6 +119,9 @@ const ObjProperties = () => {
 
 
     const sendToBacks = () => {
+        setTextBoxToggle(false)
+        setImageToolbarToggle(false)
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.sendToBack()
         canvas.discardActiveObject().renderAll()

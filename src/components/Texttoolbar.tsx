@@ -52,6 +52,7 @@ const Texttoolbar = () => {
 
 
     const fontBold = () => {
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
 
         if(canvas.getActiveObject().fontWeight == 'bold') {
             setOpacityBold({opacity: 0.2});
@@ -79,6 +80,7 @@ const Texttoolbar = () => {
     }
 
     const fontStyle = () => {
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         if(canvas.getActiveObject().fontStyle == 'italic') {
             setOpacityItalic({opacity: 0.2});
             canvas.getActiveObject().set("fontStyle","normal");
@@ -104,6 +106,8 @@ const Texttoolbar = () => {
     }
 
     const alignLeft = () => {
+        setAlignBoxToggle(false)
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'left');
         canvas.renderAll();
@@ -112,6 +116,8 @@ const Texttoolbar = () => {
 
     }
     const alignCenter = () => {
+        setAlignBoxToggle(false)
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'center');
         canvas.renderAll();
@@ -119,6 +125,8 @@ const Texttoolbar = () => {
         setFormatAlignText('format_align_center')
     }
     const alignRight = () => {
+        setAlignBoxToggle(false)
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'right');
         canvas.renderAll();
@@ -126,6 +134,8 @@ const Texttoolbar = () => {
         setFormatAlignText('format_align_right')
     }
     const alignJustify = () => {
+        setAlignBoxToggle(false)
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'justify');
         canvas.renderAll();

@@ -9,6 +9,7 @@ import {Menubutton} from "../components/Menubutton";
 import {CanvasStore} from "../Store/CanvasStore";
 import {CancelWarning} from '../components/CancelWarning';
 import { useHistory } from "react-router-dom";
+import Draggable from 'react-draggable';
 import {  Link  } from 'react-router-dom';
 
 import {
@@ -57,7 +58,14 @@ const Drawing  = () => {
     const [tempCanvas, setTempCanvas]: any = useState()
     const ref = useRef<ReactZoomPanPinchRef | null>(null);
     //const ref = useRef(null);
-    const [panningEnable, setPanningEnable]: any = useState(true)
+
+    // zoom panning state
+    const [zoom, setZoom]: any = useState(false)
+    const [panning, setPanning]: any = useState(true)
+    const [PanningX, setPanningX]: any = useState(null)
+    const [PanningY, setPanningY]: any = useState(null)
+
+
     let history = useHistory();
 
     // First reload initCanvas function trigger
@@ -154,54 +162,31 @@ const Drawing  = () => {
     useOutsideAlerter(wrapperRef);
 
 
+
+
+
     // panning two finger Detect
 
-
-    // const onChangeStart = (refWrapper:any ) => {
-    //
-    //     console.log(refWrapper.state.positionX)
-    //
-    // }
-    // const onChangeStop = (refWrapper:any ) => {
-    //     console.log(refWrapper.state)
-    //
-    // }
-
-
-
-        // document.body.addEventListener('touchstart', function(e:any){
-        //     if(e.touches.length > 1) {
-        //         e.preventDefault()
-        //         prompt("give")
-        //     }else {
-        //         prompt("nevere give")
-        //     }
-        //
-        //     // alert pageX coordinate of touch point
-        // }, false)
-    //     document.body.addEventListener('touchend', function(e:any){
-    //
-    //             e.preventDefault()
-    //             prompt("NEVER")
+    // const box = document.getElementById('test') as HTMLDivElement | null;
     //
     //
-    //         // alert pageX coordinate of touch point
-    //     }, false)
+    // box?.addEventListener('touchmove', function (e) {
     //
+    //     e.preventDefault()
+    //     // let pointer = canvas.getPointer(e);
+    //     // let posX = pointer.x;
+    //     // let posY = pointer.y;
     //
-    // document.body.addEventListener('touchmove', function(e:any){
+    //     let x:any = e.touches[0].clientX ;
+    //     let y:any = e.touches[0].clientY ;
     //
-    //     if(e.touches.length > 1) {
-    //         e.preventDefault()
-    //         prompt("give")
-    //     }else {
-    //         prompt("nevere give")
-    //     }
+    //         console.log(x);
+    //         console.log(y);
     //
+    //     setPanningX(x)
+    //     setPanningY(y)
     //
-    //     // alert pageX coordinate of touch point
-    // }, false)
-
+    // });
 
     // @ts-ignore
     return (
@@ -212,6 +197,8 @@ const Drawing  = () => {
                     <CancelWarning toggleCancel={toggleCancel}  yesCancel={yesCancel}  />
                     :
                     <IonContent className={drawing.hiddenFlow}>
+
+
                         <Titlebar/>
                         <div ref={wrapperRef} className={drawing.handleCanvasHeight}>
                             <Toolbar/>
@@ -219,20 +206,19 @@ const Drawing  = () => {
                             <div   className={drawing.HandleCanvas} >
                                 <TransformWrapper
                                     ref={ref}
-
                                     minScale={0.5}
                                     maxScale={7}
-                                    pinch={{disabled:false}}
                                     doubleClick={ {disabled:true}}
-                                    panning={{ disabled: panningEnable }}
-                                    // onPanningStart={onChangeStart }
-                                    // onPanningStop={onChangeStop }
-
+                                    pinch={{disabled:false}}
+                                    panning={{ disabled: panning }}
                                 >
 
                                     <TransformComponent >
 
-                                         <canvas id="canvas"   />
+
+                                              <div>
+                                                <canvas id="canvas"    />
+                                            </div>
 
                                     </TransformComponent>
 
@@ -248,3 +234,4 @@ const Drawing  = () => {
 
 
 export default Drawing;
+

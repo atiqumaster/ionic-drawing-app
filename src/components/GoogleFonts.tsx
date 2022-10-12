@@ -12,7 +12,8 @@ const GoogleFonts = () => {
         "Black Han Sans" ,"Montserrat", "Playball" , "Poppins" , " Ultra" , "Smythe" , " Rock Salt","Brush Script MT" ]
 
     const selectFonts = (event:any) => {
-
+        setFontToggle(false)
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('fontFamily', event.target.value);
         canvas.renderAll();

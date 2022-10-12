@@ -40,9 +40,7 @@
 
 .current_font {
     width: 80px;
-    font-family: "Brush Script MT";
-
-    --ion-font-family: "Brush Script MT";
+    font-family: serif;
     font-size: 18px;
 }
 .button_grp {
@@ -99,8 +97,7 @@
 
 .current_font {
   color:black;
-    font-family: "Brush Script MT";
-    --ion-font-family: "Brush Script MT";
+    font-family: serif;
     font-size: 18px;
     border: 0;
     border-radius: 0;

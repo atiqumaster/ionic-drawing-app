@@ -27,6 +27,7 @@ const Imagetoolbar = () => {
     }
 
     const flipVertical = () => {
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         setFlipVertical(!isFlipVertical);
         let activeObj = canvas.getActiveObject();
         if(isFlipVertical === false) {
@@ -39,6 +40,7 @@ const Imagetoolbar = () => {
     }
 
     const  flipHorizontal = () => {
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         setFlipHorizontal(!isFlipHorizontal);
         let activeObj = canvas.getActiveObject();
         if(isFlipHorizontal === false) {
@@ -51,6 +53,7 @@ const Imagetoolbar = () => {
     }
 
     const imgInverted = () =>  {
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         let filter ;
         if(isimgInverted === false) {
