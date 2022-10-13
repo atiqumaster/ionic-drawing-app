@@ -111,7 +111,11 @@ const Drawing  = () => {
 
     const yesCancel = () => {
         //history.replace("/");
-          history.go(-2);
+        if(isCanvasDesign?.designJson ) {
+            history.go(-1);
+        } else{
+            history.go(-2);
+        }
     }
 
     const toggleCancel = () => {

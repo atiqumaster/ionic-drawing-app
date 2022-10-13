@@ -33,6 +33,7 @@ const items: Item[] = [
 const Home = () => {
  const { setDimension }:any = useContext(CanvasStore);
     const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
+    const { setCanvasDesign }: any = useContext(CanvasStore);
     return (
         <>
             <IonToolbar className={sizes.sizebg} >
@@ -46,6 +47,7 @@ const Home = () => {
                         <div className={sizes.handleItem} key={i}  >
                             <Link to="/drawing"  className={sizes.linkBox}  onClick={()=>{
                                 setTitleInput("")
+                                setCanvasDesign("")
                                 setDimension(
                                     {
                                         width:image.width,
