@@ -9,8 +9,7 @@ import {Menubutton} from "../components/Menubutton";
 import {CanvasStore} from "../Store/CanvasStore";
 import {CancelWarning} from '../components/CancelWarning';
 import { useHistory } from "react-router-dom";
-import Draggable from 'react-draggable';
-import {  Link  } from 'react-router-dom';
+
 
 import {
     TransformWrapper,
@@ -18,7 +17,7 @@ import {
     ReactZoomPanPinchProps,
     ReactZoomPanPinchRef,
 } from "react-zoom-pan-pinch";
-import {alert} from "ionicons/icons";
+
 
 declare global {
     interface Window {
@@ -37,11 +36,7 @@ interface AppContextInterface {
     pausePanning:any;
     PinchToZoom:any;
 }
-// interface Props {
-//     style?: any;
-//     className?: any;
-//
-// }
+
 type Props = {
     style?: any;
     className?: any;
@@ -62,8 +57,6 @@ const Drawing  = () => {
     // zoom panning state
     const [zoom, setZoom]: any = useState(false)
     const [panning, setPanning]: any = useState(true)
-    const [PanningX, setPanningX]: any = useState(null)
-    const [PanningY, setPanningY]: any = useState(null)
 
 
     let history = useHistory();
@@ -171,27 +164,6 @@ const Drawing  = () => {
 
     // panning two finger Detect
 
-    // const box = document.getElementById('test') as HTMLDivElement | null;
-    //
-    //
-    // box?.addEventListener('touchmove', function (e) {
-    //
-    //     e.preventDefault()
-    //     // let pointer = canvas.getPointer(e);
-    //     // let posX = pointer.x;
-    //     // let posY = pointer.y;
-    //
-    //     let x:any = e.touches[0].clientX ;
-    //     let y:any = e.touches[0].clientY ;
-    //
-    //         console.log(x);
-    //         console.log(y);
-    //
-    //     setPanningX(x)
-    //     setPanningY(y)
-    //
-    // });
-
     // @ts-ignore
     return (
 
@@ -217,13 +189,8 @@ const Drawing  = () => {
                                     panning={{ disabled: panning }}
                                 >
 
-                                    <TransformComponent >
-
-
-                                              <div>
-                                                <canvas id="canvas"    />
-                                            </div>
-
+                                    <TransformComponent>
+                                        <canvas id="canvas"    />
                                     </TransformComponent>
 
                                 </TransformWrapper>

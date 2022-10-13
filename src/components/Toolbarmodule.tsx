@@ -1,5 +1,4 @@
 import React, {useContext, useState, useMemo, memo, useEffect} from 'react';
-import { fabric } from 'fabric';
 import { IonButton } from '@ionic/react';
 import toolbarmodule from "./Toolbarmodule.module.css";
 import {Texttoolbar} from "./Texttoolbar";
@@ -7,6 +6,7 @@ import {Imagetoolbar} from "./Imagetoolbar";
 import Draggable from 'react-draggable';
 import {CanvasStore} from "../Store/CanvasStore";
 import 'fabric-history';
+import { fabric } from 'fabric';
 
 const Toolbarmodule = () => {
    // console.log("Toolbarmodule")
@@ -293,9 +293,7 @@ const Toolbarmodule = () => {
         setOpacityBold({opacity: 0.2});
         setOpacityItalic({opacity: 0.2 });
         setUndo({opacity: 1});
-        // if(canvas.backgroundColor=='black') {
-        //     canvas.getActiveObject().set("fill", "#fff");
-        // }
+
     }
 
     function HandelObjectRemove() {
@@ -350,7 +348,7 @@ function  HandelMouseGesture (e :any){
         // set Base64i img in canvas using fabric img Object
 
         fabric.Image.fromURL(base64 , function(myImg:any) {
-           console.log(myImg.width-200)
+
            let scaleHeight = canvas.height;
            let scaleWidth = canvas.width -30;
 
@@ -365,14 +363,13 @@ function  HandelMouseGesture (e :any){
                 left: canvas.width/2,
                 top: canvas.height/2,
             })
-            canvas.add(myImg);
-            canvas.centerObject(myImg);
 
-            let object = canvas.getActiveObject();
             let filter = new fabric.Image.filters.Grayscale();
-            object.filters.push(filter);
-            object.applyFilters();
-        });
+            myImg.filters.push(filter);
+            myImg.applyFilters();
+               canvas.add(myImg);
+                   canvas.renderAll()
+            });
 
         setImageToolbarToggle(false)
     }
