@@ -11,6 +11,10 @@ const ObjProperties = () => {
     const { isObjLockIcon, setObjLockIcon }:any = useContext(CanvasStore);
     const { setTextBoxToggle }:any = useContext(CanvasStore);
     const {isImageToolbarToggle, setImageToolbarToggle}:any = useContext(CanvasStore);
+    const { lockedObj ,setLockedObj  } :any = useContext(CanvasStore);
+
+
+
     const objectClone = () => {
 
         setTextBoxToggle(false)
@@ -59,6 +63,8 @@ const ObjProperties = () => {
       let activeObject = canvas.getActiveObject();
       if(activeObject.lockMovementX && activeObject.lockMovementY ) {
 
+          activeObject.set({isLocked:false})
+
           activeObject.set({lockMovementX: false, lockMovementY: false, editable:true , hasControls: true, borderDashArray: [0]})
 
 
@@ -68,7 +74,7 @@ const ObjProperties = () => {
 
 
       }else{
-
+          activeObject.set({isLocked:true})
           activeObject.set({lockMovementX: true, lockMovementY: true ,editable:false , hasControls:false , borderDashArray:[3]})
 
           setObjLock("UnLock");
@@ -87,13 +93,15 @@ const ObjProperties = () => {
       activeObject._objects.forEach((o:any) => {
 
           if(o.lockMovementX && o.lockMovementY ) {
-
+              setLockedObj(true)
               o.set({lockMovementX: false, lockMovementY: false, editable:true , hasControls: true, borderDashArray: [0]})
-
+              activeObject.set({lockMovementX: false, lockMovementY: false, editable:true , hasControls: true, borderDashArray: [0]})
 
           } else{
 
+              setLockedObj(false)
               o.set({lockMovementX: true, lockMovementY: true ,  editable:false , hasControls:false , borderDashArray:[3]})
+              activeObject.set({lockMovementX: true, lockMovementY: true ,  editable:false , hasControls:false , borderDashArray:[3]})
 
           }
       })

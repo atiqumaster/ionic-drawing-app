@@ -40,6 +40,8 @@ const Toolbarmodule = () => {
     const { setImageToolbarToggle}:any = useContext(CanvasStore);
     const { setObjLockIcon }:any = useContext(CanvasStore);
     const { setFormatAlignText }:any = useContext(CanvasStore);
+    const { lockedObj ,setLockedObj  } :any = useContext(CanvasStore);
+
     const styles = {
         borderRight: '2px solid black',
     };
@@ -72,7 +74,7 @@ const Toolbarmodule = () => {
                 'selection:cleared' : HandleCleared ,
                 'object:added': HandelObjectAdd ,
                 'object:removed' : HandelObjectRemove,
-                'touch:gesture' : HandelMouseGesture
+
             });
         }
     } , [canvas?.on( 'selection:updated')]  )
@@ -84,7 +86,7 @@ const Toolbarmodule = () => {
             'selection:cleared' : HandleCleared,
             'object:added': HandelObjectAdd ,
             'object:removed' : HandelObjectRemove,
-            'touch:gesture' : HandelMouseGesture
+
         });
 
     }
@@ -158,11 +160,11 @@ const Toolbarmodule = () => {
         if( canvas.getActiveObject().type === 'activeSelection') {
             canvas.getActiveObject()._objects.forEach((o:any) => {
                 if(o.lockMovementX && o.lockMovementY ) {
-
+                    canvas.getActiveObject().set({lockMovementX: true, lockMovementY: true ,editable:false , hasControls:false , borderDashArray:[3]})
                     setObjLock("UnLock");
                     setObjLockIcon("lock_open")
                 } else{
-
+                    canvas.getActiveObject().set({lockMovementX: false, lockMovementY: false, editable:true , hasControls: true, borderDashArray: [0]})
                     setObjLock("Lock");
                     setObjLockIcon("lock")
                 }
@@ -176,12 +178,12 @@ const Toolbarmodule = () => {
         obj._objects.forEach((o:any) => {
 
             if (o.type === 'i-text') {
-                console.log("text is here")
+
                 setTextToolbar(true);
                 setImageToolbar(false);
 
                 } else if (o.type === 'image') {
-                console.log("Image is here")
+
                 setImageToolbar(true);
                 setTextToolbar(false);
             }
@@ -238,7 +240,6 @@ const Toolbarmodule = () => {
             })
 
 
-
             obj._objects.forEach((o:any) => {
                 if (o.fontStyle == 'normal') {
 
@@ -248,27 +249,6 @@ const Toolbarmodule = () => {
                 }
 
             })
-
-        }
-
-        if(canvas.getActiveObject().type === 'activeSelection' ) {
-
-            objects._objects.forEach((o:any) => {
-
-                if(o.lockMovementX && o.lockMovementY ) {
-
-
-
-                    objects.set({lockMovementX: true, lockMovementY: true ,editable:false , hasControls:false , borderDashArray:[3]})
-
-                }
-
-                // setObjLock("UnLock");
-                // setObjLockIcon("lock_open")
-
-                canvas.renderAll()
-            })
-
 
         }
 
@@ -282,9 +262,10 @@ const Toolbarmodule = () => {
     }
 
 
- function HandleCleared() {
+ function HandleCleared(e:any) {
      setTextToolbar(false);
      setImageToolbar(false);
+
 
  }
 
@@ -301,32 +282,25 @@ const Toolbarmodule = () => {
         setRedo({opacity: 1});
     }
 
-function  HandelMouseGesture (e :any){
-    console.log(e)
-
-
-}
-
 
 
     const showTextToolbar = () => {
 
             setTextToolbar(!isTextToolbar);
-            let iTextSample = new fabric.IText(     "Double tap \nto edit"  , {
+            let iTextSample:any = new fabric.IText("Double tap \nto edit"  , {
             originX: 'center' ,
             originY: 'center',
             lineHeight: 1.1,
             fontSize: 28,
-                left: canvas.width/2,
-                top: canvas.height/2,
+            left: canvas.width/2,
+            top: canvas.height/2,
 
         });
-
 
         // push iText in canvas
         canvas.add(iTextSample);
         canvas.setActiveObject(iTextSample );
-
+        canvas.renderAll()
         if(canvas.backgroundColor=='black') {
             canvas.getActiveObject().set("fill", "#fff");
         }
@@ -349,13 +323,16 @@ function  HandelMouseGesture (e :any){
 
         fabric.Image.fromURL(base64 , function(myImg:any) {
 
-           let scaleHeight = canvas.height;
+           let scaleHeight = canvas.height -100;
            let scaleWidth = canvas.width -30;
 
             if (myImg.width > myImg.height ) {
                 myImg.scaleToWidth(scaleWidth )
+
+
             } else {
                 myImg.scaleToHeight(scaleHeight  )
+
             }
             myImg.set({
                 originX: 'center' ,
@@ -367,8 +344,9 @@ function  HandelMouseGesture (e :any){
             let filter = new fabric.Image.filters.Grayscale();
             myImg.filters.push(filter);
             myImg.applyFilters();
-               canvas.add(myImg);
-                   canvas.renderAll()
+            canvas.add(myImg);
+            canvas.setActiveObject(myImg );
+            canvas.renderAll()
             });
 
         setImageToolbarToggle(false)
@@ -380,11 +358,9 @@ function  HandelMouseGesture (e :any){
 
             fileReader.readAsDataURL(file);
 
-
             fileReader.onload =  () => {
 
                 resolve(fileReader.result);
-
 
             };
 
@@ -404,13 +380,11 @@ function  HandelMouseGesture (e :any){
 
 
     const undo = () => {
-     console.log("re");
+
         canvas.undo();
         canvas.discardActiveObject().renderAll();
 
-
         if(canvas.historyUndo.length) {
-
 
             setRedo({opacity:1})
 
@@ -443,7 +417,6 @@ function  HandelMouseGesture (e :any){
 
                obj.set("fill", "#fff");
             })
-
 
             setColorModeIcon("light_mode")
 

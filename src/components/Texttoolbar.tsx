@@ -52,6 +52,7 @@ const Texttoolbar = () => {
 
 
     const fontBold = () => {
+
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
 
         if(canvas.getActiveObject().fontWeight == 'bold') {
@@ -66,13 +67,15 @@ const Texttoolbar = () => {
 
         if(canvas.getActiveObject().type === 'activeSelection') {
             canvas.getActiveObject()._objects.forEach((o:any) => {
-                if(o.fontWeight == 'bold') {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+                    if (o.fontWeight == 'bold') {
 
-                    setOpacityBold({opacity: 0.2});
-                    o.set("fontWeight","400");
-                } else{
-                    setOpacityBold({opacity: 1});
-                    o.set("fontWeight","bold");
+                        setOpacityBold({opacity: 0.2});
+                        o.set("fontWeight", "400");
+                    } else {
+                        setOpacityBold({opacity: 1});
+                        o.set("fontWeight", "bold");
+                    }
                 }
             })
         }
@@ -91,13 +94,15 @@ const Texttoolbar = () => {
 
         if(canvas.getActiveObject().type === 'activeSelection') {
             canvas.getActiveObject()._objects.forEach((o:any) => {
-                if(o.fontStyle == 'italic') {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+                    if (o.fontStyle == 'italic') {
 
-                    setOpacityItalic({opacity: 0.2});
-                    o.set("fontStyle","normal");
-                } else{
-                    setOpacityItalic({opacity: 1});
-                    o.set("fontStyle","italic");
+                        setOpacityItalic({opacity: 0.2});
+                        o.set("fontStyle", "normal");
+                    } else {
+                        setOpacityItalic({opacity: 1});
+                        o.set("fontStyle", "italic");
+                    }
                 }
             })
         }
