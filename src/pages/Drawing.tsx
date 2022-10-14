@@ -9,7 +9,7 @@ import {Menubutton} from "../components/Menubutton";
 import {CanvasStore} from "../Store/CanvasStore";
 import {CancelWarning} from '../components/CancelWarning';
 import { useHistory } from "react-router-dom";
-
+import { useGesture , useDrag} from "react-use-gesture";
 
 import {
     TransformWrapper,
@@ -56,11 +56,10 @@ const Drawing  = () => {
 
     // zoom panning state
     const [zoom, setZoom]: any = useState(false)
-    const [panning, setPanning]: any = useState(true)
 
-
+    let [canvasMove , setCanvasMove]:any = useState({ x: 0, y: 0 })
     let history = useHistory();
-
+    const [panning, setPanning]: any = useState(true)
     // First reload initCanvas function trigger
 
     useEffect(() => {
@@ -163,6 +162,26 @@ const Drawing  = () => {
 
 
     // panning two finger Detect
+    // let canvasRef:any  = useRef()
+    // useGesture(
+    //     {
+    //         onDrag: ({ offset: [dx, dy  ] } ) => {
+    //
+    //             setCanvasMove((crop:any) => ({ ...crop, x: dx, y: dy }));
+    //         },
+    //         onPinch: ({ offset: [d] }) => {
+    //             setCanvasMove((crop:any) => ({ ...crop, scale: 1 + d / 50 }));
+    //         },
+    //     },
+    //     {
+    //         domTarget: canvasRef,
+    //         eventOptions: { passive: false },
+    //     }
+    //
+    //
+    // );
+
+
 
     // @ts-ignore
     return (
@@ -190,12 +209,15 @@ const Drawing  = () => {
                                 >
 
                                     <TransformComponent>
-                                        <canvas id="canvas"    />
-                                    </TransformComponent>
 
+
+                                        <canvas id="canvas"   />
+
+                                    </TransformComponent>
                                 </TransformWrapper>
                             </div>
                         </div>
+
                         <Menubutton toggleCancel={toggleCancel}  />
                     </IonContent>
             }
