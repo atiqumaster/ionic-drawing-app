@@ -4,7 +4,6 @@ import Objproperties from "./ObjProperties.module.css"
 
 
 const ObjProperties = () => {
-
     const { canvas }:any = useContext(CanvasStore);
     const { isToggleAdjust, setToggleAdjust }:any = useContext(CanvasStore);
     const { isObjLock, setObjLock }:any = useContext(CanvasStore);
@@ -15,7 +14,7 @@ const ObjProperties = () => {
 
 
     const objectClone = () => {
-
+        console.log("clone speed test")
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return

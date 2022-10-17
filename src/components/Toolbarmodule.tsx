@@ -65,6 +65,7 @@ const Toolbarmodule = () => {
 
     }
 
+
     useEffect(()=> {
         eventStart()
         return () => {
@@ -77,7 +78,7 @@ const Toolbarmodule = () => {
 
             });
         }
-    } , [canvas?.on( 'selection:updated')]  )
+    } ,  [canvas?.on( 'selection:updated')]  )
 
     function eventStart() {
         canvas?.on({
@@ -93,10 +94,9 @@ const Toolbarmodule = () => {
 
 
     function HandleControls(){
-          // console.log("selection:updated");
+
         if(canvas?.getActiveObject()?.type == 'i-text')
         {
-
             setTextToolbar(true);
             setImageToolbar(false);
         }
@@ -109,12 +109,10 @@ const Toolbarmodule = () => {
         let objects = canvas.getActiveObject();
 
         objects.set({
-
             borderColor: '#4285F4',
             cornerColor: '#4285F4',
             cornerSize: 9,
             transparentCorners: true ,
-
         })
 
         objects.setControlsVisibility({
@@ -131,9 +129,7 @@ const Toolbarmodule = () => {
         });
 
 
-
         fabric.Object.prototype.controls.mtr.offsetY = -20
-
 
         if(canvas.getActiveObject().fontWeight == 'bold' ) {
             setOpacityBold({opacity: 1});
@@ -151,7 +147,6 @@ const Toolbarmodule = () => {
             setObjLock("UnLock");
             setObjLockIcon("lock_open")
         }else{
-
             setObjLock("Lock");
             setObjLockIcon("lock")
             canvas.renderAll()
@@ -174,24 +169,24 @@ const Toolbarmodule = () => {
 
 
         if( canvas.getActiveObject().type === 'activeSelection') {
-        let obj = canvas.getActiveObject()
-        obj._objects.forEach((o:any) => {
+            let obj = canvas.getActiveObject()
+            obj._objects.forEach((o:any) => {
 
-            if (o.type === 'i-text') {
+                    if (o.type === 'i-text') {
 
-                setTextToolbar(true);
-                setImageToolbar(false);
+                        setTextToolbar(true);
+                        setImageToolbar(false);
 
-                } else if (o.type === 'image') {
+                    } else if (o.type === 'image') {
 
-                setImageToolbar(true);
-                setTextToolbar(false);
-            }
+                        setImageToolbar(true);
+                        setTextToolbar(false);
+                    }
 
 
-            }
-        );
-       }
+                }
+            );
+        }
 
         if(canvas.getActiveObject().textAlign === 'left' ) {
             setFormatAlignText('format_align_left')
@@ -243,7 +238,6 @@ const Toolbarmodule = () => {
             obj._objects.forEach((o:any) => {
                 if (o.fontStyle == 'normal') {
 
-
                     setOpacityItalic({opacity: 0.2});
                     canvas.renderAll();
                 }
@@ -258,16 +252,16 @@ const Toolbarmodule = () => {
         setFontToggle(false)
         setImageToolbarToggle(false)
 
-       canvas.renderAll()
+        canvas.renderAll()
     }
 
 
- function HandleCleared(e:any) {
-     setTextToolbar(false);
-     setImageToolbar(false);
+    function HandleCleared(e:any) {
+        setTextToolbar(false);
+        setImageToolbar(false);
 
 
- }
+    }
 
     function HandelObjectAdd() {
 
@@ -376,9 +370,6 @@ const Toolbarmodule = () => {
 
 
 
-
-
-
     const undo = () => {
 
         canvas.undo();
@@ -403,7 +394,6 @@ const Toolbarmodule = () => {
         else setRedo({opacity: 0.2});
 
     }
-
 
 
     const handleColorMode = () => {

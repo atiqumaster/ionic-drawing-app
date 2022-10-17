@@ -1,8 +1,7 @@
 import React from 'react';
 import { IonGrid, IonRow, IonCol, IonContent , IonButton } from '@ionic/react';
 import cancelwarning from './CancelWarning.module.css'
-import deleteWarning from "./DeleteWarning.module.css";
-import {  Link  } from 'react-router-dom';
+
 
 const CancelWarning = (props:any) => {
 

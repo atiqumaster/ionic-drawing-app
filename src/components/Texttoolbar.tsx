@@ -7,7 +7,7 @@ import { ObjProperties } from './ObjProperties';
 
 
 const Texttoolbar = () => {
-
+    console.log("text toolbar speed test")
     const {isTextBoxToggle, setTextBoxToggle}:any = useContext(CanvasStore);
     const {isAlignBoxToggle, setAlignBoxToggle} :any= useContext(CanvasStore);
     const {isFontToggle, setFontToggle}:any = useContext(CanvasStore);
@@ -16,7 +16,7 @@ const Texttoolbar = () => {
     const { canvas }:any = useContext(CanvasStore);
     const { isAlignToggleAdjust }:any = useContext(CanvasStore);
     const { formatAlignText , setFormatAlignText }:any = useContext(CanvasStore);
-   // const [formatAlignTextCenter , setFormatAlignTextCenter ] = useState("format_align_center");
+
     const ref = useRef(null);
 
 

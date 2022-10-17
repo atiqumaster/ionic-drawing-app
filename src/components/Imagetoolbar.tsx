@@ -4,15 +4,13 @@ import {IonButton } from '@ionic/react';
 import imagetoolbar from "./Imagetoolbar.module.css"
 import {CanvasStore} from "../Store/CanvasStore";
 import { ObjProperties } from './ObjProperties';
-
+import 'fabric-history';
 
 const Imagetoolbar = () => {
-
+    console.log("image toolbar speed test")
     const { canvas }:any = useContext(CanvasStore);
 
 
-    const [isFlipVertical  , setFlipVertical ] = useState(false);
-    const [isFlipHorizontal  , setFlipHorizontal] = useState(false);
     const [isimgInverted  , setimgInverted] = useState(false);
     const {isImageToolbarToggle, setImageToolbarToggle}:any = useContext(CanvasStore);
     const styles = {
@@ -28,6 +26,7 @@ const Imagetoolbar = () => {
     const  flipHorizontal = () => {
 
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
+
 
         if(canvas.getActiveObject().type != 'activeSelection') {
             if (canvas.getActiveObject().flipX === false) {
@@ -61,13 +60,15 @@ const Imagetoolbar = () => {
 
     const flipVertical = () => {
 
+
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
 
         if(canvas.getActiveObject().type != 'activeSelection') {
-            if (canvas.getActiveObject().flipY === false) {
-                canvas.getActiveObject().set('flipY', true);
+            let obj = canvas.getActiveObject()
+            if (obj.flipY === false) {
+                obj.set('flipY', true);
             } else {
-                canvas.getActiveObject().set('flipY', false);
+                obj.set('flipY', false);
             }
         }
 
@@ -115,6 +116,7 @@ const Imagetoolbar = () => {
                 setimgInverted(false);
             }
         }
+
         let filtering:any ;
 
         if(canvas.getActiveObject().type === 'activeSelection') {
