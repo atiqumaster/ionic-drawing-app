@@ -26,9 +26,8 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { AnyMxRecord } from 'dns';
 import app from './App.module.css'
-import axios from "axios";
+
 
 
 setupIonicReact();

@@ -14,7 +14,6 @@ const ObjProperties = () => {
     const { lockedObj ,setLockedObj  } :any = useContext(CanvasStore);
 
 
-
     const objectClone = () => {
 
         setTextBoxToggle(false)
@@ -22,21 +21,26 @@ const ObjProperties = () => {
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
 
         let cloned = canvas.getActiveObject()
+
         cloned.clone(function(clonedObj:any) {
 
             canvas.discardActiveObject();
             clonedObj.set({
-                left: clonedObj.left + 20,
+
+                left:  clonedObj.left + 20,
                 top: clonedObj.top + 20,
-                 evented: true,
+
+                evented: true,
             });
 
             if (clonedObj.type === 'activeSelection') {
                 // active selection needs a reference to the canvas.
+
                 clonedObj.canvas = canvas;
                 clonedObj.forEachObject(function(obj:any) {
                     canvas.add(obj);
                 });
+
             } else {
                 canvas.add(clonedObj);
             }
@@ -44,9 +48,12 @@ const ObjProperties = () => {
             canvas.requestRenderAll();
         });
 
+
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
     }
+
+
 
     const objectDelete = () => {
 
@@ -110,8 +117,6 @@ const ObjProperties = () => {
       setImageToolbarToggle(false)
   }
 
-
-
     const bringToFronts = () => {
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
@@ -150,6 +155,8 @@ const ObjProperties = () => {
         }
 
 
+
+
         if(canvas.getActiveObject().type === 'activeSelection') {
             canvas.getActiveObject()._objects.forEach((o:any) => {
                 if(o.lockMovementX == false && o.lockMovementY == false) {
@@ -163,6 +170,8 @@ const ObjProperties = () => {
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
     }
+
+
 
 
 
