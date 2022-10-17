@@ -72,14 +72,12 @@ const ObjProperties = () => {
           setObjLockIcon("lock")
 
 
-
       }else{
           activeObject.set({isLocked:true})
           activeObject.set({lockMovementX: true, lockMovementY: true ,editable:false , hasControls:false , borderDashArray:[3]})
 
           setObjLock("UnLock");
           setObjLockIcon("lock_open")
-
 
 
       }
@@ -118,8 +116,22 @@ const ObjProperties = () => {
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
-        let activeObj = canvas.getActiveObject();
-        activeObj.bringToFront()
+
+        if(canvas.getActiveObject().type != 'activeSelection') {
+            canvas.getActiveObject().bringToFront()
+
+        }
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+
+                    canvas.bringToFront(o)
+                }
+            })
+        }
+
         canvas.discardActiveObject().renderAll()
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
@@ -130,12 +142,29 @@ const ObjProperties = () => {
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
-        let activeObj = canvas.getActiveObject();
-        activeObj.sendToBack()
+
+
+        if(canvas.getActiveObject().type != 'activeSelection') {
+            canvas.getActiveObject().sendToBack()
+
+        }
+
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+
+                    canvas.sendToBack(o)
+                }
+            })
+        }
+
         canvas.discardActiveObject().renderAll()
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
     }
+
+
 
 
     return (

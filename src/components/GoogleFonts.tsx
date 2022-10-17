@@ -14,10 +14,24 @@ const GoogleFonts = () => {
     const selectFonts = (event:any) => {
         setFontToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
-        let activeObj = canvas.getActiveObject();
-        activeObj.set('fontFamily', event.target.value);
+
+        if(canvas.getActiveObject().type != 'activeSelection') {
+            let activeObj = canvas.getActiveObject();
+            activeObj.set('fontFamily', event.target.value);
+        }
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o: any) => {
+                if (o.lockMovementX == false && o.lockMovementY == false) {
+                   o.set('fontFamily', event.target.value);
+                }
+            })
+        }
+
         canvas.renderAll();
         setFontToggle(false)
+
+
     }
 
 

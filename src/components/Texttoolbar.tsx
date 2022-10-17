@@ -83,6 +83,7 @@ const Texttoolbar = () => {
     }
 
     const fontStyle = () => {
+
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         if(canvas.getActiveObject().fontStyle == 'italic') {
             setOpacityItalic({opacity: 0.2});
@@ -110,39 +111,81 @@ const Texttoolbar = () => {
 
     }
 
+
     const alignLeft = () => {
         setAlignBoxToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'left');
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+                    o.set('textAlign', 'left');
+                }
+            })
+        }
+
         canvas.renderAll();
         setAlignBoxToggle(false)
         setFormatAlignText('format_align_left')
 
     }
+
+
     const alignCenter = () => {
         setAlignBoxToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'center');
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+                    o.set('textAlign', 'center');
+                }
+            })
+        }
+
         canvas.renderAll();
         setAlignBoxToggle(false)
         setFormatAlignText('format_align_center')
     }
+
     const alignRight = () => {
         setAlignBoxToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'right');
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+                    o.set('textAlign', 'right');
+                }
+            })
+        }
+
         canvas.renderAll();
         setAlignBoxToggle(false)
         setFormatAlignText('format_align_right')
     }
+
+
     const alignJustify = () => {
         setAlignBoxToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
         let activeObj = canvas.getActiveObject();
         activeObj.set('textAlign', 'justify');
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+                    o.set('textAlign', 'justify');
+                }
+            })
+        }
+
         canvas.renderAll();
         setAlignBoxToggle(false)
         setFormatAlignText('format_align_justify')

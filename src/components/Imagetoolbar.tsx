@@ -20,57 +20,125 @@ const Imagetoolbar = () => {
     };
 
 
-
     const  showImageToolbar = () => {
         setImageToolbarToggle(!isImageToolbarToggle)
-
     }
 
-    const flipVertical = () => {
-        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
-        setFlipVertical(!isFlipVertical);
-        let activeObj = canvas.getActiveObject();
-        if(isFlipVertical === false) {
-
-            activeObj.set('flipY', true);
-        } else {
-            activeObj.set('flipY', false);
-        }
-        canvas.renderAll();
-    }
 
     const  flipHorizontal = () => {
-        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
-        setFlipHorizontal(!isFlipHorizontal);
-        let activeObj = canvas.getActiveObject();
-        if(isFlipHorizontal === false) {
 
-            activeObj.set('flipX', true);
-        } else {
-            activeObj.set('flipX', false);
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
+
+        if(canvas.getActiveObject().type != 'activeSelection') {
+            if (canvas.getActiveObject().flipX === false) {
+                canvas.getActiveObject().set('flipX', true);
+            } else {
+                canvas.getActiveObject().set('flipX', false);
+            }
         }
+
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+
+                    if (o.flipX === false) {
+                        console.log("nill true");
+                        o.set('flipX', true);
+
+                    } else {
+                        console.log("nill FALSE");
+                        o.set('flipX', false);
+
+                    }
+                }
+            })
+        }
+
         canvas.renderAll();
     }
+
+
+    const flipVertical = () => {
+
+        if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
+
+        if(canvas.getActiveObject().type != 'activeSelection') {
+            if (canvas.getActiveObject().flipY === false) {
+                canvas.getActiveObject().set('flipY', true);
+            } else {
+                canvas.getActiveObject().set('flipY', false);
+            }
+        }
+
+
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+
+                    if (o.flipY === false) {
+                        console.log("nill true");
+                        o.set('flipY', true);
+
+                    } else {
+                        console.log("nill FALSE");
+                        o.set('flipY', false);
+
+                    }
+                }
+            })
+        }
+
+
+        canvas.renderAll();
+    }
+
 
     const imgInverted = () =>  {
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
-        let activeObj = canvas.getActiveObject();
-        let filter ;
-        if(isimgInverted === false) {
 
-             filter = new fabric.Image.filters.Invert();
-            activeObj.filters.push(filter);
-            activeObj.applyFilters();
-            setimgInverted(true);
 
-        } else {
-            activeObj.filters.pop(filter);
-            activeObj.applyFilters();
-            setimgInverted(false);
+        if(canvas.getActiveObject().type != 'activeSelection') {
+            let filter:any ;
+            if(isimgInverted === false) {
+
+                filter = new fabric.Image.filters.Invert();
+
+                canvas.getActiveObject().filters.push(filter);
+
+                canvas.getActiveObject().applyFilters();
+                setimgInverted(true);
+
+            } else {
+                canvas.getActiveObject().filters.pop(filter);
+                canvas.getActiveObject().applyFilters();
+                setimgInverted(false);
+            }
         }
+        let filtering:any ;
 
+        if(canvas.getActiveObject().type === 'activeSelection') {
+            canvas.getActiveObject()._objects.forEach((o:any) => {
+                if(o.lockMovementX == false && o.lockMovementY == false) {
+                    if (isimgInverted === false) {
+                        filtering = new fabric.Image.filters.Invert();
+                        o.filters.push(filtering);
+                        o.applyFilters();
+
+                        setimgInverted(true);
+
+                    } else {
+                        o.filters.pop(filtering);
+                        o.applyFilters();
+
+                        setimgInverted(false);
+                    }
+                }
+            })
+        }
         canvas.renderAll();
     }
+
 
     // 👇️ check if user click outside of specific container
 

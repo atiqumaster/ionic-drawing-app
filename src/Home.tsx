@@ -34,7 +34,7 @@ const Home = () => {
         let localvar = await storage.get('myDesign') || '[]';
         let getLocalArray: any = JSON.parse(localvar);
         setThumbnail([...getLocalArray as []]);
-        console.log(getLocalArray.length)
+
         if(getLocalArray.length == 0) {
             setDesignHome(false)
 

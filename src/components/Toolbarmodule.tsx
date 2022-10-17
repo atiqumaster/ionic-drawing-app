@@ -407,26 +407,24 @@ const Toolbarmodule = () => {
 
 
     const handleColorMode = () => {
-        setColorMode(!isColorMOde);
+        if(canvas.backgroundColor=='black')  {
 
-        if(isColorMOde === false)  {
-
-            canvas.backgroundColor="black";
-            let objects = canvas.getObjects();
-            objects.forEach((obj:any)=>{
-
-               obj.set("fill", "#fff");
-            })
-
-            setColorModeIcon("light_mode")
-
-        } else {
-            canvas.backgroundColor="white";
             let objects = canvas.getObjects();
             objects.forEach((obj:any)=>{
                 obj.set("fill", "#000");
             })
+            canvas.backgroundColor="white";
             setColorModeIcon("dark_mode")
+
+        } else {
+
+            let objects = canvas.getObjects();
+            objects.forEach((obj:any)=>{
+
+                obj.set("fill", "#fff");
+            })
+            canvas.backgroundColor="black";
+            setColorModeIcon("light_mode")
         }
         canvas.renderAll();
     }
