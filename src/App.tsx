@@ -70,6 +70,7 @@ const App = () => {
                     <Route exact path="/" component={Home}   />
                     <Route  exact path="/sizes" component={Sizes}   />
                     <Route exact path="/drawing" component={Drawing}   />
+
                 </Switch>
 
             </IonReactRouter>

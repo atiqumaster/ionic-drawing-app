@@ -5,8 +5,6 @@ import {fabric} from "fabric";
 
 
 const Toolbar = () => {
-
-
     return (
         <>
             <Toolbarmodule/>

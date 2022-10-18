@@ -57,15 +57,17 @@ const Drawing  = () => {
     // zoom panning state
     const [zoom, setZoom]: any = useState(false)
 
-    let [canvasMove , setCanvasMove]:any = useState({ x: 0, y: 0 })
     let history = useHistory();
     const [panning, setPanning]: any = useState(true)
     // First reload initCanvas function trigger
+    const [canvasMove , setCanvasMove]:any = useState({ x: 0, y: 0 })
+
+
 
     useEffect(() => {
 
         initCanvas();
-
+        twoFingerPan();
 
     }, [cancelToggle]);
 
@@ -162,30 +164,70 @@ const Drawing  = () => {
 
 
     // panning two finger Detect
-    // let canvasRef:any  = useRef()
-    // useGesture(
-    //     {
-    //         onDrag: ({ offset: [dx, dy  ] } ) => {
-    //
-    //             setCanvasMove((crop:any) => ({ ...crop, x: dx, y: dy }));
-    //         },
-    //         onPinch: ({ offset: [d] }) => {
-    //             setCanvasMove((crop:any) => ({ ...crop, scale: 1 + d / 50 }));
-    //         },
-    //     },
-    //     {
-    //         domTarget: canvasRef,
-    //         eventOptions: { passive: false },
-    //     }
-    //
-    //
-    // );
+    function twoFingerPan() {
 
+        var container:any = document.querySelector("#container");
+
+        console.log(container);
+        var active:any = false;
+        var currentX:any;
+        var currentY:any;
+        var initialX:any;
+        var initialY:any;
+        var xOffset = 0;
+        var yOffset = 0;
+
+        container.addEventListener("touchstart", dragStart, false);
+        container.addEventListener("touchend", dragEnd, false);
+        container.addEventListener("touchmove", drag, false);
+
+
+        function dragStart(e:any) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[1].clientX - xOffset;
+                initialY = e.touches[1].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+
+        }
+
+        function dragEnd(e:any) {
+            initialX = currentX;
+            initialY = currentY;
+
+        }
+
+        function drag(e:any) {
+
+                e.preventDefault();
+
+                if (e.type === "touchmove") {
+                    currentX = e.touches[1].clientX - initialX;
+                    currentY = e.touches[1].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                 console.log('drag',currentX)
+                console.log('drag ',currentY)
+
+            setCanvasMove({ x:currentX , y:currentY })
+
+
+        }
+
+
+    }
 
 
     // @ts-ignore
     return (
-
         <>
             {
                 cancelToggle ?
@@ -210,10 +252,13 @@ const Drawing  = () => {
 
                                     <TransformComponent>
 
+                                        <div id="container"  style={{
+                                            transform: `translate3d(${canvasMove.x}px, ${canvasMove.y}px, 0px)`,
+                                        }} >
+                                            <canvas id="canvas" />
+                                        </div>
 
-                                        <canvas id="canvas"   />
-
-                                    </TransformComponent>
+                                     </TransformComponent>
                                 </TransformWrapper>
                             </div>
                         </div>
