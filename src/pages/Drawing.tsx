@@ -67,7 +67,7 @@ const Drawing  = () => {
     useEffect(() => {
 
         initCanvas();
-        twoFingerPan();
+
 
     }, [cancelToggle]);
 
@@ -142,7 +142,6 @@ const Drawing  = () => {
             function handleClickOutside(event:any) {
                 if (ref.current && !ref.current.contains(event.target)) {
 
-                    // console.log("nill");
                     canvas.discardActiveObject()
                     canvas.renderAll()
                 }
@@ -161,14 +160,15 @@ const Drawing  = () => {
 
 
 
-
-
     // panning two finger Detect
+    useEffect(()=>{
+        twoFingerPan()
+    } , [])
+
     function twoFingerPan() {
 
         var container:any = document.querySelector("#container");
 
-        console.log(container);
         var active:any = false;
         var currentX:any;
         var currentY:any;
@@ -214,14 +214,10 @@ const Drawing  = () => {
                 xOffset = currentX;
                 yOffset = currentY;
 
-                 console.log('drag',currentX)
-                console.log('drag ',currentY)
 
             setCanvasMove({ x:currentX , y:currentY })
 
-
         }
-
 
     }
 
@@ -251,7 +247,6 @@ const Drawing  = () => {
                                 >
 
                                     <TransformComponent>
-
                                         <div id="container"  style={{
                                             transform: `translate3d(${canvasMove.x}px, ${canvasMove.y}px, 0px)`,
                                         }} >
