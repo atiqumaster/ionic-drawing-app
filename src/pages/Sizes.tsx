@@ -34,6 +34,8 @@ const Home = () => {
  const { setDimension }:any = useContext(CanvasStore);
     const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
     const { setCanvasDesign }: any = useContext(CanvasStore);
+    const { setColorModeIcon}:any = useContext(CanvasStore);
+
     return (
         <>
             <IonToolbar className={sizes.sizebg} >
@@ -48,6 +50,7 @@ const Home = () => {
                             <Link to="/drawing"  className={sizes.linkBox}  onClick={()=>{
                                 setTitleInput("")
                                 setCanvasDesign("")
+                                setColorModeIcon("dark_mode")
                                 setDimension(
                                     {
                                         width:image.width,

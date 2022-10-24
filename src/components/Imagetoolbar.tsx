@@ -7,7 +7,7 @@ import { ObjProperties } from './ObjProperties';
 import 'fabric-history';
 
 const Imagetoolbar = () => {
-    console.log("image toolbar speed test")
+    console.log("img toolbar call")
     const { canvas }:any = useContext(CanvasStore);
 
 
@@ -42,11 +42,9 @@ const Imagetoolbar = () => {
                 if(o.lockMovementX == false && o.lockMovementY == false) {
 
                     if (o.flipX === false) {
-                        console.log("nill true");
                         o.set('flipX', true);
 
                     } else {
-                        console.log("nill FALSE");
                         o.set('flipX', false);
 
                     }
@@ -55,6 +53,7 @@ const Imagetoolbar = () => {
         }
 
         canvas.renderAll();
+        canvas.fire('object:modified');
     }
 
 
@@ -78,11 +77,11 @@ const Imagetoolbar = () => {
                 if(o.lockMovementX == false && o.lockMovementY == false) {
 
                     if (o.flipY === false) {
-                        console.log("nill true");
+
                         o.set('flipY', true);
 
                     } else {
-                        console.log("nill FALSE");
+
                         o.set('flipY', false);
 
                     }
@@ -92,6 +91,7 @@ const Imagetoolbar = () => {
 
 
         canvas.renderAll();
+        canvas.fire('object:modified');
     }
 
 

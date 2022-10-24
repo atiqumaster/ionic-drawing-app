@@ -7,7 +7,7 @@ import { ObjProperties } from './ObjProperties';
 
 
 const Texttoolbar = () => {
-    console.log("text toolbar speed test")
+    console.log("text toolbar call")
     const {isTextBoxToggle, setTextBoxToggle}:any = useContext(CanvasStore);
     const {isAlignBoxToggle, setAlignBoxToggle} :any= useContext(CanvasStore);
     const {isFontToggle, setFontToggle}:any = useContext(CanvasStore);

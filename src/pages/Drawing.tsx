@@ -10,13 +10,14 @@ import {CanvasStore} from "../Store/CanvasStore";
 import {CancelWarning} from '../components/CancelWarning';
 import { useHistory } from "react-router-dom";
 import { useGesture , useDrag} from "react-use-gesture";
-
+import Draggable from 'react-draggable';
 import {
     TransformWrapper,
     TransformComponent ,
     ReactZoomPanPinchProps,
     ReactZoomPanPinchRef,
 } from "react-zoom-pan-pinch";
+import {fastFood} from "ionicons/icons";
 
 
 declare global {
@@ -52,6 +53,7 @@ const Drawing  = () => {
     const [cancelToggle, setCancelToggle]: any = useState(false)
     const [tempCanvas, setTempCanvas]: any = useState()
     const ref = useRef<ReactZoomPanPinchRef | null>(null);
+
     //const ref = useRef(null);
 
     // zoom panning state
@@ -91,6 +93,7 @@ const Drawing  = () => {
 
         if(isCanvasDesign?.designJson && !tempCanvas)
         {
+
             fabricCanvas.loadFromJSON(isCanvasDesign?.designJson, fabricCanvas.renderAll.bind(fabricCanvas), ()=>{
             });
         }
@@ -159,8 +162,8 @@ const Drawing  = () => {
     useOutsideAlerter(wrapperRef);
 
 
+   // panning two finger Detect
 
-    // panning two finger Detect
     useEffect(()=>{
         twoFingerPan()
     } , [])
@@ -169,7 +172,6 @@ const Drawing  = () => {
 
         var container:any = document.querySelector("#container");
 
-        var active:any = false;
         var currentX:any;
         var currentY:any;
         var initialX:any;
@@ -180,7 +182,6 @@ const Drawing  = () => {
         container.addEventListener("touchstart", dragStart, false);
         container.addEventListener("touchend", dragEnd, false);
         container.addEventListener("touchmove", drag, false);
-
 
         function dragStart(e:any) {
             if (e.type === "touchstart") {
@@ -214,10 +215,10 @@ const Drawing  = () => {
                 xOffset = currentX;
                 yOffset = currentY;
 
+               setCanvasMove({x: currentX, y: currentY})
 
-            setCanvasMove({ x:currentX , y:currentY })
 
-        }
+         }
 
     }
 
@@ -247,14 +248,20 @@ const Drawing  = () => {
                                 >
 
                                     <TransformComponent>
+
                                         <div id="container"  style={{
                                             transform: `translate3d(${canvasMove.x}px, ${canvasMove.y}px, 0px)`,
+                                            position: 'relative',
+
                                         }} >
+
                                             <canvas id="canvas" />
+
                                         </div>
 
-                                     </TransformComponent>
+                                    </TransformComponent>
                                 </TransformWrapper>
+
                             </div>
                         </div>
 

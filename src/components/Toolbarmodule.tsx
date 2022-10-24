@@ -15,7 +15,6 @@ const Toolbarmodule = () => {
     const [isTextToolbar, setTextToolbar] = useState(false);
     const [isImageToolbar , setImageToolbar] = useState(false);
     const [isColorMOde, setColorMode] = useState(false);
-    const [isColorModeIcon, setColorModeIcon] = useState("dark_mode");
     const [baseImage , setBaseImg] = useState("");
     const [isUndo, setUndo] = useState({
         opacity:0.2
@@ -41,6 +40,7 @@ const Toolbarmodule = () => {
     const { setObjLockIcon }:any = useContext(CanvasStore);
     const { setFormatAlignText }:any = useContext(CanvasStore);
     const { lockedObj ,setLockedObj  } :any = useContext(CanvasStore);
+    const {isColorModeIcon, setColorModeIcon}:any = useContext(CanvasStore);
 
     const styles = {
         borderRight: '2px solid black',
@@ -76,6 +76,8 @@ const Toolbarmodule = () => {
                 'object:added': HandelObjectAdd ,
                 'object:removed' : HandelObjectRemove,
 
+
+
             });
         }
     } ,  [canvas?.on( 'selection:updated')]  )
@@ -88,9 +90,12 @@ const Toolbarmodule = () => {
             'object:added': HandelObjectAdd ,
             'object:removed' : HandelObjectRemove,
 
+
+
         });
 
     }
+
 
 
     function HandleControls(){
@@ -204,7 +209,6 @@ const Toolbarmodule = () => {
             let obj = canvas.getActiveObject()
             obj._objects.forEach((o:any) => {
                 if (o.fontWeight == 'bold') {
-                    console.log("bold2");
 
                     setOpacityBold({opacity: 1});
                     canvas.renderAll();
@@ -278,7 +282,7 @@ const Toolbarmodule = () => {
 
 
 
-    const showTextToolbar = () => {
+    const showTextToolbar =() => {
 
             setTextToolbar(!isTextToolbar);
             let iTextSample:any = new fabric.IText("Double tap \nto edit"  , {
@@ -417,8 +421,9 @@ const Toolbarmodule = () => {
             setColorModeIcon("light_mode")
         }
         canvas.renderAll();
+        canvas.fire('object:modified');
     }
-
+console.log(isColorModeIcon)
     return (
 
         <Draggable  handle="strong"  onDrag={handleStop}   bounds={{ top:0 , bottom:isBound , left:-isBoundleft , right:isBoundRight }}  >

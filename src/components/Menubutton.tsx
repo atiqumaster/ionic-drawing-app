@@ -17,6 +17,8 @@ const Menubutton = (props:any) => {
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
     let history = useHistory();
     const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
+    const { setColorModeIcon}:any = useContext(CanvasStore);
+
     const storeCanvas = async () => {
 
         if (isCanvasDesign) {
@@ -33,6 +35,7 @@ const Menubutton = (props:any) => {
                 }
             })
             setCanvasDesign(null);
+
             await storage.set('myDesign', JSON.stringify(localArray));
             canvas.renderAll();
             history.go(-1);
@@ -42,12 +45,14 @@ const Menubutton = (props:any) => {
             let designJson: any = JSON.stringify(canvas.toJSON());
             let thumbnail: any = canvas.toDataURL();
             let designId: any = Math.random();
+            let canvasColor: any = canvas.backgroundColor;
 
             let canvasDesign = {
                 designJson,
                 thumbnail,
                 designId,
-                isTitleInput
+                isTitleInput,
+                canvasColor
             }
 
             let tempArray: any = [];
@@ -58,7 +63,11 @@ const Menubutton = (props:any) => {
                 tempArray.push(...getLocalArray);
             }
 
+
             tempArray.push(canvasDesign);
+
+
+
             await storage.set('myDesign', JSON.stringify(tempArray));
             canvas.renderAll();
             history.go(-2);

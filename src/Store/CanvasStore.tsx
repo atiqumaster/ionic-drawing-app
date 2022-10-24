@@ -71,6 +71,8 @@ export function StoreContext({ children }:any) {
     const [formatAlignText , setFormatAlignText ] = useState("format_align_left");
     const [ lockedObj ,setLockedObj  ] = useState(false);
     const [isHide , setHide] =useState(false);
+    const [isColorModeIcon, setColorModeIcon] = useState("dark_mode");
+
     const canvasProviderValues:any = useMemo(() => ({
         dimension,
         setDimension,
@@ -113,8 +115,9 @@ export function StoreContext({ children }:any) {
         lockedObj,
         setLockedObj,
         setHide,
-        isHide
-
+        isHide,
+        isColorModeIcon,
+        setColorModeIcon
 
 
     }), [
@@ -138,7 +141,8 @@ export function StoreContext({ children }:any) {
         isObjLockIcon,
         formatAlignText ,
         lockedObj,
-        isHide
+        isHide,
+        isColorModeIcon
 
 
     ]);

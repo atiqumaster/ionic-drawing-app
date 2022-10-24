@@ -23,6 +23,8 @@ const Home = () => {
     const [isDeleteDesign , setDeleteDesign ]: any = useState();
     const [isDesignHome ,  setDesignHome]: any = useState(true);
     const { isTitleInput ,setTitleInput  }:any = useContext(CanvasStore)
+    const { setColorModeIcon}:any = useContext(CanvasStore);
+    const { canvas }:any = useContext(CanvasStore);
     let history = useHistory();
 
     useEffect(() => {
@@ -47,9 +49,16 @@ const Home = () => {
 
 
     const loadCanvas = (design: any) => {
+        console.log(design.canvasColor)
+        if(design.canvasColor=='black'){
+            setColorModeIcon("light_mode")
+        }else{
+            setColorModeIcon("dark_mode")
+        }
         setCanvasDesign(design)
         history.push("/drawing");
         setTitleInput(design.isTitleInput)
+
     }
     const deleteCards = async () => {
 
