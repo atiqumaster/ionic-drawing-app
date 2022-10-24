@@ -14,42 +14,46 @@ const ObjProperties = () => {
 
 
     const objectClone = () => {
-        console.log("clone speed test")
+
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
         if(canvas.getActiveObject().lockMovementX || canvas.getActiveObject().lockMovementY) return
 
         let cloned = canvas.getActiveObject()
+
+        // clone again, so you can do multiple copies.
         cloned.clone(function(clonedObj:any) {
             canvas.discardActiveObject();
             clonedObj.set({
-                left:  clonedObj.left + 10,
+                left: clonedObj.left + 10,
                 top: clonedObj.top + 10,
-                originX: 'center',
-                originY : 'center',
                 evented: true,
             });
-
             if (clonedObj.type === 'activeSelection') {
                 // active selection needs a reference to the canvas.
-                console.log("ClonedObject", clonedObj);
                 clonedObj.canvas = canvas;
                 clonedObj.forEachObject(function(obj:any) {
                     canvas.add(obj);
                 });
+                // this should solve the unselectability
                 clonedObj.setCoords();
             } else {
                 canvas.add(clonedObj);
             }
+            clonedObj.top += 10;
+            clonedObj.left += 10;
             canvas.setActiveObject(clonedObj);
             canvas.requestRenderAll();
-            canvas.fire('object:modified');
         });
+
 
 
         setTextBoxToggle(false)
         setImageToolbarToggle(false)
     }
+
+
+
 
 
 

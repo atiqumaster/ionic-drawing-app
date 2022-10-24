@@ -423,7 +423,7 @@ const Toolbarmodule = () => {
         canvas.renderAll();
         canvas.fire('object:modified');
     }
-console.log(isColorModeIcon)
+
     return (
 
         <Draggable  handle="strong"  onDrag={handleStop}   bounds={{ top:0 , bottom:isBound , left:-isBoundleft , right:isBoundRight }}  >
