@@ -25,8 +25,9 @@ const ObjProperties = () => {
         cloned.clone(function(clonedObj:any) {
             canvas.discardActiveObject();
             clonedObj.set({
-                left: clonedObj.left + 10,
-                top: clonedObj.top + 10,
+                left: clonedObj.left + 15,
+                top: clonedObj.top + 15,
+
                 evented: true,
             });
             if (clonedObj.type === 'activeSelection') {
@@ -40,8 +41,9 @@ const ObjProperties = () => {
             } else {
                 canvas.add(clonedObj);
             }
-            clonedObj.top += 10;
-            clonedObj.left += 10;
+            clonedObj.top += 15;
+            clonedObj.left += 15;
+
             canvas.setActiveObject(clonedObj);
             canvas.requestRenderAll();
         });

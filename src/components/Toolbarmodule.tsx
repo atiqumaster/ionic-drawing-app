@@ -280,7 +280,10 @@ const Toolbarmodule = () => {
         setRedo({opacity: 1});
     }
 
+/* zoom start */
 
+
+    /* zoom end */
 
     const showTextToolbar =() => {
 

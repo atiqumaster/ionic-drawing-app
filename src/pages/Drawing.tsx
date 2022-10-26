@@ -52,7 +52,8 @@ const Drawing  = () => {
     const { isCanvasDesign , setCanvasDesign  }:any = useContext(CanvasStore);
     const [cancelToggle, setCancelToggle]: any = useState(false)
     const [tempCanvas, setTempCanvas]: any = useState()
-    const ref = useRef<ReactZoomPanPinchRef | null>(null);
+    const ref:any = useRef<ReactZoomPanPinchRef | null>(null);
+
 
     //const ref = useRef(null);
 
@@ -163,6 +164,8 @@ const Drawing  = () => {
 
 
    // panning two finger Detect
+   //  console.log( ref );
+
 
     useEffect(()=>{
         twoFingerPan()
@@ -215,12 +218,17 @@ const Drawing  = () => {
                 xOffset = currentX;
                 yOffset = currentY;
 
-               setCanvasMove({x: currentX, y: currentY})
+           console.log("panning", Math.round(currentX))
+            console.log( "scaling", ref.current?.state.scale );
+
+               setCanvasMove({x: currentX, y:currentY })
 
 
          }
 
     }
+
+
 
 
     // @ts-ignore
@@ -240,17 +248,19 @@ const Drawing  = () => {
                             <div   className={drawing.HandleCanvas} >
                                 <TransformWrapper
                                     ref={ref}
+
                                     minScale={0.5}
+
                                     maxScale={7}
                                     doubleClick={ {disabled:true}}
-                                    pinch={{disabled:false}}
+                                    pinch={{disabled:false }}
                                     panning={{ disabled: panning }}
                                 >
 
                                     <TransformComponent>
 
                                         <div id="container"  style={{
-                                            transform: `translate3d(${canvasMove.x}px, ${canvasMove.y}px, 0px)`,
+                                            transform: `translate3d(${Math.round(canvasMove.x)}px, ${Math.round(canvasMove.y)}px, 0px)`,
                                             position: 'relative',
 
                                         }} >
